@@ -73,6 +73,14 @@
           </e>
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
+        <e p="ThirdParty" t="Include">
+          <e p="SimpleApocalypse" t="Include">
+            <e p="_Materials" t="Include">
+              <e p="UnlitVertexColour_Alpha.shader" t="Include" />
+            </e>
+            <e p="ReadMe.txt" t="Include" />
+          </e>
+        </e>
       </e>
       <e p="Core.csproj" t="IncludeRecursive" />
       <e p="Game.csproj" t="IncludeRecursive" />
