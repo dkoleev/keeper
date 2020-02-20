@@ -69,10 +69,16 @@
               <e p="GameLoop.cs" t="Include" />
               <e p="Hero.cs" t="Include" />
               <e p="Managers" t="Include">
+                <e p="InputManager" t="Include">
+                  <e p="InputManager.cs" t="Include" />
+                </e>
                 <e p="UpdateManager" t="Include">
                   <e p="IBatchUpdate.cs" t="Include" />
                   <e p="UpdateManager.cs" t="Include" />
                 </e>
+              </e>
+              <e p="Utilities" t="Include">
+                <e p="AvocadoLogger.cs" t="Include" />
               </e>
             </e>
             <e p="Main.asmdef" t="Include" />
