@@ -65,6 +65,11 @@
             </e>
             <e p="DotNetJsonLoader.cs" t="Include" />
             <e p="Game" t="Include">
+              <e p="Controllers" t="Include">
+                <e p="Controls.cs" t="Include" />
+                <e p="Mover.cs" t="Include" />
+                <e p="Player.cs" t="Include" />
+              </e>
               <e p="GameLoader.cs" t="Include" />
               <e p="GameLoop.cs" t="Include" />
               <e p="Hero.cs" t="Include" />
