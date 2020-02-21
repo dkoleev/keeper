@@ -1,4 +1,5 @@
 ﻿using System;
+using Avocado.Game.Entities.Views;
 using Avocado.Game.Managers.InputManager;
 using UnityEngine;
 
@@ -21,13 +22,17 @@ namespace Avocado.Game.Controllers {
         private bool _playerLoaded;
             
         private InputManager _inputManager;
-        private Player _player;
+        private PlayerView m_PlayerView;
         private float _prevRotateAxis;
+
+        public Vector2 MoveAxis => _inputManager.MoveAxis;
+        public bool Mooving => _mooving;
+        private bool _mooving;
 
         private void Awake() {
             _inputManager = GameObject.FindWithTag("InputManager").GetComponent<InputManager>();
-            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-            _rotateTransform = _player.transform;
+            m_PlayerView = GameObject.FindWithTag("Player").GetComponent<PlayerView>();
+            _rotateTransform = m_PlayerView.transform;
             _playerLoaded = true;
             /*_player.OnLoaded += () => {
                 _rotateTransform = _player.GetComponentInChildren<MountBody>().transform;
@@ -38,8 +43,15 @@ namespace Avocado.Game.Controllers {
         private void Update() 
         {
             if (_inputManager.MoveAxis != Vector2.zero) {
+                if (!_mooving) {
+                    _mooving = true;
+                }
+
                  _moveTransform.position += new Vector3(_inputManager.MoveAxis.x * Time.deltaTime * _speedMove, transform.position.y, _inputManager.MoveAxis.y * Time.deltaTime * _speedMove);
+            }else if (_mooving) {
+                _mooving = false;
             }
+
             /*if (_playerLoaded) 
             {
                 if (Math.Abs(_prevRotateAxis - _inputManager.RotationAxisY) > 0.0f) {

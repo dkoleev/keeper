@@ -1,6 +1,8 @@
-﻿namespace Avocado.Game.Utilities
+﻿using UnityEngine;
+
+namespace Avocado.Game.Utilities
 {
-    public class AvocadoLogger
+    public static class AvocadoLogger
     {
         public static void Log(string message)
         {

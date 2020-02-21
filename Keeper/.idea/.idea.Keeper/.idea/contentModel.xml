@@ -68,7 +68,16 @@
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
                 <e p="Mover.cs" t="Include" />
-                <e p="Player.cs" t="Include" />
+              </e>
+              <e p="Entities" t="Include">
+                <e p="Entity.cs" t="Include" />
+                <e p="EntityView.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="Player.cs" t="Include" />
+                </e>
+                <e p="Views" t="Include">
+                  <e p="PlayerView.cs" t="Include" />
+                </e>
               </e>
               <e p="GameLoader.cs" t="Include" />
               <e p="GameLoop.cs" t="Include" />
