@@ -2037,6 +2037,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 419184006698918178, guid: 20cf59173ec79674fa2910ca63f70534, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6888a2dee346ba04bbbc797c9a9cffb8, type: 2}
+    - target: {fileID: 419184006698918178, guid: 20cf59173ec79674fa2910ca63f70534, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 622187576938492760, guid: 20cf59173ec79674fa2910ca63f70534, type: 3}
       propertyPath: m_Name
       value: Player
