@@ -66,6 +66,7 @@
             <e p="DotNetJsonLoader.cs" t="Include" />
             <e p="Game" t="Include">
               <e p="Controllers" t="Include">
+                <e p="CameraFollow.cs" t="Include" />
                 <e p="Controls.cs" t="Include" />
                 <e p="Mover.cs" t="Include" />
                 <e p="Player.cs" t="Include" />
