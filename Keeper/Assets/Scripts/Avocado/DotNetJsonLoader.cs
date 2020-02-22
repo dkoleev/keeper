@@ -10,7 +10,6 @@ namespace Avocado {
             string filePath = path.Replace(".json", "");
             Addressables.LoadAssetAsync<TextAsset>(filePath).Completed += handle => {
                 var res = JsonConvert.DeserializeObject<T>(handle.Result.text);
-                
                 onLoad.Invoke(res);
             };
         }
