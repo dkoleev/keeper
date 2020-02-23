@@ -70,6 +70,7 @@
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
                 <e p="Mover.cs" t="Include" />
+                <e p="Rotator.cs" t="Include" />
               </e>
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
