@@ -1,6 +1,7 @@
 ﻿using System;
 using Avocado.Game.Entities.Views;
 using Avocado.Game.Managers.InputManager;
+using Avocado.Game.Utilities;
 using UnityEngine;
 
 namespace Avocado.Game.Controllers {
@@ -48,7 +49,7 @@ namespace Avocado.Game.Controllers {
                 }
 
                  _moveTransform.position += new Vector3(_inputManager.MoveAxis.x * Time.deltaTime * _speedMove, transform.position.y, _inputManager.MoveAxis.y * Time.deltaTime * _speedMove);
-            }else if (_mooving) {
+            }else {
                 _mooving = false;
             }
 

@@ -9,8 +9,8 @@ namespace Avocado.Game.Entities.Views {
         private Player _model;
         private Mover _mover;
         
-        private static readonly int Idle = Animator.StringToHash("New Trigger");
-        private static readonly int Move = Animator.StringToHash("Blend");
+        private static readonly int Idle = Animator.StringToHash("Idle");
+        private static readonly int Move = Animator.StringToHash("Move");
 
         protected override void Start() {
             base.Start();
@@ -22,13 +22,13 @@ namespace Avocado.Game.Entities.Views {
 
         private void Update() {
             if (_mover.Mooving) {
-                _model.SetState(Player.PlayerState.Idle);
+                _model.SetState(Player.PlayerState.Move);
                 var speed = (Mathf.Abs(_mover.MoveAxis.x) + Mathf.Abs(_mover.MoveAxis.y))/2.0f;
-                AvocadoLogger.Log(speed.ToString() + _mover.MoveAxis.ToString());
                 _animator.SetFloat(Move, speed);
             } else {
                 if (_model.CurrentState != Player.PlayerState.Idle) {
                     _model.SetState(Player.PlayerState.Idle);
+                    _animator.SetFloat(Move, 0);
                     _animator.SetTrigger(Idle);
                 }
             }
