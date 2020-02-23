@@ -1397,6 +1397,25 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 275919691}
+--- !u!1 &1498533055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 419184006689465258, guid: 20cf59173ec79674fa2910ca63f70534,
+    type: 3}
+  m_PrefabInstance: {fileID: 4175097185134577676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1498533058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498533055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 177721242999466eb85731c4a08a3fb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 2
 --- !u!1001 &1667273157
 PrefabInstance:
   m_ObjectHideFlags: 0
