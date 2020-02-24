@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 409548}
   - component: {fileID: 3339858}
   - component: {fileID: 2317914}
+  - component: {fileID: 2384317924907648778}
   m_Layer: 0
   m_Name: SA_Env_Pond_03
   m_TagString: Untagged
@@ -55,7 +56,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,4 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2384317924907648778
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.000002, y: 3.4470816, z: 14.999996}
+  m_Center: {x: -7.500001, y: 0.63125515, z: -7.499998}

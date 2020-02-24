@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 447144}
   - component: {fileID: 3304698}
   - component: {fileID: 2365262}
+  - component: {fileID: -8770996867832407808}
   m_Layer: 0
   m_Name: SA_Env_ForestTile_02
   m_TagString: Untagged
@@ -55,7 +56,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,4 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-8770996867832407808
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15, y: 8.478865, z: 15}
+  m_Center: {x: -7.5, y: 3.9221866, z: -7.5}
