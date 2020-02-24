@@ -84,7 +84,6 @@
               </e>
               <e p="GameLoader.cs" t="Include" />
               <e p="GameLoop.cs" t="Include" />
-              <e p="GameRunner.cs" t="Include" />
               <e p="Managers" t="Include">
                 <e p="InputManager" t="Include">
                   <e p="InputManager.cs" t="Include" />
@@ -113,6 +112,17 @@
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="ThirdParty" t="Include">
+          <e p="PolygonApocalypse" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Misc" t="Include">
+                <e p="Shader" t="Include">
+                  <e p="POLYGON_Triplanar.shader" t="Include" />
+                  <e p="POLYGON_Zombies.shader" t="Include" />
+                  <e p="SkyGradient.shader" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
           <e p="SimpleApocalypse" t="Include">
             <e p="_Materials" t="Include">
               <e p="UnlitVertexColour_Alpha.shader" t="Include" />

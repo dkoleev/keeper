@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.pixeye.ecs": "https://github.com/dimmpixeye/actors.git",
+    "com.avocado.tools": "https://github.com/dkoleev/GameDevelopmentTools.git",
     "com.unity.addressables": "1.1.10",
     "com.unity.cinemachine": "2.5.0",
     "com.unity.device-simulator": "2.0.0-preview",
@@ -50,9 +50,9 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "lock": {
-    "com.pixeye.ecs": {
+    "com.avocado.tools": {
       "revision": "HEAD",
-      "hash": "ca4561589c414ed7ddf322d572854f8780b7eacc"
+      "hash": "d475d4fd8c3634d7607e1de64211a94096173785"
     }
   }
 }
