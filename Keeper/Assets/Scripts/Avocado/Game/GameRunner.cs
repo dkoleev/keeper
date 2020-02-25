@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
 namespace Avocado.Game {
-    public class GameLoader : MonoBehaviour
+    [DisallowMultipleComponent]
+    public class GameRunner : MonoBehaviourWrapper
     {
-        void Start()
+        protected override void Start()
         {
+            base.Start();
+            
             Load();
         }
 
@@ -18,6 +21,11 @@ namespace Avocado.Game {
         }
 
         private void LoadGameState() {
+            
+        }
+
+        private void InitializeSystems()
+        {
             
         }
     }

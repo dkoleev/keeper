@@ -1,9 +1,8 @@
 ﻿using Avocado.Game.Controllers;
-using Avocado.Game.Entities.Models;
-using Avocado.Game.Utilities;
+using Avocado.Game.EntitiesOld.Models;
 using UnityEngine;
 
-namespace Avocado.Game.Entities.Views {
+namespace Avocado.Game.EntitiesOld.Views {
     public class PlayerView : EntityView {
         private Animator _animator;
         private Player _model;

@@ -1,0 +1,11 @@
+{
+	"Name": "Hero",
+	"Entity": {
+		"Components": [
+			{
+				"Type": "Health",
+				"Value": 0
+			}
+		]
+	}
+}

@@ -1,5 +1,4 @@
 using Avocado.Game.Managers.InputManager;
-using Tools;
 using UnityEngine;
 
 namespace Avocado.Game.Controllers

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Dimko\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Dimko\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Keeper.-679276012.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Dimko\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Keeper.1967213793.00" t="ExcludeRecursive" />
     <e p="D:\Projects\Keeper\Keeper\Keeper" t="IncludeRecursive">
-      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Samples" t="Include">
@@ -19,27 +18,6 @@
               <e p="Custom Device Usages" t="Include">
                 <e p="CustomDeviceUsages.cs" t="Include" />
               </e>
-              <e p="EditorWindow Demo" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="EditorWindowDemo.cs" t="Include" />
-                </e>
-              </e>
-              <e p="In-Game Hints" t="Include">
-                <e p="InGameHintsActions.cs" t="Include" />
-                <e p="InGameHintsExample.cs" t="Include" />
-                <e p="Unity.InputSystem.InGameHints.asmdef" t="Include" />
-              </e>
-              <e p="Input Recorder" t="Include">
-                <e p="InputRecorder.cs" t="Include" />
-                <e p="InputRecorderInspector.cs" t="Include" />
-                <e p="Unity.InputSystem.Recorder.asmdef" t="Include" />
-              </e>
-              <e p="Rebinding UI" t="Include">
-                <e p="GamepadIconsExample.cs" t="Include" />
-                <e p="RebindActionUI.cs" t="Include" />
-                <e p="RebindActionUIEditor.cs" t="Include" />
-                <e p="Unity.InputSystem.RebindingUI.asmdef" t="Include" />
-              </e>
               <e p="Simple Demo" t="Include">
                 <e p="SimpleController_UsingActionAsset.cs" t="Include" />
                 <e p="SimpleController_UsingActions.cs" t="Include" />
@@ -47,98 +25,13 @@
                 <e p="SimpleController_UsingState.cs" t="Include" />
                 <e p="SimpleControls.cs" t="Include" />
               </e>
-              <e p="Visualizers" t="Include">
-                <e p="InputActionVisualizer.cs" t="Include" />
-                <e p="InputControlVisualizer.cs" t="Include" />
-                <e p="InputVisualizer.cs" t="Include" />
-                <e p="Unity.InputSystem.Visualizers.asmdef" t="Include" />
-                <e p="VisualizationHelpers.cs" t="Include" />
-              </e>
             </e>
-          </e>
-        </e>
-        <e p="Scripts" t="Include">
-          <e p="Avocado" t="Include">
-            <e p="Core" t="Include">
-              <e p="Core.asmdef" t="Include" />
-              <e p="Loader" t="Include">
-                <e p="ILoader.cs" t="Include" />
-              </e>
-            </e>
-            <e p="DotNetJsonLoader.cs" t="Include" />
-            <e p="Game" t="Include">
-              <e p="Components" t="Include">
-                <e p="Component.cs" t="Include" />
-              </e>
-              <e p="Controllers" t="Include">
-                <e p="Controls.cs" t="Include" />
-                <e p="Mover.cs" t="Include" />
-                <e p="Rotator.cs" t="Include" />
-              </e>
-              <e p="Data" t="Include">
-                <e p="ComponentData.cs" t="Include" />
-                <e p="Components" t="Include">
-                  <e p="HealthComponentData.cs" t="Include" />
-                </e>
-                <e p="EntityData.cs" t="Include" />
-                <e p="GameData.cs" t="Include" />
-                <e p="HealthData.cs" t="Include" />
-                <e p="PlayerData.cs" t="Include" />
-              </e>
-              <e p="Entities" t="Include">
-                <e p="Entity.cs" t="Include" />
-              </e>
-              <e p="EntitiesOld" t="Include">
-                <e p="Entity.cs" t="Include" />
-                <e p="EntityView.cs" t="Include" />
-                <e p="Models" t="Include">
-                  <e p="Player.cs" t="Include" />
-                </e>
-                <e p="Views" t="Include">
-                  <e p="PlayerView.cs" t="Include" />
-                </e>
-              </e>
-              <e p="GameLoop.cs" t="Include" />
-              <e p="GameRunner.cs" t="Include" />
-              <e p="Managers" t="Include">
-                <e p="InputManager" t="Include">
-                  <e p="InputManager.cs" t="Include" />
-                </e>
-                <e p="UpdateManager" t="Include">
-                  <e p="IBatchUpdate.cs" t="Include" />
-                  <e p="UpdateManager.cs" t="Include" />
-                </e>
-              </e>
-              <e p="MonoBehaviourWrapper.cs" t="Include" />
-              <e p="Systems" t="Include">
-                <e p="BaseSystem.cs" t="Include" />
-                <e p="EventSystem.cs" t="Include" />
-                <e p="UpdateSystem.cs" t="Include" />
-              </e>
-              <e p="UI" t="Include">
-                <e p="Tools" t="Include">
-                  <e p="BackgroundBacther.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Utilities" t="Include">
-                <e p="AvocadoLogger.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Main.asmdef" t="Include" />
           </e>
         </e>
         <e p="ThirdParty" t="Include">
           <e p="EasyScatter" t="Include">
             <e p="Documentation.txt" t="Include" />
             <e p="Plugin" t="Include">
-              <e p="Editor" t="Include">
-                <e p="EasyScaterPref.xml" t="Include" />
-                <e p="EasyScatterWindow.cs" t="Include" />
-                <e p="ESGuiTools.cs" t="Include" />
-                <e p="ScatterBrush.cs" t="Include" />
-                <e p="ScatterPreference.cs" t="Include" />
-                <e p="ScatterRootHierarchyCallBack.cs" t="Include" />
-              </e>
               <e p="ScatteredObject.cs" t="Include" />
               <e p="ScatterRoot.cs" t="Include" />
             </e>
@@ -238,11 +131,6 @@
                   <e p="TiltInput.cs" t="Include" />
                   <e p="TouchPad.cs" t="Include" />
                   <e p="VirtualInput.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Editor" t="Include">
-                <e p="CrossPlatformInput" t="Include">
-                  <e p="CrossPlatformInputInitialize.cs" t="Include" />
                 </e>
               </e>
               <e p="Effects" t="Include">
@@ -372,19 +260,9 @@
           </e>
         </e>
       </e>
-      <e p="Core.csproj" t="IncludeRecursive" />
-      <e p="Game.csproj" t="IncludeRecursive" />
-      <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
-      <e p="Keeper.sln" t="IncludeFlat" />
-      <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
-      <e p="Packages" t="ExcludeRecursive" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
-      <e p="Unity.InputSystem.InGameHints.csproj" t="IncludeRecursive" />
-      <e p="Unity.InputSystem.RebindingUI.csproj" t="IncludeRecursive" />
-      <e p="Unity.InputSystem.Recorder.csproj" t="IncludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>
