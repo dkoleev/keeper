@@ -17,7 +17,9 @@ namespace Avocado.Game {
         }
 
         private void LoadConfiguration() {
-            
+            var loader = new DotNetJsonLoader();
+            var config = new GameConfiguration();
+            config.Load(loader);
         }
 
         private void LoadGameState() {

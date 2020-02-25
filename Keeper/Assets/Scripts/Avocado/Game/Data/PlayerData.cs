@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Avocado.Game.Data
 {
@@ -6,6 +7,6 @@ namespace Avocado.Game.Data
     public class PlayerData
     {
         public string Name;
-        public EntityData Entity;
+        public EntityData  Entity;
     }
 }
