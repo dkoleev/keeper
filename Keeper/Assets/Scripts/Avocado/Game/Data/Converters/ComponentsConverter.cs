@@ -15,6 +15,7 @@ namespace Avocado.Game.Data.Converters {
             var type = item["Type"].ToString();
             
             var component = Factory<ComponentData>.Create(type);
+            component.Type = type;
             component.Value = value;
 
             return component;

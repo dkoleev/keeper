@@ -1,6 +1,7 @@
 {
 	"Name": "Hero",
 	"Entity": {
+		"Prefab" : "Player",
 		"Components": [
 			{
 				"Type" : "Health",

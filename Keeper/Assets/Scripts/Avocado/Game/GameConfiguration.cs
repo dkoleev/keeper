@@ -5,14 +5,16 @@ namespace Avocado.Game {
     public class GameConfiguration {
         private const string DataPath = "GameData/";
 
-        public GameData Data { get; private set; }
+        private GameData _data;
 
-        public void Load(ILoader loader)
+        public GameData Load(ILoader loader)
         {
-            Data = new GameData
+            _data = new GameData
             {
                 Player = loader.LoadObject<PlayerData>(DataPath + "Player.json")
             };
+
+            return _data;
         }
     }
 }

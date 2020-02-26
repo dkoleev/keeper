@@ -65,7 +65,9 @@
             </e>
             <e p="Game" t="Include">
               <e p="Components" t="Include">
-                <e p="Component.cs" t="Include" />
+                <e p="ComponentBase.cs" t="Include" />
+                <e p="DamageComponent.cs" t="Include" />
+                <e p="HealthComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">
@@ -91,6 +93,7 @@
               <e p="DotNetJsonLoader.cs" t="Include" />
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
+                <e p="Player.cs" t="Include" />
               </e>
               <e p="EntitiesOld" t="Include">
                 <e p="Entity.cs" t="Include" />
@@ -122,6 +125,7 @@
               <e p="Systems" t="Include">
                 <e p="BaseSystem.cs" t="Include" />
                 <e p="EventSystem.cs" t="Include" />
+                <e p="PlayerSystem.cs" t="Include" />
                 <e p="UpdateSystem.cs" t="Include" />
               </e>
               <e p="UI" t="Include">

@@ -1,10 +1,13 @@
-﻿using Avocado.Game.Data;
+﻿using System.Collections.Generic;
+using Avocado.Game.Data;
+using Avocado.Game.Systems;
 using UnityEngine;
 
 namespace Avocado.Game {
     [DisallowMultipleComponent]
-    public class GameRunner : MonoBehaviourWrapper
-    {
+    public class GameRunner : MonoBehaviourWrapper {
+        private List<BaseSystem> _systems;
+        
         protected override void Start()
         {
             base.Start();
@@ -13,23 +16,30 @@ namespace Avocado.Game {
         }
 
         private void Load() {
-            LoadConfiguration();
             LoadGameState();
+            var gameData = LoadConfiguration();
+            LoadSystems(gameData);
         }
 
-        private void LoadConfiguration() {
+        private GameData LoadConfiguration() {
             var loader = new DotNetJsonLoader();
             var config = new GameConfiguration();
-            config.Load(loader);
+            return  config.Load(loader);
         }
 
         private void LoadGameState() {
             
         }
 
-        private void InitializeSystems()
+        private void LoadSystems(GameData gameData)
         {
-            
+            _systems = new List<BaseSystem> {
+                new PlayerSystem(gameData)
+            };
+
+            foreach (var system in _systems) {
+                system.Initialize();
+            }
         }
     }
 }
