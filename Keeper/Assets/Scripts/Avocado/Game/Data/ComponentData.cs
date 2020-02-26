@@ -5,8 +5,6 @@ namespace Avocado.Game.Data
 {
     [Serializable]
     [JsonConverter(typeof(ComponentsConverter))]
-    public class ComponentData
-    {
-        public string Type { get; set; }
+    public class ComponentData {
     }
 }

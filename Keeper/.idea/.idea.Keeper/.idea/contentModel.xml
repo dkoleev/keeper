@@ -76,6 +76,7 @@
               <e p="Data" t="Include">
                 <e p="ComponentData.cs" t="Include" />
                 <e p="Components" t="Include">
+                  <e p="DamageComponentData.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
                 </e>
                 <e p="EntityData.cs" t="Include" />
