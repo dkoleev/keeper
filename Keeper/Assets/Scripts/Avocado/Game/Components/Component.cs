@@ -1,7 +1,6 @@
 ﻿namespace Avocado.Game.Components
 {
-    public class Component
-    {
-
+    public class Component {
+        public int Value;
     }
 }

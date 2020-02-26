@@ -9,6 +9,10 @@
 			{
 				"Type": "Damage",
 				"Value": 10
+			},
+			{
+				"Type" : "Move",
+				"Value" : 5
 			}
 		]
 	}

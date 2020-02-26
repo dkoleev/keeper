@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Avocado.Game.Data;
+using UnityEngine;
 
 namespace Avocado.Game {
     [DisallowMultipleComponent]

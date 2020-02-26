@@ -66,8 +66,8 @@
             <e p="Game" t="Include">
               <e p="Components" t="Include">
                 <e p="Component.cs" t="Include" />
+                <e p="MoveComponent.cs" t="Include" />
               </e>
-              <e p="ComponentsConverter.cs" t="Include" />
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
                 <e p="Mover.cs" t="Include" />
@@ -78,6 +78,10 @@
                 <e p="Components" t="Include">
                   <e p="DamageComponentData.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
+                  <e p="MoveComponentData.cs" t="Include" />
+                </e>
+                <e p="Converters" t="Include">
+                  <e p="ComponentsConverter.cs" t="Include" />
                 </e>
                 <e p="EntityData.cs" t="Include" />
                 <e p="GameData.cs" t="Include" />
@@ -97,6 +101,10 @@
                 <e p="Views" t="Include">
                   <e p="PlayerView.cs" t="Include" />
                 </e>
+              </e>
+              <e p="Factories" t="Include">
+                <e p="Factory.cs" t="Include" />
+                <e p="ObjectTypeAttribute.cs" t="Include" />
               </e>
               <e p="GameConfiguration.cs" t="Include" />
               <e p="GameLoop.cs" t="Include" />
