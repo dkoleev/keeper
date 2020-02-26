@@ -34,7 +34,8 @@ namespace Avocado.Game {
         private void LoadSystems(GameData gameData)
         {
             _systems = new List<BaseSystem> {
-                new PlayerSystem(gameData)
+                new UpdateSystem(gameData),
+                new PlayerSystem(gameData),
             };
 
             foreach (var system in _systems) {

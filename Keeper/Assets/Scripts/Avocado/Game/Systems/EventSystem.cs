@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Avocado.Game.Data;
 
-public class EventSystem : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+namespace Avocado.Game.Systems {
+    public class EventSystem : BaseSystem
     {
+        public EventSystem(GameData data) : base(data) { }
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void Initialize() {
+            
+        }
     }
 }

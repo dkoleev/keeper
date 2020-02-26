@@ -4,6 +4,10 @@
 		"Prefab" : "Player",
 		"Components": [
 			{
+				"Type" : "PlayerControls",
+				"Value" : 100
+			},
+			{
 				"Type" : "Health",
 				"Value" : 100
 			},

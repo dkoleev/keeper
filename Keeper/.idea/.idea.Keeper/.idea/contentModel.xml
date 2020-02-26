@@ -69,6 +69,7 @@
                 <e p="DamageComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
+                <e p="PlayerControlsComponent.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
@@ -81,6 +82,7 @@
                   <e p="DamageComponentData.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
                   <e p="MoveComponentData.cs" t="Include" />
+                  <e p="PlayerControlsComponentData.cs" t="Include" />
                 </e>
                 <e p="Converters" t="Include">
                   <e p="ComponentsConverter.cs" t="Include" />
@@ -94,6 +96,7 @@
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
                 <e p="Player.cs" t="Include" />
+                <e p="UpdateEntity.cs" t="Include" />
               </e>
               <e p="EntitiesOld" t="Include">
                 <e p="Entity.cs" t="Include" />
@@ -125,6 +128,7 @@
               <e p="Systems" t="Include">
                 <e p="BaseSystem.cs" t="Include" />
                 <e p="EventSystem.cs" t="Include" />
+                <e p="IBatchUpdate.cs" t="Include" />
                 <e p="PlayerSystem.cs" t="Include" />
                 <e p="UpdateSystem.cs" t="Include" />
               </e>

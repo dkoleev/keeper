@@ -7,10 +7,6 @@ namespace Avocado.Game.Systems {
             Data = data;
         }
 
-        public void Initialize() {
-            CreateActors();
-        }
-
-        protected abstract void CreateActors();
+        public abstract void Initialize();
     }
 }

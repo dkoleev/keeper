@@ -1,6 +1,15 @@
-﻿namespace Avocado.Game.Components
+﻿using System;
+using Avocado.Game.Entities;
+
+namespace Avocado.Game.Components
 {
+    [Serializable]
     public class ComponentBase {
-        public int Value;
+        protected Entity Entity;
+        protected bool Initialized;
+
+        public virtual void Initialize(Entity entity) {
+            Entity = entity;
+        }
     }
 }
