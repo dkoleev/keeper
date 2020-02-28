@@ -1,6 +1,5 @@
 using Avocado.Game.Data;
 using Avocado.Game.Entities;
-using Avocado.Game.Utilities;
 using Cinemachine;
 using UnityEngine;
 

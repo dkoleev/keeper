@@ -1,5 +1,5 @@
 using System;
-using Avocado.Game.Factories;
+using Avocado.Framework.Patterns.AbstractFactory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

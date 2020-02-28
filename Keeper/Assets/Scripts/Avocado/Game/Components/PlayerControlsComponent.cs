@@ -1,12 +1,9 @@
-using Avocado.Game.Controllers;
+using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Entities;
-using Avocado.Game.EntitiesOld.Views;
-using Avocado.Game.Factories;
 using Avocado.Game.Managers.InputManager;
 using Avocado.Game.Systems;
 using JetBrains.Annotations;
 using UnityEngine;
-using IBatchUpdate = Avocado.Game.Systems.IBatchUpdate;
 
 namespace Avocado.Game.Components {
     [UsedImplicitly]

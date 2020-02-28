@@ -1,6 +1,6 @@
+using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Components;
 using Avocado.Game.Data;
-using Avocado.Game.Factories;
 
 namespace Avocado.Game.Entities {
     public class Player : Entity {
