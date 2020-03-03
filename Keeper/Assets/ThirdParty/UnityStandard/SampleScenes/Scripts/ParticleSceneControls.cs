@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityStandardAssets.Effects;
-using EventSystem = Avocado.Game.Systems.EventSystem;
 
 
 namespace UnityStandardAssets.SceneUtils

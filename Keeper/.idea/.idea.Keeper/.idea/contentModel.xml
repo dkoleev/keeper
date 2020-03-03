@@ -108,6 +108,10 @@
                   <e p="PlayerView.cs" t="Include" />
                 </e>
               </e>
+              <e p="Events" t="Include">
+                <e p="PlayerDeadEvent.cs" t="Include" />
+                <e p="PlayerResurrectEvent.cs" t="Include" />
+              </e>
               <e p="GameConfiguration.cs" t="Include" />
               <e p="GameLoop.cs" t="Include" />
               <e p="GameRunner.cs" t="Include" />
@@ -123,7 +127,6 @@
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="Systems" t="Include">
                 <e p="BaseSystem.cs" t="Include" />
-                <e p="EventSystem.cs" t="Include" />
                 <e p="IBatchUpdate.cs" t="Include" />
                 <e p="PlayerSystem.cs" t="Include" />
                 <e p="UpdateSystem.cs" t="Include" />

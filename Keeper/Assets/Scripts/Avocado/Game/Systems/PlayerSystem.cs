@@ -1,5 +1,7 @@
+using Avocado.Framework.Patterns.EventSystem;
 using Avocado.Game.Data;
 using Avocado.Game.Entities;
+using Avocado.Game.Events;
 using Cinemachine;
 using UnityEngine;
 
@@ -34,6 +36,10 @@ namespace Avocado.Game.Systems {
 
         public void BatchUpdate() {
 
+        }
+
+        public void Dead() {
+            EventSystem<PlayerDeadEvent>.Fire(new PlayerDeadEvent(10));
         }
     }
 }

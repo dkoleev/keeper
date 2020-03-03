@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Avocado.Framework.Patterns.EventSystem;
 using Avocado.Game.Data;
+using Avocado.Game.Events;
 using Avocado.Game.Systems;
 using UnityEngine;
 
@@ -19,6 +21,11 @@ namespace Avocado.Game {
             LoadGameState();
             var gameData = LoadConfiguration();
             LoadSystems(gameData);
+
+            EventSystem<PlayerDeadEvent>.OnFire += data => { Debug.Log(data.LiveTime);};
+
+            var playerSystem = GetSystem<PlayerSystem>();
+            playerSystem.Dead();
         }
 
         private GameData LoadConfiguration() {
@@ -41,6 +48,16 @@ namespace Avocado.Game {
             foreach (var system in _systems) {
                 system.Initialize();
             }
+        }
+
+        private TSystem GetSystem<TSystem>() where TSystem : class {
+            foreach (var system in _systems) {
+                if (system is TSystem system1) {
+                    return system1;
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Avocado.Game.Data;
+﻿using System;
+using Avocado.Game.Data;
 
 namespace Avocado.Game.Systems {
     public abstract class BaseSystem {
