@@ -1,7 +1,7 @@
 using System;
 
-namespace Avocado.Game.Entities.Models {
-    public class Player : Entity {
+namespace Avocado.Game.EntitiesOld.Models {
+    public class Player : Entities.Entity {
         public enum PlayerState {
             Idle,
             Move

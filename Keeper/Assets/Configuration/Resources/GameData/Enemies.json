@@ -1,0 +1,22 @@
+[
+	{
+		"Components": {
+			"Health": {
+				"Value": 100
+			},
+			"Mover": {
+				"Value": 5
+			}
+		}
+	},
+	{
+		"Components": {
+			"Health": {
+				"Value": 100
+			},
+			"Mover": {
+				"Value": 5
+			}
+		}
+	}
+]

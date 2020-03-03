@@ -2,6 +2,6 @@
 
 namespace Avocado.Core.Loader {
     public interface ILoader {
-        void LoadObject<T>(string path, Action<T> onLoad);
+        T LoadObject<T>(string path);
     }
 }

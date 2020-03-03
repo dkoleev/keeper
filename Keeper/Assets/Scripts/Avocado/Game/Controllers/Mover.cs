@@ -1,5 +1,5 @@
 ﻿using System;
-using Avocado.Game.Entities.Views;
+using Avocado.Game.EntitiesOld.Views;
 using Avocado.Game.Managers.InputManager;
 using Avocado.Game.Utilities;
 using UnityEngine;

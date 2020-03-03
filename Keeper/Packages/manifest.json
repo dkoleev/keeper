@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.avocado.tools": "https://github.com/dkoleev/GameDevelopmentTools.git",
+    "com.avocado.gameframework": "https://github.com/dkoleev/GameFramework.git",
     "com.unity.addressables": "1.1.10",
     "com.unity.burst": "1.2.3",
     "com.unity.cinemachine": "2.5.0",
@@ -51,9 +51,9 @@
     "com.unity.modules.xr": "1.0.0"
   },
   "lock": {
-    "com.avocado.tools": {
+    "com.avocado.gameframework": {
       "revision": "HEAD",
-      "hash": "d475d4fd8c3634d7607e1de64211a94096173785"
+      "hash": "1ad790e4db5ac8cc694ee654cad74a2cb1151096"
     }
   }
 }
