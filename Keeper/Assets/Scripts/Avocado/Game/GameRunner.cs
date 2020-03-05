@@ -22,7 +22,9 @@ namespace Avocado.Game {
             var gameData = LoadConfiguration();
             LoadSystems(gameData);
 
-            EventSystem<PlayerDeadEvent>.OnFire += data => { Debug.Log(data.LiveTime);};
+            EventSystem<PlayerDeadEvent>.Subscribe(data => {
+                Debug.Log("fire event " + data.LiveTime);
+            });
 
             var playerSystem = GetSystem<PlayerSystem>();
             playerSystem.Dead();

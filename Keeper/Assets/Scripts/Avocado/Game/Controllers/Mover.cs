@@ -1,8 +1,8 @@
 ﻿using System;
 using Avocado.Game.EntitiesOld.Views;
 using Avocado.Game.Managers.InputManager;
-using Avocado.Game.Utilities;
 using UnityEngine;
+using Logger = Avocado.Framework.Utilities.Logger;
 
 namespace Avocado.Game.Controllers {
     public class Mover : MonoBehaviour
@@ -39,6 +39,7 @@ namespace Avocado.Game.Controllers {
                 _rotateTransform = _player.GetComponentInChildren<MountBody>().transform;
                 _playerLoaded = true;
             };*/
+            Logger.Log("test");
         }
 
         private void Update() 
