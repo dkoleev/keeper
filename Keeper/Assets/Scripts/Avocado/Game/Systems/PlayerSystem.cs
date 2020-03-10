@@ -16,10 +16,12 @@ namespace Avocado.Game.Systems {
         }
 
         private void CreateActors() {
-            var playerPrefab = Resources.Load<GameObject>(Data.Player.Entity.Prefab);
+            var entityData = Data.Entities.Entities["Player"];
+            var playerPrefab = Resources.Load<GameObject>(entityData.Prefab);
             var go = Object.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
-            var player = go.AddComponent<Player>();
-            player.Initialize(Data);
+            var player = go.AddComponent<Entity>();
+            player.Initialize(Data, entityData);
+            
             _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
             if (_brain.ActiveVirtualCamera == null) {
                 _brain.m_CameraActivatedEvent.AddListener((arg0, camera) => {

@@ -1,0 +1,64 @@
+{
+	"Entities" : {
+		"Player": {
+			"Parent" : null,
+			"Prefab" : "Player",
+			"Components" : {
+				"PlayerControls" : {
+					"Type" : "PlayerControls",
+					"Value" : 100
+				},
+				"Damage" : {
+					"Type" : "Damage",
+					"Value" : 100
+				},
+				"Health" : {
+					"Type" : "Health",
+					"Value" : 50
+				},
+				"Move" : {
+					"Type" : "Move",
+					"Value" : 100
+				}
+			}
+		},
+		"Troll" : {
+			"Parent" : null,
+			"Prefab" : "Troll",
+			"Components" : {
+				"Health" : {
+					"Type" : "Health",
+					"Value" : 50
+				},
+				"Damage" : {
+					"Type" : "Damage",
+					"Value" : 5
+				}
+			}
+		},
+		"Zombie" : {
+			"Parent" : null,
+			"Prefab" : "Zombie",
+			"Components" : {
+				"Health" : {
+					"Type" : "Health",
+					"Value" : 100
+				},
+				"Damage" : {
+					"Type" : "Damage",
+					"Value" : 10
+				}
+			}
+		},
+		"FatZombie" : {
+			"Parent" : "Zombie",
+			"Prefab" : "FatZombie",
+			"Components" : {
+				"Health" : {
+					"Type" : "Health",
+					"Value" : 200
+				}
+			}
+		}
+	}
+}

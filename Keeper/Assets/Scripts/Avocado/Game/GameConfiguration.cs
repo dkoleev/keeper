@@ -11,7 +11,7 @@ namespace Avocado.Game {
         {
             _data = new GameData
             {
-                Player = loader.LoadObject<PlayerData>(DataPath + "Player.json")
+                Entities = loader.LoadObject<EntitiesData>(DataPath + "Entities.json")
             };
 
             return _data;

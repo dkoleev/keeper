@@ -10,7 +10,7 @@ namespace Avocado.Game.Components {
     [ObjectType("PlayerControls")]
     public class PlayerControlsComponent : ComponentBase, IBatchUpdate {
         private Animator _animator;
-        private Player _model;
+        private Entity _model;
         private MoveComponent _mover;
         
         private static readonly int Idle = Animator.StringToHash("Idle");
