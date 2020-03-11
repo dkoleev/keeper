@@ -68,8 +68,10 @@
                 <e p="ComponentBase.cs" t="Include" />
                 <e p="DamageComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
+                <e p="IComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
                 <e p="PlayerControlsComponent.cs" t="Include" />
+                <e p="TestComponent.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
@@ -122,6 +124,7 @@
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="Systems" t="Include">
                 <e p="BaseSystem.cs" t="Include" />
+                <e p="ComponentsSystem.cs" t="Include" />
                 <e p="EnemiesSystem.cs" t="Include" />
                 <e p="PlayerSystem.cs" t="Include" />
               </e>

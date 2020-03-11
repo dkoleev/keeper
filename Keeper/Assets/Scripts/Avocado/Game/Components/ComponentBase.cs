@@ -11,5 +11,9 @@ namespace Avocado.Game.Components
         public virtual void Initialize(Entity entity) {
             Entity = entity;
         }
+
+        public virtual void Update() {
+            
+        }
     }
 }

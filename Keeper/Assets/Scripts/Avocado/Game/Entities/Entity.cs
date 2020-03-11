@@ -10,30 +10,30 @@ namespace Avocado.Game.Entities
     {
         [SerializeField]
         protected List<ComponentBase> Components = new List<ComponentBase>();
-        protected GameData Data;
-        protected EntityData EntityData;
-        protected EntityData ParentEntityData;
+        private GameData _Data;
+        private EntityData _entityData;
+        private EntityData _parentEntityData;
 
-        public virtual void Initialize(GameData gameData, EntityData entityData) {
-            Data = gameData;
-            EntityData = entityData;
+        public void Initialize(GameData gameData, EntityData entityData) {
+            _Data = gameData;
+            _entityData = entityData;
             if (!string.IsNullOrEmpty(entityData.Parent)) {
-                ParentEntityData = gameData.Entities.Entities[entityData.Parent];
+                _parentEntityData = gameData.Entities.Entities[entityData.Parent];
             }
 
             AddComponents();
         }
 
         private void AddComponents() {
-            if (ParentEntityData != null) {
-                foreach (var componentData in ParentEntityData.Components) {
-                    if (!EntityData.Components.ContainsKey(componentData.Key)) {
+            if (_parentEntityData != null) {
+                foreach (var componentData in _parentEntityData.Components) {
+                    if (!_entityData.Components.ContainsKey(componentData.Key)) {
                         AddComponent(Factory<ComponentBase>.Create(componentData.Key));
                     }
                 }
             }
 
-            foreach (var componentData in EntityData.Components) {
+            foreach (var componentData in _entityData.Components) {
                 AddComponent(Factory<ComponentBase>.Create(componentData.Key));
             }
         }
