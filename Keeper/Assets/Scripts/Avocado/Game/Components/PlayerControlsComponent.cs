@@ -43,11 +43,11 @@ namespace Avocado.Game.Components {
 
             Initialized = true;
 
-            Register();
+            RegisterAsButchUpdated();
         }
 
-        public void Register() {
-            BatchUpdateSystem.Instance.RegisterSlicedUpdate(this, BatchUpdateSystem.UpdateMode.BucketA);
+        public void RegisterAsButchUpdated() {
+            BatchUpdateSystem.Instance.RegisterSlicedUpdate(this, BatchUpdateSystem.UpdateMode.Always);
         }
 
         public void BatchUpdate() {
