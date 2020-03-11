@@ -15,6 +15,8 @@ namespace Avocado.Game {
             base.Start();
             
             Load();
+            var goLoop = new GameObject("GameLoop");
+            goLoop.AddComponent<GameLoop>();
         }
 
         private void Load() {
@@ -43,7 +45,6 @@ namespace Avocado.Game {
         private void LoadSystems(GameData gameData)
         {
             _systems = new List<BaseSystem> {
-                new UpdateSystem(gameData),
                 new PlayerSystem(gameData),
             };
 

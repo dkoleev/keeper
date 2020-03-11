@@ -1,3 +1,4 @@
+using Avocado.Framework.Optimization.BatchUpdateSystem;
 using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Entities;
 using Avocado.Game.Managers.InputManager;
@@ -8,7 +9,7 @@ using UnityEngine;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ObjectType("PlayerControls")]
-    public class PlayerControlsComponent : ComponentBase, IBatchUpdate {
+    public class PlayerControlsComponent : ComponentBase, IBatchUpdated {
         private Animator _animator;
         private Entity _model;
         private MoveComponent _mover;
@@ -33,8 +34,6 @@ namespace Avocado.Game.Components {
         public override void Initialize(Entity entity) {
             base.Initialize(entity);
 
-            Register();
-            
             _inputManager = GameObject.FindWithTag("InputManager").GetComponent<InputManager>();
             _moveTransform = _rotateTransform = Entity.transform;
             _playerLoaded = true;
@@ -43,10 +42,12 @@ namespace Avocado.Game.Components {
             _animator = Entity.GetComponentInChildren<Animator>();
 
             Initialized = true;
+
+            Register();
         }
 
         public void Register() {
-            UpdateSystem.Instance.RegisterSlicedUpdate(this, UpdateSystem.UpdateMode.Always);
+            BatchUpdateSystem.Instance.RegisterSlicedUpdate(this, BatchUpdateSystem.UpdateMode.BucketA);
         }
 
         public void BatchUpdate() {

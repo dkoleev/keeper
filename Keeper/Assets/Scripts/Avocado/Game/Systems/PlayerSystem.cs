@@ -6,13 +6,12 @@ using Cinemachine;
 using UnityEngine;
 
 namespace Avocado.Game.Systems {
-    public class PlayerSystem : BaseSystem, IBatchUpdate {
+    public class PlayerSystem : BaseSystem {
         private CinemachineBrain _brain;
         public PlayerSystem(GameData data) : base(data) { }
         
         public override void Initialize() {
             CreateActors();
-            Register();
         }
 
         private void CreateActors() {
@@ -30,14 +29,6 @@ namespace Avocado.Game.Systems {
             } else {
                 _brain.ActiveVirtualCamera.Follow = player.transform;
             }
-        }
-
-        public void Register() {
-            UpdateSystem.Instance.RegisterSlicedUpdate(this, UpdateSystem.UpdateMode.Always);
-        }
-
-        public void BatchUpdate() {
-
         }
 
         public void Dead() {

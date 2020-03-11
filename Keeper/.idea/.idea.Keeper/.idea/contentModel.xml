@@ -96,7 +96,6 @@
               <e p="DotNetJsonLoader.cs" t="Include" />
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
-                <e p="UpdateEntity.cs" t="Include" />
               </e>
               <e p="EntitiesOld" t="Include">
                 <e p="Entity.cs" t="Include" />
@@ -119,18 +118,12 @@
                 <e p="InputManager" t="Include">
                   <e p="InputManager.cs" t="Include" />
                 </e>
-                <e p="UpdateManager" t="Include">
-                  <e p="IBatchUpdate.cs" t="Include" />
-                  <e p="UpdateManager.cs" t="Include" />
-                </e>
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="Systems" t="Include">
                 <e p="BaseSystem.cs" t="Include" />
                 <e p="EnemiesSystem.cs" t="Include" />
-                <e p="IBatchUpdate.cs" t="Include" />
                 <e p="PlayerSystem.cs" t="Include" />
-                <e p="UpdateSystem.cs" t="Include" />
               </e>
               <e p="UI" t="Include">
                 <e p="Tools" t="Include">

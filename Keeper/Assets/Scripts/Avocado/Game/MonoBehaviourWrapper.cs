@@ -8,5 +8,9 @@ namespace Avocado.Game
         {
             
         }
+
+        protected virtual void Update() {
+            
+        }
     }
 }
