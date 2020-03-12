@@ -1,20 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Components;
 using Avocado.Game.Data;
+using Avocado.Game.Systems;
 using UnityEngine;
 
 namespace Avocado.Game.Entities
 {
     public class Entity : MonoBehaviourWrapper
     {
-        [SerializeField]
-        protected List<IComponent> Components = new List<IComponent>();
         private GameData _Data;
         private EntityData _entityData;
         private EntityData _parentEntityData;
 
-        public void Initialize(GameData gameData, EntityData entityData) {
+        public void Create(GameData gameData, EntityData entityData) {
             _Data = gameData;
             _entityData = entityData;
             if (!string.IsNullOrEmpty(entityData.Parent)) {
@@ -24,23 +24,35 @@ namespace Avocado.Game.Entities
             AddComponents();
         }
 
+        public void Destroy() {
+            ComponentsSystem.RemoveEntityComponents(this);
+        }
+
         private void AddComponents() {
             if (_parentEntityData != null) {
                 foreach (var componentData in _parentEntityData.Components) {
                     if (!_entityData.Components.ContainsKey(componentData.Key)) {
-                        AddComponent(Factory<IComponent>.Create(componentData.Key));
+                        AddComponent(Factory<IComponent>.Create(componentData.Key), componentData.Value);
                     }
                 }
             }
 
             foreach (var componentData in _entityData.Components) {
-                AddComponent(Factory<IComponent>.Create(componentData.Key));
+                AddComponent(Factory<IComponent>.Create(componentData.Key), componentData.Value);
             }
         }
 
-        private void AddComponent(IComponent component) {
-            component.Initialize(this);
-            Components.Add(component);
+        private void AddComponent(IComponent component, ComponentData data) { 
+            component.Initialize(this, data);
+            ComponentsSystem.AddComponent(component);
+        }
+
+        private void RemoveComponents() {
+            
+        }
+
+        private void RemoveComponent() {
+            
         }
     }
 }

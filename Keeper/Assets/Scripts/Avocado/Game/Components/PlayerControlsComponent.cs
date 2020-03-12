@@ -1,5 +1,6 @@
 using Avocado.Framework.Optimization.BatchUpdateSystem;
 using Avocado.Framework.Patterns.AbstractFactory;
+using Avocado.Game.Data;
 using Avocado.Game.Entities;
 using Avocado.Game.Managers.InputManager;
 using Avocado.Game.Systems;
@@ -9,7 +10,7 @@ using UnityEngine;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ObjectType("PlayerControls")]
-    public struct PlayerControlsComponent : IComponent, IBatchUpdated {
+    public struct PlayerControlsComponent : IComponent {
         private Animator _animator;
         private Entity _model;
         private MoveComponent _mover;
@@ -34,10 +35,10 @@ namespace Avocado.Game.Components {
         public Entity Entity { get; private set; }
         public bool Initialized { get; private set; }
 
-        public void Initialize(Entity entity)
+        public void Initialize(Entity entity, ComponentData data)
         {
             Entity = entity;
-            
+            _speedMove = data.Value;
             _inputManager = GameObject.FindWithTag("InputManager").GetComponent<InputManager>();
             _moveTransform = _rotateTransform = Entity.transform;
             _playerLoaded = true;
@@ -46,15 +47,9 @@ namespace Avocado.Game.Components {
             _animator = Entity.GetComponentInChildren<Animator>();
 
             Initialized = true;
-
-            RegisterAsButchUpdated();
         }
-
-        public void RegisterAsButchUpdated() {
-            BatchUpdateSystem.Instance.RegisterSlicedUpdate(this, BatchUpdateSystem.UpdateMode.Always);
-        }
-
-        public void BatchUpdate() {
+        
+        public void Update() {
             if(!Initialized)
                 return;
             
@@ -69,15 +64,15 @@ namespace Avocado.Game.Components {
             }
             
             if (_mooving) {
-               // _model.SetState(Player.PlayerState.Move);
+                // _model.SetState(Player.PlayerState.Move);
                 var speed =(Mathf.Abs(_inputManager.MoveAxis.x) + Mathf.Abs(_inputManager.MoveAxis.y));
-               // _animator.SetFloat(Move, speed);
+                // _animator.SetFloat(Move, speed);
                 _animator.SetFloat(SpeedMove, speed);
             } else {
-                   // _model.SetState(Player.PlayerState.Idle);
-                   // _animator.SetFloat(Move, 0);
-                    _animator.SetFloat(SpeedMove, 0);
-                   // _animator.SetTrigger(Idle);
+                // _model.SetState(Player.PlayerState.Idle);
+                // _animator.SetFloat(Move, 0);
+                _animator.SetFloat(SpeedMove, 0);
+                // _animator.SetTrigger(Idle);
             }
         }
     }

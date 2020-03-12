@@ -6,7 +6,7 @@
 			"Components" : {
 				"PlayerControls" : {
 					"Type" : "PlayerControls",
-					"Value" : 100
+					"Value" : 6
 				},
 				"Damage" : {
 					"Type" : "Damage",
@@ -18,7 +18,7 @@
 				},
 				"Move" : {
 					"Type" : "Move",
-					"Value" : 100
+					"Value" : 5
 				}
 			}
 		},
