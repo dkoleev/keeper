@@ -9,7 +9,7 @@ namespace Avocado.Game.Entities
     public class Entity : MonoBehaviourWrapper
     {
         [SerializeField]
-        protected List<ComponentBase> Components = new List<ComponentBase>();
+        protected List<IComponent> Components = new List<IComponent>();
         private GameData _Data;
         private EntityData _entityData;
         private EntityData _parentEntityData;
@@ -28,17 +28,17 @@ namespace Avocado.Game.Entities
             if (_parentEntityData != null) {
                 foreach (var componentData in _parentEntityData.Components) {
                     if (!_entityData.Components.ContainsKey(componentData.Key)) {
-                        AddComponent(Factory<ComponentBase>.Create(componentData.Key));
+                        AddComponent(Factory<IComponent>.Create(componentData.Key));
                     }
                 }
             }
 
             foreach (var componentData in _entityData.Components) {
-                AddComponent(Factory<ComponentBase>.Create(componentData.Key));
+                AddComponent(Factory<IComponent>.Create(componentData.Key));
             }
         }
 
-        private void AddComponent(ComponentBase component) {
+        private void AddComponent(IComponent component) {
             component.Initialize(this);
             Components.Add(component);
         }

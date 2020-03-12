@@ -9,18 +9,18 @@ using UnityEngine;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ObjectType("PlayerControls")]
-    public class PlayerControlsComponent : ComponentBase, IBatchUpdated {
+    public struct PlayerControlsComponent : IComponent, IBatchUpdated {
         private Animator _animator;
         private Entity _model;
         private MoveComponent _mover;
         
-        private static readonly int Idle = Animator.StringToHash("Idle");
-        private static readonly int Move = Animator.StringToHash("Move");
-        private static readonly int SpeedMove = Animator.StringToHash("SpeedMove");
+        private static int Idle = Animator.StringToHash("Idle");
+        private static int Move = Animator.StringToHash("Move");
+        private static int SpeedMove = Animator.StringToHash("SpeedMove");
         
-        private float _speedMove = 5f;
+        private float _speedMove;
         private Transform _moveTransform;
-        private float _rotationSpeed = 2f;
+        private float _rotationSpeed;
         private Transform _rotateTransform;
         private bool _playerLoaded;
             
@@ -30,10 +30,14 @@ namespace Avocado.Game.Components {
         public Vector2 MoveAxis => _inputManager.MoveAxis;
         public bool Mooving => _mooving;
         private bool _mooving;
-        
-        public override void Initialize(Entity entity) {
-            base.Initialize(entity);
 
+        public Entity Entity { get; private set; }
+        public bool Initialized { get; private set; }
+
+        public void Initialize(Entity entity)
+        {
+            Entity = entity;
+            
             _inputManager = GameObject.FindWithTag("InputManager").GetComponent<InputManager>();
             _moveTransform = _rotateTransform = Entity.transform;
             _playerLoaded = true;
