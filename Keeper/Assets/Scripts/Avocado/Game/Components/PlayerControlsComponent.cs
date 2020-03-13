@@ -35,6 +35,8 @@ namespace Avocado.Game.Components {
         public Entity Entity { get; private set; }
         public bool Initialized { get; private set; }
 
+        private Transform _rotateTarget;
+
         public void Initialize(Entity entity, ComponentData data)
         {
             Entity = entity;
@@ -45,6 +47,7 @@ namespace Avocado.Game.Components {
             
             //_mover = Entity.GetComponent<MoveComponent>();
             _animator = Entity.GetComponentInChildren<Animator>();
+            _rotateTarget = _animator.transform;
 
             Initialized = true;
         }
@@ -73,6 +76,20 @@ namespace Avocado.Game.Components {
                 // _animator.SetFloat(Move, 0);
                 _animator.SetFloat(SpeedMove, 0);
                 // _animator.SetTrigger(Idle);
+            }
+
+            Rotate();
+        }
+
+        private void Rotate() {
+            var h1 = _inputManager.MoveAxis.x;
+            var v1 = _inputManager.MoveAxis.y;
+            
+            if (h1 >= 0f || v1 >= 0f)
+            {
+                _rotateTarget.localEulerAngles = new Vector3(0f, Mathf.Atan2(h1, v1) * 180 / Mathf.PI,0f);
+                //Vector3 curRot = transform.localEulerAngles;
+                //transform.localEulerAngles = Vector3.Slerp(curRot, new Vector3(curRot.x, Mathf.Atan2(h1, v1) * 180 / Mathf.PI, curRot.z), Time.deltaTime * 2);
             }
         }
     }
