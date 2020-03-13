@@ -1,5 +1,4 @@
-﻿using Avocado.Framework.Patterns.AbstractFactory;
-using Avocado.Game.Components;
+﻿using Avocado.Game.Components;
 using Avocado.Game.Data;
 using Avocado.Game.Systems;
 
@@ -19,13 +18,13 @@ namespace Avocado.Game.Entities
             if (parentData != null) {
                 foreach (var componentData in parentData.Components) {
                     if (!data.Components.ContainsKey(componentData.Key)) {
-                        AddComponent(Factory<IComponent>.Create(componentData.Key.ToString()), componentData.Value);
+                        AddComponent(ComponentsFactory<IComponent>.Create(componentData.Key), componentData.Value);
                     }
                 }
             }
 
             foreach (var componentData in data.Components) {
-               AddComponent(Factory<IComponent>.Create(componentData.Key.ToString()), componentData.Value);
+               AddComponent(ComponentsFactory<IComponent>.Create(componentData.Key), componentData.Value);
             }
         }
 

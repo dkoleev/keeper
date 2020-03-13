@@ -65,6 +65,8 @@
             </e>
             <e p="Game" t="Include">
               <e p="Components" t="Include">
+                <e p="ComponentsFactory.cs" t="Include" />
+                <e p="ComponentTypeAttribute.cs" t="Include" />
                 <e p="DamageComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />

@@ -1,4 +1,3 @@
-using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
@@ -6,7 +5,7 @@ using JetBrains.Annotations;
 
 namespace Avocado.Game.Components {
     [UsedImplicitly]
-    [ObjectType("Move")]
+    [ComponentType(ComponentType.Move)]
     public struct MoveComponent : IComponent {
         public Entity Entity { get; private set; }
 

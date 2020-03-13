@@ -1,4 +1,3 @@
-using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
@@ -8,7 +7,7 @@ using UnityEngine;
 
 namespace Avocado.Game.Components {
     [UsedImplicitly]
-    [ObjectType("PlayerControls")]
+    [ComponentType(ComponentType.PlayerControls)]
     public struct PlayerControlsComponent : IComponent {
         public Entity Entity { get; private set; }
 
