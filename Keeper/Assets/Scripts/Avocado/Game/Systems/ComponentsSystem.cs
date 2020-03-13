@@ -6,59 +6,53 @@ using Avocado.Game.Entities;
 
 namespace Avocado.Game.Systems {
     public class ComponentsSystem : BaseSystem, IBatchUpdated {
-        private static List<MoveComponent> _MoveComponents = new List<MoveComponent>();
-        private static List<DamageComponent> _DamageComponents = new List<DamageComponent>();
-        private static List<HealthComponent> _HealthComponents = new List<HealthComponent>();
-        private static List<PlayerControlsComponent> _PlayerControlsComponents = new List<PlayerControlsComponent>();
+        private static readonly List<MoveComponent> MoveComponents = new List<MoveComponent>();
+        private static readonly List<DamageComponent> DamageComponents = new List<DamageComponent>();
+        private static readonly List<HealthComponent> HealthComponents = new List<HealthComponent>();
+        private static readonly List<PlayerControlsComponent> PlayerControlsComponents = new List<PlayerControlsComponent>();
 
         public ComponentsSystem(GameData data) : base(data) { }
         public override void Initialize() {
             RegisterAsButchUpdated();
         }
-
-        public static int AddComponent(IComponent component) {
-            if (component is MoveComponent moveComponent) {
-                _MoveComponents.Add(moveComponent);
-                return _MoveComponents.Count - 1;
-            }
-            if (component is DamageComponent damageComponent) {
-                _DamageComponents.Add(damageComponent);
-                return _DamageComponents.Count - 1;
-            }
-            if (component is HealthComponent healthComponent) {
-                _HealthComponents.Add(healthComponent);
-                return _HealthComponents.Count - 1;
-            }
-            if (component is PlayerControlsComponent pcComponent) {
-                _PlayerControlsComponents.Add(pcComponent);
-                return _PlayerControlsComponents.Count - 1;
-            }
-
-            return -1;
-        }
-
-        public static void RemoveEntityComponents(Entity entity) {
-            _MoveComponents.RemoveAll(component => component.Entity == entity);
-            _DamageComponents.RemoveAll(component => component.Entity == entity);
-            _HealthComponents.RemoveAll(component => component.Entity == entity);
-            _PlayerControlsComponents.RemoveAll(component => component.Entity == entity);
-        }
-
+        
         public void RegisterAsButchUpdated() {
             BatchUpdateSystem.Instance.RegisterSlicedUpdate(this, BatchUpdateSystem.UpdateMode.Always);
         }
 
+        public static void AddComponent(IComponent component) {
+            if (component is MoveComponent moveComponent) {
+                MoveComponents.Add(moveComponent);
+            }
+            if (component is DamageComponent damageComponent) {
+                DamageComponents.Add(damageComponent);
+            }
+            if (component is HealthComponent healthComponent) {
+                HealthComponents.Add(healthComponent);
+            }
+            if (component is PlayerControlsComponent pcComponent) {
+                PlayerControlsComponents.Add(pcComponent);
+            }
+        }
+
+        public static void RemoveEntityComponents(Entity entity) {
+            MoveComponents.RemoveAll(component => component.Entity == entity);
+            DamageComponents.RemoveAll(component => component.Entity == entity);
+            HealthComponents.RemoveAll(component => component.Entity == entity);
+            PlayerControlsComponents.RemoveAll(component => component.Entity == entity);
+        }
+
         public void BatchUpdate() {
-            foreach (var component in _MoveComponents) {
+            foreach (var component in MoveComponents) {
                 component.Update();
             }
-            foreach (var component in _DamageComponents) {
+            foreach (var component in DamageComponents) {
                 component.Update();
             }
-            foreach (var component in _HealthComponents) {
+            foreach (var component in HealthComponents) {
                 component.Update();
             }
-            foreach (var component in _PlayerControlsComponents) {
+            foreach (var component in PlayerControlsComponents) {
                 component.Update();
             }
         }

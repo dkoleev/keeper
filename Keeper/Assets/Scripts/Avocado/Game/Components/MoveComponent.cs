@@ -1,17 +1,20 @@
 using Avocado.Framework.Patterns.AbstractFactory;
 using Avocado.Game.Data;
+using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
 using JetBrains.Annotations;
 
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ObjectType("Move")]
-    public class MoveComponent : IComponent {
-        public int MaxSpeed;
+    public struct MoveComponent : IComponent {
         public Entity Entity { get; private set; }
+
+        private MoveComponentData _data;
         
-        public void Initialize(Entity entity, ComponentData data) {
+        public void Initialize(Entity entity, IComponentData data) {
             Entity = entity;
+            _data = (MoveComponentData) data;
         }
 
         public void Update() {

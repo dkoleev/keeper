@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Avocado.Game.Components;
 
 namespace Avocado.Game.Data
 {
@@ -7,6 +8,6 @@ namespace Avocado.Game.Data
     public class EntityData {
         public string Parent;
         public string Prefab;
-        public Dictionary<string, ComponentData> Components;
+        public Dictionary<ComponentType, IComponentData> Components;
     }
 }

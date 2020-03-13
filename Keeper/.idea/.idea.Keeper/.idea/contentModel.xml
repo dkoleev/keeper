@@ -65,7 +65,6 @@
             </e>
             <e p="Game" t="Include">
               <e p="Components" t="Include">
-                <e p="ComponentBase.cs" t="Include" />
                 <e p="DamageComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />
@@ -74,12 +73,11 @@
               </e>
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
-                <e p="Mover.cs" t="Include" />
                 <e p="Rotator.cs" t="Include" />
               </e>
               <e p="Data" t="Include">
-                <e p="ComponentData.cs" t="Include" />
                 <e p="Components" t="Include">
+                  <e p="ComponentsDataFactory.cs" t="Include" />
                   <e p="DamageComponentData.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
                   <e p="MoveComponentData.cs" t="Include" />
@@ -91,22 +89,12 @@
                 <e p="EntitiesData.cs" t="Include" />
                 <e p="EntityData.cs" t="Include" />
                 <e p="GameData.cs" t="Include" />
-                <e p="HealthData.cs" t="Include" />
+                <e p="IComponentData.cs" t="Include" />
                 <e p="PlayerData.cs" t="Include" />
               </e>
               <e p="DotNetJsonLoader.cs" t="Include" />
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
-              </e>
-              <e p="EntitiesOld" t="Include">
-                <e p="Entity.cs" t="Include" />
-                <e p="EntityView.cs" t="Include" />
-                <e p="Models" t="Include">
-                  <e p="Player.cs" t="Include" />
-                </e>
-                <e p="Views" t="Include">
-                  <e p="PlayerView.cs" t="Include" />
-                </e>
               </e>
               <e p="Events" t="Include">
                 <e p="PlayerDeadEvent.cs" t="Include" />

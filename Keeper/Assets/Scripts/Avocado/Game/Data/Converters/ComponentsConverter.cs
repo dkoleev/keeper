@@ -1,24 +1,18 @@
 using System;
-using Avocado.Framework.Patterns.AbstractFactory;
+using Avocado.Game.Data.Components;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data.Converters {
-    public class ComponentsConverter : JsonConverter<ComponentData> {
-        public override void WriteJson(JsonWriter writer, ComponentData value, JsonSerializer serializer) {
+    public class ComponentsConverter : JsonConverter<IComponentData> {
+        public override void WriteJson(JsonWriter writer, IComponentData value, JsonSerializer serializer) {
             writer.WriteValue(value.ToString());
         }
 
-        public override ComponentData ReadJson(JsonReader reader, Type objectType, ComponentData existingValue, bool hasExistingValue, JsonSerializer serializer) {
+        public override IComponentData ReadJson(JsonReader reader, Type objectType, IComponentData existingValue, bool hasExistingValue, JsonSerializer serializer) {
             var item = JObject.Load(reader);
-            var value = item["Value"].Value<int>();
-            var type = item["Type"].ToString();
-            
-            var component = Factory<ComponentData>.Create(type);
-            component.Type = type;
-            component.Value = value;
-
-            return component;
+            var type = item["Type"].ToObject<ComponentType>();
+            return ComponentsDataFactory.Create(type, item);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Avocado.Game.Data.Components
 {
     [UsedImplicitly]
     [ObjectType("Health")]
-    public class HealthComponentData : ComponentData
+    public readonly struct HealthComponentData : IComponentData
     {
     }
 }

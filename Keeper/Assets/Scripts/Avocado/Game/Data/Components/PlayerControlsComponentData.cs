@@ -4,7 +4,11 @@ using JetBrains.Annotations;
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
     [ObjectType("PlayerControls")]
-    public class PlayerControlsComponentData : ComponentData {
-        
+    public readonly struct PlayerControlsComponentData : IComponentData {
+        public readonly float Value;
+
+        public PlayerControlsComponentData(float value) {
+            Value = value;
+        }
     }
 }
