@@ -14,8 +14,7 @@ namespace Avocado.Game.Data.Components {
                     var health = data["Value"].Value<int>();
                     return new HealthComponentData();
                 case ComponentType.PlayerControls:
-                    var pc = data["Value"].Value<float>();
-                    return new PlayerControlsComponentData(pc);
+                    return new PlayerControlsComponentData();
             }
 
             return null;

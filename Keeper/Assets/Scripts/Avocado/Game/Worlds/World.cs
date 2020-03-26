@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Avocado.Game.Components;
 using Avocado.Game.Data;
@@ -28,6 +29,23 @@ namespace Avocado.Game.Worlds {
             if (component is ControlsComponent pcComponent) {
                 ControlsComponents.Add(pcComponent);
             }
+        }
+
+        public static IComponent GetComponentForEntity(Entity entity, Type componentType)
+        {
+            if (typeof(MoveComponent) == componentType)
+                return MoveComponents.Find(component => component.Entity == entity);
+            
+            if (typeof(DamageComponent) == componentType)
+                return DamageComponents.Find(component => component.Entity == entity);
+            
+            if (typeof(HealthComponent) == componentType)
+                return HealthComponents.Find(component => component.Entity == entity);
+
+            if (typeof(ControlsComponent) == componentType)
+                return ControlsComponents.Find(component => component.Entity == entity);
+
+            return null;
         }
 
         public static void RemoveEntityComponents(Entity entity) {

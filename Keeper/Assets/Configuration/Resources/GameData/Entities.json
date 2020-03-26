@@ -5,8 +5,7 @@
 			"Prefab" : "Player",
 			"Components" : {
 				"PlayerControls" : {
-					"Type" : "PlayerControls",
-					"Value" : 6
+					"Type" : "PlayerControls"
 				},
 				"Damage" : {
 					"Type" : "Damage",

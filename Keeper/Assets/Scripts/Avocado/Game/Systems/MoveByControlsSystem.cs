@@ -37,7 +37,10 @@ namespace Avocado.Game.Systems
         {
             foreach (var component in World.ControlsComponents)
             {
-                Move(component);
+                var moveComponent = World.GetComponentForEntity(component.Entity, typeof(MoveComponent));
+                if(moveComponent is null)
+                    continue;
+                Move(component, (MoveComponent)moveComponent);
             }
         }
         
@@ -51,7 +54,7 @@ namespace Avocado.Game.Systems
             _moveAxis = context.ReadValue<Vector2>();
         }
 
-        private void Move(ControlsComponent component) {
+        private void Move(ControlsComponent controls, MoveComponent move) {
             if(!_initialized)
                 return;
             
@@ -60,7 +63,7 @@ namespace Avocado.Game.Systems
                     _mooving = true;
                 }
 
-                component.MoveTransform.position += new Vector3(_moveAxis.x * Time.deltaTime * component.SpeedMove, 0, _moveAxis.y * Time.deltaTime * component.SpeedMove);
+                controls.MoveTransform.position += new Vector3(_moveAxis.x * Time.deltaTime * move.SpeedMove, 0, _moveAxis.y * Time.deltaTime * move.SpeedMove);
             }
             else
             {
@@ -69,12 +72,12 @@ namespace Avocado.Game.Systems
 
             if (_mooving) {
                 var speed =(Mathf.Abs(_moveAxis.x) + Mathf.Abs(_moveAxis.y));
-                component.Animator.SetFloat(_speedMoveAnimationKey, speed);
+                controls.Animator.SetFloat(_speedMoveAnimationKey, speed);
             } else {
-                component.Animator.SetFloat(_speedMoveAnimationKey, 0);
+                controls.Animator.SetFloat(_speedMoveAnimationKey, 0);
             }
 
-            Rotate(component);
+            Rotate(controls);
         }
 
         private void Rotate(ControlsComponent component) {

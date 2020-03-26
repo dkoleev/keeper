@@ -12,7 +12,6 @@ namespace Avocado.Game.Components {
         public Entity Entity { get; }
         public Transform MoveTransform { get; }
         public Transform RotateTransform { get; }
-        public float SpeedMove { get; }
         public Animator Animator { get; }
 
         private readonly PlayerControlsComponentData _data;
@@ -21,7 +20,6 @@ namespace Avocado.Game.Components {
         {
             Entity = entity;
             _data = (PlayerControlsComponentData) data;
-            SpeedMove = _data.Value;
             MoveTransform = Entity.transform;
             Animator = Entity.GetComponentInChildren<Animator>();
             RotateTransform = Animator.transform;

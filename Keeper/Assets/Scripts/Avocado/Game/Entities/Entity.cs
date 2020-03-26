@@ -1,8 +1,6 @@
 ﻿using Avocado.Game.Components;
 using Avocado.Game.Data;
-using Avocado.Game.Systems;
 using Avocado.Game.Worlds;
-using UnityEngine;
 
 namespace Avocado.Game.Entities
 {
