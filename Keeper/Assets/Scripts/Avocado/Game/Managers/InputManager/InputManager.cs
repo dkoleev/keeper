@@ -13,7 +13,10 @@ namespace Avocado.Game.Managers.InputManager {
         private void Awake() {
             _controls = new Controls();
 
-            _controls.Player.Move.performed += context => { _moveAxis = context.ReadValue<Vector2>(); };
+            _controls.Player.Move.performed += context =>
+            {
+                _moveAxis = context.ReadValue<Vector2>();
+            };
             _controls.Player.Move.canceled += context => _moveAxis = Vector2.zero;
             //_controls.Player.Look.performed += HandleLook;
         }

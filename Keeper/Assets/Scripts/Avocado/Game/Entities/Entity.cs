@@ -1,12 +1,15 @@
 ﻿using Avocado.Game.Components;
 using Avocado.Game.Data;
 using Avocado.Game.Systems;
+using Avocado.Game.Worlds;
+using UnityEngine;
 
 namespace Avocado.Game.Entities
 {
     public class Entity : MonoBehaviourWrapper
     {
-        public void Create(GameData gameData, EntityData entityData) {
+        public void Create(GameData gameData, EntityData entityData)
+        {
             EntityData parentEntityData = null;
             if (!string.IsNullOrEmpty(entityData.Parent)) {
                 parentEntityData = gameData.Entities.Entities[entityData.Parent];
@@ -18,23 +21,24 @@ namespace Avocado.Game.Entities
             if (parentData != null) {
                 foreach (var componentData in parentData.Components) {
                     if (!data.Components.ContainsKey(componentData.Key)) {
-                        AddComponent(ComponentsFactory<IComponent>.Create(componentData.Key), componentData.Value);
+                        AddComponent(componentData.Key, componentData.Value);
                     }
                 }
             }
 
             foreach (var componentData in data.Components) {
-               AddComponent(ComponentsFactory<IComponent>.Create(componentData.Key), componentData.Value);
+                AddComponent(componentData.Key, componentData.Value);
             }
         }
 
-        private void AddComponent(IComponent component, IComponentData data) { 
-            component.Initialize(this, data);
-            ComponentsSystem.AddComponent(component);
+        private void AddComponent(ComponentType componentType, IComponentData data)
+        {
+            var component = ComponentsFactory<IComponent>.Create(componentType, this, data);
+            World.AddComponent(component);
         }
         
         public void Destroy() {
-            ComponentsSystem.RemoveEntityComponents(this);
+            World.RemoveEntityComponents(this);
         }
     }
 }

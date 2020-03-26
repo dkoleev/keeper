@@ -8,5 +8,6 @@ namespace Avocado.Game.Systems {
         }
 
         public abstract void Initialize();
+        public abstract void Update();
     }
 }

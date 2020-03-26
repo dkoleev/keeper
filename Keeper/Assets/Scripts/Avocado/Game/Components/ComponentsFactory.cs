@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Avocado.Game.Data;
+using Avocado.Game.Entities;
 
 namespace Avocado.Game.Components {
     public class ComponentsFactory<T> where T : class {
@@ -22,12 +23,12 @@ namespace Avocado.Game.Components {
             }
         }
 
-        public static T Create(ComponentType type) {
+        public static T Create(ComponentType type, Entity entity, IComponentData data) {
             if (!_types.ContainsKey(type)) {
                 throw new KeyNotFoundException("Not found key for type " + type);
             }
 
-            return (T)Activator.CreateInstance(_types[type]);
+            return (T)Activator.CreateInstance(_types[type], entity, data);
         }
     }
 }

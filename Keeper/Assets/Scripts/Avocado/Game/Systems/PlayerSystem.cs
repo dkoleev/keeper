@@ -14,6 +14,11 @@ namespace Avocado.Game.Systems {
             CreateActors();
         }
 
+        public override void Update()
+        {
+            
+        }
+
         private void CreateActors() {
             var entityData = Data.Entities.Entities["Player"];
             var playerPrefab = Resources.Load<GameObject>(entityData.Prefab);
