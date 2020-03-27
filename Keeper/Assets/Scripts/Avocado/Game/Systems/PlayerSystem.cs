@@ -24,7 +24,7 @@ namespace Avocado.Game.Systems {
             var playerPrefab = Resources.Load<GameObject>(entityData.Prefab);
             var go = Object.Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
             var player = go.AddComponent<Entity>();
-            player.Create(Data, entityData);
+            player.Create(entityData, Data);
             
             _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
             if (_brain.ActiveVirtualCamera == null) {

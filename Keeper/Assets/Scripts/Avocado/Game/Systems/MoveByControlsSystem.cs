@@ -10,7 +10,7 @@ namespace Avocado.Game.Systems
     public class MoveByControlsSystem : BaseSystem
     {
         private Controls _controls;
-        public Vector2 _moveAxis;
+        private Vector2 _moveAxis;
         private float m_RotationAxisY;
         private bool _initialized;
         private bool _mooving;

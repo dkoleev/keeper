@@ -13,7 +13,7 @@
 				},
 				"Health" : {
 					"Type" : "Health",
-					"Value" : 50
+					"MaxHealth" : 50
 				},
 				"Move" : {
 					"Type" : "Move",
@@ -27,7 +27,7 @@
 			"Components" : {
 				"Health" : {
 					"Type" : "Health",
-					"Value" : 50
+					"MaxHealth" : 50
 				},
 				"Damage" : {
 					"Type" : "Damage",
@@ -41,7 +41,7 @@
 			"Components" : {
 				"Health" : {
 					"Type" : "Health",
-					"Value" : 100
+					"MaxHealth" : 100
 				},
 				"Damage" : {
 					"Type" : "Damage",
@@ -55,7 +55,7 @@
 			"Components" : {
 				"Health" : {
 					"Type" : "Health",
-					"Value" : 200
+					"MaxHealth" : 200
 				}
 			}
 		}

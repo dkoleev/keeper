@@ -6,27 +6,34 @@ namespace Avocado.Game.Entities
 {
     public class Entity : MonoBehaviourWrapper
     {
-        public void Create(GameData gameData, EntityData entityData)
+        public void Create(EntityData entityData, GameData gameData)
         {
-            EntityData parentEntityData = null;
             if (!string.IsNullOrEmpty(entityData.Parent)) {
-                parentEntityData = gameData.Entities.Entities[entityData.Parent];
+                EntityData parentEntityData = gameData.Entities.Entities[entityData.Parent];
+                AddComponents(entityData, parentEntityData);
             }
-            AddComponents(entityData, parentEntityData);
+            else
+            {
+                AddComponents(entityData);
+            }
         }
 
-        private void AddComponents(EntityData data, EntityData parentData) {
-            if (parentData != null) {
-                foreach (var componentData in parentData.Components) {
-                    if (!data.Components.ContainsKey(componentData.Key)) {
-                        AddComponent(componentData.Key, componentData.Value);
-                    }
+        private void AddComponents(in EntityData data)
+        {
+            foreach (var componentData in data.Components)
+            {
+                AddComponent(componentData.Key, componentData.Value);
+            }
+        }
+
+        private void AddComponents(in EntityData data, in EntityData parentData) {
+            foreach (var componentData in parentData.Components) {
+                if (!data.Components.ContainsKey(componentData.Key)) {
+                    AddComponent(componentData.Key, componentData.Value);
                 }
             }
 
-            foreach (var componentData in data.Components) {
-                AddComponent(componentData.Key, componentData.Value);
-            }
+            AddComponents(data);
         }
 
         private void AddComponent(ComponentType componentType, IComponentData data)

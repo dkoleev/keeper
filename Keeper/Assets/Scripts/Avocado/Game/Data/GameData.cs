@@ -3,8 +3,13 @@ using System;
 namespace Avocado.Game.Data
 {
     [Serializable]
-    public class GameData
+    public readonly struct GameData
     {
-        public EntitiesData Entities;
+        public readonly EntitiesData Entities;
+
+        public GameData(EntitiesData entities)
+        {
+            Entities = entities;
+        }
     }
 }

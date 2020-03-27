@@ -11,8 +11,8 @@ namespace Avocado.Game.Data.Components {
                     var damage = data["Value"].Value<int>();
                     return new DamageComponentData();
                 case ComponentType.Health:
-                    var health = data["Value"].Value<int>();
-                    return new HealthComponentData();
+                    var maxHealth = data["MaxHealth"].Value<int>();
+                    return new HealthComponentData(maxHealth);
                 case ComponentType.PlayerControls:
                     return new PlayerControlsComponentData();
             }
