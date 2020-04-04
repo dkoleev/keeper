@@ -80,19 +80,26 @@ namespace Avocado.Game.Systems
                 controls.Animator.SetFloat(_speedMoveAnimationKey, 0);
             }
 
-            Rotate(controls);
+            Rotate(controls, move);
         }
 
-        private void Rotate(ControlsComponent component) {
-            var h1 = _moveAxis.x;
-            var v1 = _moveAxis.y;
-
-            if (Mathf.Abs(h1) > 0 || Mathf.Abs(v1) > 0) {
-                /*var curRot = new Vector3 (0, component.RotateTransform.localEulerAngles.y, 0); 
-                var newRot = new Vector3 (0f, Mathf.Atan2 (h1, v1) * 180 / Mathf.PI, 0f);
-                component.RotateTransform.localEulerAngles = Vector3.Slerp (curRot, newRot, Time.deltaTime*4);*/
-                component.RotateTransform.localEulerAngles = new Vector3 (0f, Mathf.Atan2 (h1, v1) * 180 / Mathf.PI, 0f); // this does the actual rotaion according to inputs
+        private void Rotate(ControlsComponent controlsComponent, MoveComponent moveComponent) {
+            if (_moveAxis.magnitude < 0.001f) {
+                return;
             }
+
+            var move = new Vector3(_moveAxis.x, 0, _moveAxis.y);
+            if (move.magnitude > 1f) {
+                move.Normalize();
+            }
+            
+            var angleCurrent = Mathf.Atan2( controlsComponent.RotateTransform.forward.x, controlsComponent.RotateTransform.forward.z) * Mathf.Rad2Deg;
+            var targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+            var deltaAngle = Mathf.DeltaAngle(angleCurrent, targetAngle);
+            var targetLocalRot = Quaternion.Euler(0, deltaAngle, 0);
+            var targetRotation = Quaternion.Slerp(Quaternion.identity, targetLocalRot, moveComponent.SpeedRotate * Time.deltaTime);
+            
+            controlsComponent.RotateTransform.rotation *= targetRotation;
         }
     }
 }

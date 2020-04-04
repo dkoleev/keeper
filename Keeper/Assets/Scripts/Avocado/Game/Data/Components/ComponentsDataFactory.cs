@@ -5,8 +5,9 @@ namespace Avocado.Game.Data.Components {
         public static IComponentData Create(ComponentType type, JObject data) {
             switch (type) {
                 case ComponentType.Move:
-                    var speed = data["Speed"].Value<byte>();
-                    return new MoveComponentData(speed);
+                    var speedMove = data["SpeedMove"].Value<byte>();
+                    var speedRotate = data["SpeedRotate"].Value<byte>();
+                    return new MoveComponentData(speedMove, speedRotate);
                 case ComponentType.Damage:
                     var damage = data["Value"].Value<int>();
                     return new DamageComponentData();

@@ -17,7 +17,8 @@
 				},
 				"Move" : {
 					"Type" : "Move",
-					"Speed" : 5
+					"SpeedMove" : 7,
+					"SpeedRotate" : 6
 				}
 			}
 		},

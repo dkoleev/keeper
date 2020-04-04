@@ -8,7 +8,8 @@ namespace Avocado.Game.Components {
     [ComponentType(ComponentType.Move)]
     public struct MoveComponent : IComponent {
         public Entity Entity { get; }
-        public float SpeedMove => _data.Speed;
+        public float SpeedMove => _data.SpeedMove;
+        public float SpeedRotate => _data.SpeedRotate;
 
         private readonly MoveComponentData _data;
         

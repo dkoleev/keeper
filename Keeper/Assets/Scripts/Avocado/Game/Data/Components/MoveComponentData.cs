@@ -8,11 +8,13 @@ namespace Avocado.Game.Data.Components {
     [ObjectType("Move")]
     public readonly struct MoveComponentData : IComponentData
     {
-        public readonly byte Speed;
+        public readonly byte SpeedMove;
+        public readonly byte SpeedRotate;
 
-        public MoveComponentData(byte speed)
+        public MoveComponentData(byte speedMove, byte speedRotate)
         {
-            Speed = speed;
+            SpeedMove = speedMove;
+            SpeedRotate = speedRotate;
         }
     }
 }
