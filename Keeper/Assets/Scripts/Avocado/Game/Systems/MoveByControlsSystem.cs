@@ -86,10 +86,12 @@ namespace Avocado.Game.Systems
         private void Rotate(ControlsComponent component) {
             var h1 = _moveAxis.x;
             var v1 = _moveAxis.y;
-            
-            if (h1 >= 0f || v1 >= 0f)
-            {
-                component.RotateTransform.localEulerAngles = new Vector3(0f, Mathf.Atan2(h1, v1) * 180 / Mathf.PI,0f);
+
+            if (Mathf.Abs(h1) > 0 || Mathf.Abs(v1) > 0) {
+                /*var curRot = new Vector3 (0, component.RotateTransform.localEulerAngles.y, 0); 
+                var newRot = new Vector3 (0f, Mathf.Atan2 (h1, v1) * 180 / Mathf.PI, 0f);
+                component.RotateTransform.localEulerAngles = Vector3.Slerp (curRot, newRot, Time.deltaTime*4);*/
+                component.RotateTransform.localEulerAngles = new Vector3 (0f, Mathf.Atan2 (h1, v1) * 180 / Mathf.PI, 0f); // this does the actual rotaion according to inputs
             }
         }
     }
