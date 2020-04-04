@@ -3,7 +3,8 @@
 namespace Avocado.Game.Systems {
     public abstract class BaseSystem {
         protected GameData Data;
-        public BaseSystem(GameData data) {
+
+        protected BaseSystem(GameData data) {
             Data = data;
         }
 

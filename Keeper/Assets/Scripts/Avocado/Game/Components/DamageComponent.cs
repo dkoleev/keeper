@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Damage)]
-    public readonly struct DamageComponent : IComponent {
+    public struct DamageComponent : IComponent {
         public Entity Entity { get; }
 
         private readonly DamageComponentData _data;

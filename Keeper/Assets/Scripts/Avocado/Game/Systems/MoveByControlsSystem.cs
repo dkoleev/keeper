@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using Avocado.Framework.Patterns.EventSystem;
 using Avocado.Game.Components;
 using Avocado.Game.Controllers;
 using Avocado.Game.Data;
+using Avocado.Game.Events;
 using Avocado.Game.Worlds;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +18,7 @@ namespace Avocado.Game.Systems
         private bool _initialized;
         private bool _mooving;
         private readonly int _speedMoveAnimationKey = Animator.StringToHash("SpeedMove");
+        private List<(ControlsComponent component1, MoveComponent component2)> _components = new List<(ControlsComponent, MoveComponent)>();
         
         public MoveByControlsSystem(GameData data) : base(data)
         {
@@ -30,17 +34,16 @@ namespace Avocado.Game.Systems
             
             _controls.Player.Enable();
 
+            _components = World.GetComponents<ControlsComponent, MoveComponent>();
+            EventSystem<ComponentsUpdatedEvent>.Subscribe(coEvent =>  _components = World.GetComponents<ControlsComponent, MoveComponent>());
+
             _initialized = true;
         }
 
         public override void Update()
         {
-            foreach (var component in World.ControlsComponents)
-            {
-                var moveComponent = World.GetComponentForEntity(component.Entity, typeof(MoveComponent));
-                if(moveComponent is null)
-                    continue;
-                Move(component, (MoveComponent)moveComponent);
+            foreach (var components in _components) {
+                Move(components.component1, components.component2);
             }
         }
         

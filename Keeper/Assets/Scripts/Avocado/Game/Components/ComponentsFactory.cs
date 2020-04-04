@@ -6,7 +6,7 @@ using Avocado.Game.Data;
 using Avocado.Game.Entities;
 
 namespace Avocado.Game.Components {
-    public class ComponentsFactory<T> where T : class {
+    public static class ComponentsFactory<T> where T : class {
         private static readonly Dictionary<ComponentType, Type> _types = new Dictionary<ComponentType, Type>();
 
         static ComponentsFactory() {

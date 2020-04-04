@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.PlayerControls)]
-    public readonly struct ControlsComponent : IComponent
+    public struct ControlsComponent : IComponent
     {
         public Entity Entity { get; }
         public Transform MoveTransform { get; }
