@@ -12,6 +12,7 @@ namespace Avocado.Game.Components {
 
         public string WeaponType => _data.WeaponType;
         public int Damage => _data.Damage;
+        public int Range => _data.Range;
         public int Ammo {
             get => _currentAmmo;
             set => _currentAmmo = value;

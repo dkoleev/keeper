@@ -120,6 +120,7 @@
                 <e p="EnemiesSystem.cs" t="Include" />
                 <e p="MoveByControlsSystem.cs" t="Include" />
                 <e p="PlayerSystem.cs" t="Include" />
+                <e p="SpawnSystem.cs" t="Include" />
               </e>
               <e p="UI" t="Include">
                 <e p="Tools" t="Include">

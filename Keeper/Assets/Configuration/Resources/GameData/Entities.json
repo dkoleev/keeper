@@ -25,7 +25,8 @@
 					"WeaponType" : "Pistol",
 					"Prefab" : "Pistol",
 					"Damage" : 5,
-					"Ammo" : 10
+					"Ammo" : 10,
+					"Range" : 10
 				}
 			}
 		},
@@ -49,11 +50,24 @@
 			"Components" : {
 				"Health" : {
 					"Type" : "Health",
-					"MaxHealth" : 100
+					"MaxHealth" : 50
 				},
 				"Damage" : {
 					"Type" : "Damage",
-					"Value" : 10
+					"Value" : 100
+				},
+				"Weapon" : {
+					"Type" : "Weapon",
+					"WeaponType" : "Pistol",
+					"Prefab" : "Pistol",
+					"Damage" : 5,
+					"Ammo" : 10,
+					"Range" : 10
+				},
+				"Move" : {
+					"Type" : "Move",
+					"SpeedMove" : 7,
+					"SpeedRotate" : 6
 				}
 			}
 		},

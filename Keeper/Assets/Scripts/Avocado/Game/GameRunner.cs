@@ -72,9 +72,10 @@ namespace Avocado.Game {
         private void LoadSystems(GameData gameData)
         {
             _systems = new List<BaseSystem> {
-                new PlayerSystem(gameData),
                 new MoveByControlsSystem(gameData),
-                new AttackSystem(gameData)
+                new PlayerSystem(gameData),
+                new AttackSystem(gameData),
+                new SpawnSystem(gameData)
             };
 
             foreach (var system in _systems) {

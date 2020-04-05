@@ -8,12 +8,14 @@ namespace Avocado.Game.Data.Components {
         public readonly string WeaponType;
         public readonly int Damage;
         public readonly int Ammo;
+        public readonly int Range;
         public readonly string Prefab;
 
-        public WeaponComponentData(string weaponType, int damage, int ammo, string prefab) {
+        public WeaponComponentData(string weaponType, int damage, int ammo, int range, string prefab) {
             WeaponType = weaponType;
             Damage = damage;
             Ammo = ammo;
+            Range = range;
             Prefab = prefab;
         }
     }

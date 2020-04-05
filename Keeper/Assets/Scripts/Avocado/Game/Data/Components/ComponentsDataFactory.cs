@@ -26,10 +26,11 @@ namespace Avocado.Game.Data.Components {
                 case ComponentType.Weapon:
                     damage = data["Damage"].Value<int>();
                     var ammo = data["Ammo"].Value<int>();
+                    var range = data["Range"].Value<int>();
                     var prefab = data["Prefab"].Value<string>();
                     var weaponType = data["WeaponType"].Value<string>();
                     
-                    return new WeaponComponentData(weaponType, damage, ammo, prefab);
+                    return new WeaponComponentData(weaponType, damage, ammo, range, prefab);
             }
 
             return null;

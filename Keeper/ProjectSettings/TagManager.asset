@@ -9,6 +9,7 @@ TagManager:
   - InputManager
   - Animal
   - Water
+  - Enemy
   layers:
   - Default
   - TransparentFX

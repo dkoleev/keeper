@@ -94,6 +94,11 @@ namespace Avocado.Game.Worlds {
             where TComponent1 : IComponent
             where TComponent2 : IComponent {
             List<(TComponent1, TComponent2)> result = new List<(TComponent1, TComponent2)>();
+            
+            if(!Components.ContainsKey(typeof(TComponent1)) || !Components.ContainsKey(typeof(TComponent2))) {
+                return result;
+            }
+            
             var components1 = Components[typeof(TComponent1)];
             var components2 = Components[typeof(TComponent2)];
             
