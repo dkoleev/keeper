@@ -2,17 +2,13 @@ using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.PlayerControls)]
-    public struct ControlsComponent : IComponent
+    public class ControlsComponent : IComponent
     {
         public Entity Entity { get; }
-        public Transform MoveTransform { get; }
-        public Transform RotateTransform { get; }
-        public Animator Animator { get; }
 
         private readonly PlayerControlsComponentData _data;
 
@@ -20,9 +16,6 @@ namespace Avocado.Game.Components {
         {
             Entity = entity;
             _data = (PlayerControlsComponentData) data;
-            MoveTransform = Entity.transform;
-            Animator = Entity.GetComponentInChildren<Animator>();
-            RotateTransform = Animator.transform;
         }
     }
 }

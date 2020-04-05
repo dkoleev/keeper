@@ -8,7 +8,8 @@ namespace Avocado.Game.Data
         Move,
         Damage,
         Health,
-        PlayerControls
+        PlayerControls,
+        Weapon
     }
     
     [JsonConverter(typeof(ComponentsConverter))]

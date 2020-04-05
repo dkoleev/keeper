@@ -19,6 +19,13 @@
 					"Type" : "Move",
 					"SpeedMove" : 7,
 					"SpeedRotate" : 6
+				},
+				"Weapon" : {
+					"Type" : "Weapon",
+					"WeaponType" : "Pistol",
+					"Prefab" : "Pistol",
+					"Damage" : 5,
+					"Ammo" : 10
 				}
 			}
 		},

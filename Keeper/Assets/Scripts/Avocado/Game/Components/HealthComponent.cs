@@ -6,7 +6,7 @@ using JetBrains.Annotations;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Health)]
-    public struct HealthComponent : IComponent {
+    public class HealthComponent : IComponent {
         public Entity Entity { get; }
         public int CurrentHealth { get; set; }
 

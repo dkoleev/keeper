@@ -1,12 +1,16 @@
 ﻿using Avocado.Game.Components;
 using Avocado.Game.Data;
 using Avocado.Game.Worlds;
+using UnityEngine;
 
 namespace Avocado.Game.Entities
 {
-    public class Entity : MonoBehaviourWrapper
-    {
+    public class Entity : MonoBehaviourWrapper {
+        public Animator Animator { get; private set; }
+        
         public void Create(in EntityData entityData, in GameData gameData) {
+            Animator = GetComponentInChildren<Animator>();
+            
             if (!string.IsNullOrEmpty(entityData.Parent)) {
                 AddComponents(entityData, gameData.Entities.Entities[entityData.Parent]);
             } else {

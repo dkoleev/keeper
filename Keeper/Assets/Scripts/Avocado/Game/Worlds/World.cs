@@ -8,10 +8,10 @@ using Avocado.Game.Events;
 
 namespace Avocado.Game.Worlds {
     public class World {
-        public static readonly List<MoveComponent> MoveComponents = new List<MoveComponent>();
+        /*public static readonly List<MoveComponent> MoveComponents = new List<MoveComponent>();
         public static readonly List<DamageComponent> DamageComponents = new List<DamageComponent>();
         public static readonly List<HealthComponent> HealthComponents = new List<HealthComponent>();
-        public static readonly List<ControlsComponent> ControlsComponents = new List<ControlsComponent>();
+        public static readonly List<ControlsComponent> ControlsComponents = new List<ControlsComponent>();*/
 
         private static readonly Dictionary<Type, List<IComponent>> Components = new Dictionary<Type, List<IComponent>>();
 
@@ -48,6 +48,13 @@ namespace Avocado.Game.Worlds {
                         Components[typeof(ControlsComponent)].Add(component);
                     } else {
                         Components.Add(typeof(ControlsComponent), new List<IComponent> {component});
+                    }
+                    break;
+                case ComponentType.Weapon:
+                    if (Components.ContainsKey(typeof(WeaponComponent))) {
+                        Components[typeof(WeaponComponent)].Add(component);
+                    } else {
+                        Components.Add(typeof(WeaponComponent), new List<IComponent> {component});
                     }
                     break;
             }

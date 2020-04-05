@@ -43,7 +43,7 @@ namespace Avocado.Game.Systems
         public override void Update()
         {
             foreach (var components in _components) {
-                Move(components.component1, components.component2);
+                Move(components);
             }
         }
         
@@ -57,30 +57,31 @@ namespace Avocado.Game.Systems
             _moveAxis = context.ReadValue<Vector2>();
         }
 
-        private void Move(ControlsComponent controls, MoveComponent move) {
+        private void Move((ControlsComponent controls, MoveComponent move) components) {
             if(!_initialized)
                 return;
-            
-            if (_moveAxis != Vector2.zero) {
+
+            components.move.CurrentSpeedMove = _moveAxis.magnitude;
+            if (_moveAxis.magnitude > 0) {
                 if (!_mooving) {
                     _mooving = true;
                 }
 
-                controls.MoveTransform.position += new Vector3(_moveAxis.x * Time.deltaTime * move.SpeedMove, 0, _moveAxis.y * Time.deltaTime * move.SpeedMove);
+                components.move.MoveTransform.position += new Vector3(_moveAxis.x * Time.deltaTime * components.move.SpeedMove, 0, _moveAxis.y * Time.deltaTime * components.move.SpeedMove);
             }
             else
             {
                 _mooving = false;
             }
-
+            
             if (_mooving) {
                 var speed =(Mathf.Abs(_moveAxis.x) + Mathf.Abs(_moveAxis.y));
-                controls.Animator.SetFloat(_speedMoveAnimationKey, speed);
+                components.controls.Entity.Animator.SetFloat(_speedMoveAnimationKey, speed);
             } else {
-                controls.Animator.SetFloat(_speedMoveAnimationKey, 0);
+                components.controls.Entity.Animator.SetFloat(_speedMoveAnimationKey, 0);
             }
 
-            Rotate(controls, move);
+            Rotate(components.controls, components.move);
         }
 
         private void Rotate(ControlsComponent controlsComponent, MoveComponent moveComponent) {
@@ -93,13 +94,13 @@ namespace Avocado.Game.Systems
                 move.Normalize();
             }
             
-            var angleCurrent = Mathf.Atan2( controlsComponent.RotateTransform.forward.x, controlsComponent.RotateTransform.forward.z) * Mathf.Rad2Deg;
+            var angleCurrent = Mathf.Atan2( moveComponent.RotateTransform.forward.x, moveComponent.RotateTransform.forward.z) * Mathf.Rad2Deg;
             var targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
             var deltaAngle = Mathf.DeltaAngle(angleCurrent, targetAngle);
             var targetLocalRot = Quaternion.Euler(0, deltaAngle, 0);
             var targetRotation = Quaternion.Slerp(Quaternion.identity, targetLocalRot, moveComponent.SpeedRotate * Time.deltaTime);
             
-            controlsComponent.RotateTransform.rotation *= targetRotation;
+            moveComponent.RotateTransform.rotation *= targetRotation;
         }
     }
 }
