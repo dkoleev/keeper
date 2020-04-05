@@ -20,7 +20,11 @@ namespace Avocado.Game.Systems {
 
         public override void Update() {
             foreach (var componentTuple in _components) {
-                componentTuple.weaponComponent.Entity.Animator.SetBool(_attackAnimationKey, componentTuple.moveComponent.CurrentSpeedMove <= 0);
+                var canAttack = componentTuple.moveComponent.CurrentSpeedMove <= 0;
+                if (componentTuple.weaponComponent.IsAttack != canAttack) {
+                    componentTuple.weaponComponent.IsAttack = canAttack;
+                    componentTuple.weaponComponent.Entity.Animator.SetBool(_attackAnimationKey, canAttack);
+                }
             }
         }
     }

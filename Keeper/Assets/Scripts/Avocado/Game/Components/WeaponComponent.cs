@@ -8,6 +8,8 @@ namespace Avocado.Game.Components {
     [ComponentType(ComponentType.Weapon)]
     public class WeaponComponent : IComponent {
         public Entity Entity { get; }
+        public bool IsAttack { get; set; }
+
         public string WeaponType => _data.WeaponType;
         public int Damage => _data.Damage;
         public int Ammo {
