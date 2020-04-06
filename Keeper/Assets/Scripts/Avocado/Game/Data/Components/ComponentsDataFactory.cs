@@ -9,12 +9,7 @@ namespace Avocado.Game.Data.Components {
                     var speedRotate = data["SpeedRotate"].Value<byte>();
                     
                     return new MoveComponentData(speedMove, speedRotate);
-                
-                case ComponentType.Damage:
-                    var damage = data["Value"].Value<int>();
-                    
-                    return new DamageComponentData();
-                
+
                 case ComponentType.Health:
                     var maxHealth = data["MaxHealth"].Value<int>();
                     
@@ -24,13 +19,17 @@ namespace Avocado.Game.Data.Components {
                     return new PlayerControlsComponentData();
                 
                 case ComponentType.Weapon:
-                    damage = data["Damage"].Value<int>();
+                    var damage = data["Damage"].Value<int>();
                     var ammo = data["Ammo"].Value<int>();
                     var range = data["Range"].Value<int>();
                     var prefab = data["Prefab"].Value<string>();
                     var weaponType = data["WeaponType"].Value<string>();
                     
                     return new WeaponComponentData(weaponType, damage, ammo, range, prefab);
+                
+                case ComponentType.Attack:
+                    var currentWeapon = data["CurrentWeapon"].Value<string>();
+                    return new AttackComponentData(currentWeapon);
             }
 
             return null;

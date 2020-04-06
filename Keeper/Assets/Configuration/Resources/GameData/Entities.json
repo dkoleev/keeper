@@ -7,10 +7,6 @@
 				"PlayerControls" : {
 					"Type" : "PlayerControls"
 				},
-				"Damage" : {
-					"Type" : "Damage",
-					"Value" : 100
-				},
 				"Health" : {
 					"Type" : "Health",
 					"MaxHealth" : 50
@@ -19,6 +15,10 @@
 					"Type" : "Move",
 					"SpeedMove" : 7,
 					"SpeedRotate" : 6
+				},
+				"Attack" : {
+					"Type" : "Attack",
+					"CurrentWeapon" : "Revolver"
 				},
 				"Weapon" : {
 					"Type" : "Weapon",
@@ -37,10 +37,6 @@
 				"Health" : {
 					"Type" : "Health",
 					"MaxHealth" : 50
-				},
-				"Damage" : {
-					"Type" : "Damage",
-					"Value" : 5
 				}
 			}
 		},
@@ -51,10 +47,6 @@
 				"Health" : {
 					"Type" : "Health",
 					"MaxHealth" : 50
-				},
-				"Damage" : {
-					"Type" : "Damage",
-					"Value" : 100
 				},
 				"Weapon" : {
 					"Type" : "Weapon",

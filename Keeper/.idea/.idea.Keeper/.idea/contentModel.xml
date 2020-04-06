@@ -67,10 +67,11 @@
             </e>
             <e p="Game" t="Include">
               <e p="Components" t="Include">
+                <e p="AttackComponent.cs" t="Include" />
+                <e p="ComponentBase.cs" t="Include" />
                 <e p="ComponentsFactory.cs" t="Include" />
                 <e p="ComponentTypeAttribute.cs" t="Include" />
                 <e p="ControlsComponent.cs" t="Include" />
-                <e p="DamageComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
@@ -81,8 +82,8 @@
               </e>
               <e p="Data" t="Include">
                 <e p="Components" t="Include">
+                  <e p="AttackComponentData.cs" t="Include" />
                   <e p="ComponentsDataFactory.cs" t="Include" />
-                  <e p="DamageComponentData.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
                   <e p="MoveComponentData.cs" t="Include" />
                   <e p="PlayerControlsComponentData.cs" t="Include" />

@@ -6,17 +6,12 @@ using JetBrains.Annotations;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Health)]
-    public class HealthComponent : IComponent {
-        public Entity Entity { get; }
+    public class HealthComponent : ComponentBase<HealthComponentData> {
         public int CurrentHealth { get; set; }
 
-        private readonly HealthComponentData _data;
-        
-        public HealthComponent(Entity entity, IComponentData data)
+        public HealthComponent(Entity entity, HealthComponentData data) : base(entity, data)
         {
-            Entity = entity;
-            _data = (HealthComponentData) data;
-            CurrentHealth = _data.MaxHealth;
+            CurrentHealth = Data.MaxHealth;
         }
     }
 }

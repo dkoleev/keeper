@@ -7,21 +7,15 @@ using UnityEngine;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Move)]
-    public class MoveComponent : IComponent {
-        public Entity Entity { get; }
-        public float SpeedMove => _data.SpeedMove;
+    public class MoveComponent : ComponentBase<MoveComponentData> {
+        public float SpeedMove => Data.SpeedMove;
         public float CurrentSpeedMove { get; set; }
-        public float SpeedRotate => _data.SpeedRotate;
+        public float SpeedRotate => Data.SpeedRotate;
         public Transform RotateTransform { get; }
         public Transform MoveTransform { get; }
 
-        private readonly MoveComponentData _data;
-        
-        public MoveComponent(Entity entity, IComponentData data)
+        public MoveComponent(Entity entity, MoveComponentData data) : base(entity, data)
         {
-            Entity = entity;
-            _data = (MoveComponentData) data;
-
             RotateTransform = Entity.GetComponentInChildren<Animator>().transform;
             MoveTransform = Entity.transform;
             CurrentSpeedMove = 0;

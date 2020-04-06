@@ -6,16 +6,8 @@ using JetBrains.Annotations;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.PlayerControls)]
-    public class ControlsComponent : IComponent
+    public class ControlsComponent : ComponentBase<PlayerControlsComponentData>
     {
-        public Entity Entity { get; }
-
-        private readonly PlayerControlsComponentData _data;
-
-        public ControlsComponent(Entity entity, IComponentData data)
-        {
-            Entity = entity;
-            _data = (PlayerControlsComponentData) data;
-        }
+        public ControlsComponent(Entity entity, PlayerControlsComponentData data) : base(entity, data) { }
     }
 }

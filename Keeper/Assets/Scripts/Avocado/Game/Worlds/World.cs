@@ -29,13 +29,6 @@ namespace Avocado.Game.Worlds {
                         Components.Add(typeof(MoveComponent), new List<IComponent>{component});
                     }
                     break;
-                case ComponentType.Damage:
-                    if (Components.ContainsKey(typeof(DamageComponent))) {
-                        Components[typeof(DamageComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(DamageComponent), new List<IComponent>{component});
-                    }
-                    break;
                 case ComponentType.Health:
                     if (Components.ContainsKey(typeof(HealthComponent))) {
                         Components[typeof(HealthComponent)].Add(component);
@@ -57,21 +50,16 @@ namespace Avocado.Game.Worlds {
                         Components.Add(typeof(WeaponComponent), new List<IComponent> {component});
                     }
                     break;
+                case ComponentType.Attack:
+                    if (Components.ContainsKey(typeof(AttackComponent))) {
+                        Components[typeof(AttackComponent)].Add(component);
+                    } else {
+                        Components.Add(typeof(AttackComponent), new List<IComponent> {component});
+                    }
+                    break;
             }
             
             EventSystem<ComponentsUpdatedEvent>.Fire();
-            /*if (component is MoveComponent moveComponent) {
-                MoveComponents.Add(moveComponent);
-            }
-            if (component is DamageComponent damageComponent) {
-                DamageComponents.Add(damageComponent);
-            }
-            if (component is HealthComponent healthComponent) {
-                HealthComponents.Add(healthComponent);
-            }
-            if (component is ControlsComponent pcComponent) {
-                ControlsComponents.Add(pcComponent);
-            }*/
         }
 
         public static List<IComponent> GetComponentsByType(Type componentType) {
@@ -117,7 +105,7 @@ namespace Avocado.Game.Worlds {
         public static List<(TComponent1 component1, TComponent2 component2, TComponent3 component3)> GetComponents<TComponent1, TComponent2, TComponent3>()
             where TComponent1 : IComponent
             where TComponent2 : IComponent 
-            where TComponent3 : IComponent{
+            where TComponent3 : IComponent {
             List<(TComponent1, TComponent2, TComponent3)> result = new List<(TComponent1, TComponent2, TComponent3)>();
             var components1 = Components[typeof(TComponent1)];
             var components2 = Components[typeof(TComponent2)];

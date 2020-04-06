@@ -6,26 +6,21 @@ using JetBrains.Annotations;
 namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Weapon)]
-    public class WeaponComponent : IComponent {
-        public Entity Entity { get; }
+    public class WeaponComponent : ComponentBase<WeaponComponentData> {
         public bool IsAttack { get; set; }
-
-        public string WeaponType => _data.WeaponType;
-        public int Damage => _data.Damage;
-        public int Range => _data.Range;
+        public string WeaponType => Data.WeaponType;
+        public int Damage => Data.Damage;
+        public int Range => Data.Range;
         public int Ammo {
             get => _currentAmmo;
             set => _currentAmmo = value;
         }
-        public string Prefab => _data.Prefab;
+        public string Prefab => Data.Prefab;
 
-        private WeaponComponentData _data;
         private int _currentAmmo;
 
-        public WeaponComponent(Entity entity, IComponentData data) {
-            Entity = entity;
-            _data = (WeaponComponentData) data;
-            _currentAmmo = _data.Ammo;
+        public WeaponComponent(Entity entity, WeaponComponentData data) : base(entity, data) {
+            _currentAmmo = Data.Ammo;
         }
     }
 }

@@ -6,10 +6,10 @@ namespace Avocado.Game.Data
 {
     public enum ComponentType {
         Move,
-        Damage,
         Health,
         PlayerControls,
-        Weapon
+        Weapon,
+        Attack
     }
     
     [JsonConverter(typeof(ComponentsConverter))]
