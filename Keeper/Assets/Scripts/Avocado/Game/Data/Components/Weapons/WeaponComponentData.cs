@@ -3,15 +3,15 @@ using JetBrains.Annotations;
 
 namespace Avocado.Game.Data.Components.Weapons {
     [UsedImplicitly]
-    [ObjectType("FireAttack")]
-    public struct FireAttackComponentData : IComponentData {
+    [ObjectType("Weapon")]
+    public struct WeaponComponentData : IComponentData {
         public readonly int Damage;
-        public readonly int Ammo;
+        public readonly int Clip;
         public readonly int Range;
 
-        public FireAttackComponentData(int damage, int ammo, int range) {
+        public WeaponComponentData(int damage, int clip, int range) {
             Damage = damage;
-            Ammo = ammo;
+            Clip = clip;
             Range = range;
         }
     }

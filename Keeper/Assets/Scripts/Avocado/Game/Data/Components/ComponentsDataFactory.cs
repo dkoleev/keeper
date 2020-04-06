@@ -19,16 +19,17 @@ namespace Avocado.Game.Data.Components {
                 case ComponentType.PlayerControls:
                     return new PlayerControlsComponentData();
                 
-                case ComponentType.FireAttack:
+                case ComponentType.Attack:
+                    var currentWeapon = data["Weapon"].Value<string>();
+                    var startAmmo = data["StartAmmo"].Value<int>();
+                    return new AttackComponentData(currentWeapon, startAmmo);
+                
+                case ComponentType.Weapon:
                     var damage = data["Damage"].Value<int>();
-                    var ammo = data["Ammo"].Value<int>();
+                    var clip = data["Clip"].Value<int>();
                     var range = data["Range"].Value<int>();
                     
-                    return new FireAttackComponentData(damage, ammo, range);
-                
-                case ComponentType.Attack:
-                    var currentWeapon = data["CurrentWeapon"].Value<string>();
-                    return new AttackComponentData(currentWeapon);
+                    return new WeaponComponentData(damage, clip, range);
             }
 
             return null;

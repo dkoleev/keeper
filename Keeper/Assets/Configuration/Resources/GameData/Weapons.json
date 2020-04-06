@@ -4,10 +4,10 @@
 			"Parent": null,
 			"Prefab": "Weapons/Revolver",
 			"Components": {
-				"FireAttack": {
-					"Type": "FireAttack",
+				"Weapon": {
+					"Type": "Weapon",
 					"Damage": 5,
-					"Ammo": 10,
+					"Clip": 10,
 					"Range": 10
 				}
 			}

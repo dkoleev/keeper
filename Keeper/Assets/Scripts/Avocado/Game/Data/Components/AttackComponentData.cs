@@ -5,10 +5,12 @@ namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
     [ObjectType("Attack")]
     public readonly struct AttackComponentData : IComponentData {
-        public readonly string CurrentWeapon;
+        public readonly string Weapon;
+        public readonly int StartAmmo;
 
-        public AttackComponentData(string currentWeapon) {
-            CurrentWeapon = currentWeapon;
+        public AttackComponentData(string currentWeapon, int startAmmo) {
+            Weapon = currentWeapon;
+            StartAmmo = startAmmo;
         }
     }
 }

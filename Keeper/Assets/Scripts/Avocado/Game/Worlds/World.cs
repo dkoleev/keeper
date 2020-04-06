@@ -47,11 +47,11 @@ namespace Avocado.Game.Worlds {
                     break;
                 
                 //weapons
-                case ComponentType.FireAttack:
-                    if (Components.ContainsKey(typeof(FireAttackComponent))) {
-                        Components[typeof(FireAttackComponent)].Add(component);
+                case ComponentType.Weapon:
+                    if (Components.ContainsKey(typeof(WeaponComponent))) {
+                        Components[typeof(WeaponComponent)].Add(component);
                     } else {
-                        Components.Add(typeof(FireAttackComponent), new List<IComponent> {component});
+                        Components.Add(typeof(WeaponComponent), new List<IComponent> {component});
                     }
                     break;
             }

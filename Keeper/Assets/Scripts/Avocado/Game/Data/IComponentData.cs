@@ -10,7 +10,6 @@ namespace Avocado.Game.Data
         PlayerControls,
         Weapon,
         Attack,
-        FireAttack
     }
     
     [JsonConverter(typeof(ComponentsConverter))]

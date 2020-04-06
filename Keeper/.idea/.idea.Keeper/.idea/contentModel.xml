@@ -66,6 +66,9 @@
               </e>
             </e>
             <e p="Game" t="Include">
+              <e p="Behaviuor" t="Include">
+                <e p="WeaponPlacer.cs" t="Include" />
+              </e>
               <e p="Components" t="Include">
                 <e p="AttackComponent.cs" t="Include" />
                 <e p="ComponentBase.cs" t="Include" />
@@ -76,7 +79,7 @@
                 <e p="IComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
                 <e p="Weapons" t="Include">
-                  <e p="FireAttackComponent.cs" t="Include" />
+                  <e p="WeaponComponent.cs" t="Include" />
                 </e>
               </e>
               <e p="Controllers" t="Include">
@@ -90,7 +93,7 @@
                   <e p="MoveComponentData.cs" t="Include" />
                   <e p="PlayerControlsComponentData.cs" t="Include" />
                   <e p="Weapons" t="Include">
-                    <e p="FireAttackComponentData.cs" t="Include" />
+                    <e p="WeaponComponentData.cs" t="Include" />
                   </e>
                 </e>
                 <e p="Converters" t="Include">

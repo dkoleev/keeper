@@ -28,13 +28,13 @@ namespace Avocado.Game.Systems {
 
         public override void Update() {
             foreach (var componentTuple in _components) {
-                var fireAttackComponent = componentTuple.attackComponent.FireAttackComponent;
+                var fireAttackComponent = componentTuple.attackComponent.WeaponComponent;
 
                 var isMoving = componentTuple.moveComponent.CurrentSpeedMove > 0;
                 if (!isMoving) {
                     foreach (var target in _targets) {
                         if (componentTuple.moveComponent.Entity != target.Entity) {
-                            if (Vector3.Distance(componentTuple.moveComponent.Entity.transform.position, target.Entity.transform.position) <= componentTuple.attackComponent.FireAttackComponent.Range) {
+                            if (Vector3.Distance(componentTuple.moveComponent.Entity.transform.position, target.Entity.transform.position) <= componentTuple.attackComponent.WeaponComponent.Range) {
 
                                 if (!fireAttackComponent.IsAttack) {
                                     fireAttackComponent.IsAttack = true;
