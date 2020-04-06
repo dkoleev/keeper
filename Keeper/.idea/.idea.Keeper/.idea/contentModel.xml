@@ -75,7 +75,9 @@
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
-                <e p="WeaponComponent.cs" t="Include" />
+                <e p="Weapons" t="Include">
+                  <e p="FireAttackComponent.cs" t="Include" />
+                </e>
               </e>
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
@@ -87,7 +89,9 @@
                   <e p="HealthComponentData.cs" t="Include" />
                   <e p="MoveComponentData.cs" t="Include" />
                   <e p="PlayerControlsComponentData.cs" t="Include" />
-                  <e p="WeaponComponentData.cs" t="Include" />
+                  <e p="Weapons" t="Include">
+                    <e p="FireAttackComponentData.cs" t="Include" />
+                  </e>
                 </e>
                 <e p="Converters" t="Include">
                   <e p="ComponentsConverter.cs" t="Include" />

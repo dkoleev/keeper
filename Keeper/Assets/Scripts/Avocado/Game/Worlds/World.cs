@@ -2,21 +2,16 @@ using System;
 using System.Collections.Generic;
 using Avocado.Framework.Patterns.EventSystem;
 using Avocado.Game.Components;
+using Avocado.Game.Components.Weapons;
 using Avocado.Game.Data;
 using Avocado.Game.Entities;
 using Avocado.Game.Events;
 
 namespace Avocado.Game.Worlds {
     public class World {
-        /*public static readonly List<MoveComponent> MoveComponents = new List<MoveComponent>();
-        public static readonly List<DamageComponent> DamageComponents = new List<DamageComponent>();
-        public static readonly List<HealthComponent> HealthComponents = new List<HealthComponent>();
-        public static readonly List<ControlsComponent> ControlsComponents = new List<ControlsComponent>();*/
-
         private static readonly Dictionary<Type, List<IComponent>> Components = new Dictionary<Type, List<IComponent>>();
 
-        public World(GameData data)
-        {
+        public World(GameData data) {
             
         }
 
@@ -43,18 +38,20 @@ namespace Avocado.Game.Worlds {
                         Components.Add(typeof(ControlsComponent), new List<IComponent> {component});
                     }
                     break;
-                case ComponentType.Weapon:
-                    if (Components.ContainsKey(typeof(WeaponComponent))) {
-                        Components[typeof(WeaponComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(WeaponComponent), new List<IComponent> {component});
-                    }
-                    break;
                 case ComponentType.Attack:
                     if (Components.ContainsKey(typeof(AttackComponent))) {
                         Components[typeof(AttackComponent)].Add(component);
                     } else {
                         Components.Add(typeof(AttackComponent), new List<IComponent> {component});
+                    }
+                    break;
+                
+                //weapons
+                case ComponentType.FireAttack:
+                    if (Components.ContainsKey(typeof(FireAttackComponent))) {
+                        Components[typeof(FireAttackComponent)].Add(component);
+                    } else {
+                        Components.Add(typeof(FireAttackComponent), new List<IComponent> {component});
                     }
                     break;
             }

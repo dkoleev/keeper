@@ -1,3 +1,4 @@
+using Avocado.Game.Data.Components.Weapons;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data.Components {
@@ -18,14 +19,12 @@ namespace Avocado.Game.Data.Components {
                 case ComponentType.PlayerControls:
                     return new PlayerControlsComponentData();
                 
-                case ComponentType.Weapon:
+                case ComponentType.FireAttack:
                     var damage = data["Damage"].Value<int>();
                     var ammo = data["Ammo"].Value<int>();
                     var range = data["Range"].Value<int>();
-                    var prefab = data["Prefab"].Value<string>();
-                    var weaponType = data["WeaponType"].Value<string>();
                     
-                    return new WeaponComponentData(weaponType, damage, ammo, range, prefab);
+                    return new FireAttackComponentData(damage, ammo, range);
                 
                 case ComponentType.Attack:
                     var currentWeapon = data["CurrentWeapon"].Value<string>();

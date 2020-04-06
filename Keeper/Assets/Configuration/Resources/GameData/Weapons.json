@@ -1,0 +1,16 @@
+{
+	"Entities" : {
+		"Revolver": {
+			"Parent": null,
+			"Prefab": "Weapons/Revolver",
+			"Components": {
+				"FireAttack": {
+					"Type": "FireAttack",
+					"Damage": 5,
+					"Ammo": 10,
+					"Range": 10
+				}
+			}
+		}
+	}
+}

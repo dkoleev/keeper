@@ -1,9 +1,0 @@
-{
-	"Revolver" : {
-		"Type" : "Pistol",
-		"Prefab" : "Weapons/Revolver",
-		"Damage" : 5,
-		"Ammo" : 10,
-		"Range" : 10
-	}
-}

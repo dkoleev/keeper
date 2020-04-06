@@ -7,8 +7,24 @@ namespace Avocado.Game.Entities
 {
     public class Entity : MonoBehaviourWrapper {
         public Animator Animator { get; private set; }
-        
-        public void Create(in EntityData entityData, in GameData gameData) {
+        public GameData GameData { get; private set; }
+
+        public static Entity Create(GameData data, string entityId, Vector3 startPosition, Transform parent = null) {
+            var entityData = data.Entities.Entities[entityId];
+            var entityPrefab = Resources.Load<GameObject>(entityData.Prefab);
+            var go = Object.Instantiate(entityPrefab, startPosition, Quaternion.identity, parent);
+            var entity = go.AddComponent<Entity>();
+            entity.Initialize(entityData, data);
+
+            return entity;
+        }
+
+        public static Entity Create(GameData data, string entityId) {
+            return Create(data, entityId, Vector3.zero);
+        }
+
+        private void Initialize(in EntityData entityData, in GameData gameData) {
+            GameData = gameData;
             Animator = GetComponentInChildren<Animator>();
             
             if (!string.IsNullOrEmpty(entityData.Parent)) {
