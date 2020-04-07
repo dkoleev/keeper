@@ -1,7 +1,7 @@
-using Avocado.Game.Data.Components.Weapons;
+using Avocado.Game.Data.Components;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data.Components {
+namespace Avocado.Game.Data {
     public static class ComponentsDataFactory {
         public static IComponentData Create(ComponentType type, JObject data) {
             switch (type) {

@@ -41,7 +41,7 @@ namespace Avocado.Game {
         private void Load() {
             LoadGameState();
             var gameData = LoadConfiguration();
-            LoadWorld(gameData);
+            LoadWorld();
             LoadSystems(gameData);
 
             EventSystem<PlayerDeadEvent>.Subscribe(data => {
@@ -64,9 +64,9 @@ namespace Avocado.Game {
             
         }
 
-        private void LoadWorld(GameData gameData)
+        private void LoadWorld()
         {
-            _world = new World(gameData);
+            _world = new World();
         }
 
         private void LoadSystems(GameData gameData)

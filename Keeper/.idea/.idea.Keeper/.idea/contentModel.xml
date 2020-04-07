@@ -78,9 +78,7 @@
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
-                <e p="Weapons" t="Include">
-                  <e p="WeaponComponent.cs" t="Include" />
-                </e>
+                <e p="WeaponComponent.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
@@ -88,14 +86,12 @@
               <e p="Data" t="Include">
                 <e p="Components" t="Include">
                   <e p="AttackComponentData.cs" t="Include" />
-                  <e p="ComponentsDataFactory.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
                   <e p="MoveComponentData.cs" t="Include" />
                   <e p="PlayerControlsComponentData.cs" t="Include" />
-                  <e p="Weapons" t="Include">
-                    <e p="WeaponComponentData.cs" t="Include" />
-                  </e>
+                  <e p="WeaponComponentData.cs" t="Include" />
                 </e>
+                <e p="ComponentsDataFactory.cs" t="Include" />
                 <e p="Converters" t="Include">
                   <e p="ComponentsConverter.cs" t="Include" />
                 </e>
@@ -116,11 +112,6 @@
               <e p="GameConfiguration.cs" t="Include" />
               <e p="GameLoop.cs" t="Include" />
               <e p="GameRunner.cs" t="Include" />
-              <e p="Managers" t="Include">
-                <e p="InputManager" t="Include">
-                  <e p="InputManager.cs" t="Include" />
-                </e>
-              </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="Systems" t="Include">
                 <e p="AttackSystem.cs" t="Include" />

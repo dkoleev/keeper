@@ -1,9 +1,9 @@
-using Avocado.Framework.Patterns.AbstractFactory;
+using Avocado.Game.Components;
 using JetBrains.Annotations;
 
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
-    [ObjectType("PlayerControls")]
+    [ComponentType(ComponentType.PlayerControls)]
     public readonly struct PlayerControlsComponentData : IComponentData {
     }
 }

@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using Avocado.Framework.Patterns.EventSystem;
 using Avocado.Game.Components;
-using Avocado.Game.Components.Weapons;
-using Avocado.Game.Data;
 using Avocado.Game.Entities;
 using Avocado.Game.Events;
 
@@ -11,51 +9,13 @@ namespace Avocado.Game.Worlds {
     public class World {
         private static readonly Dictionary<Type, List<IComponent>> Components = new Dictionary<Type, List<IComponent>>();
 
-        public World(GameData data) {
-            
-        }
-
-        public static void AddComponent(IComponent component, ComponentType type) {
-            switch (type) {
-                case ComponentType.Move:
-                    if (Components.ContainsKey(typeof(MoveComponent))) {
-                        Components[typeof(MoveComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(MoveComponent), new List<IComponent>{component});
-                    }
-                    break;
-                case ComponentType.Health:
-                    if (Components.ContainsKey(typeof(HealthComponent))) {
-                        Components[typeof(HealthComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(HealthComponent), new List<IComponent>{component});
-                    }
-                    break;
-                case ComponentType.PlayerControls:
-                    if (Components.ContainsKey(typeof(ControlsComponent))) {
-                        Components[typeof(ControlsComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(ControlsComponent), new List<IComponent> {component});
-                    }
-                    break;
-                case ComponentType.Attack:
-                    if (Components.ContainsKey(typeof(AttackComponent))) {
-                        Components[typeof(AttackComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(AttackComponent), new List<IComponent> {component});
-                    }
-                    break;
-                
-                //weapons
-                case ComponentType.Weapon:
-                    if (Components.ContainsKey(typeof(WeaponComponent))) {
-                        Components[typeof(WeaponComponent)].Add(component);
-                    } else {
-                        Components.Add(typeof(WeaponComponent), new List<IComponent> {component});
-                    }
-                    break;
+        public static void AddComponent(IComponent component) {
+            if (Components.ContainsKey(component.GetType())) {
+                Components[component.GetType()].Add(component);
+            } else {
+                Components.Add(component.GetType(), new List<IComponent>{component});
             }
-            
+
             EventSystem<ComponentsUpdatedEvent>.Fire();
         }
 
@@ -126,11 +86,6 @@ namespace Avocado.Game.Worlds {
         }
 
         public static TComponent GetComponentForEntity<TComponent>(Entity entity) where TComponent : IComponent {
-            var res = Components[typeof(TComponent)].Find(component => component.Entity == entity);
-            if (res == null) {
-                
-            }
-
             return (TComponent)Components[typeof(TComponent)].Find(component => component.Entity == entity);
         }
 

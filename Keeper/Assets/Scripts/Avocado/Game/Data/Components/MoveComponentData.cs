@@ -1,11 +1,9 @@
-using Avocado.Framework.Patterns.AbstractFactory;
-using Avocado.Game.Entities;
+using Avocado.Game.Components;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
-    [ObjectType("Move")]
+    [ComponentType(ComponentType.Move)]
     public readonly struct MoveComponentData : IComponentData
     {
         public readonly byte SpeedMove;

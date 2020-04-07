@@ -1,9 +1,9 @@
 using Avocado.Game.Data;
-using Avocado.Game.Data.Components.Weapons;
+using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
 using JetBrains.Annotations;
 
-namespace Avocado.Game.Components.Weapons {
+namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Weapon)]
     public class WeaponComponent : ComponentBase<WeaponComponentData> {

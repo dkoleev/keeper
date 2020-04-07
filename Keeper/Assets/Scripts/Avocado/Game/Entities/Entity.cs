@@ -52,7 +52,7 @@ namespace Avocado.Game.Entities
 
         private void AddComponent(ComponentType componentType, IComponentData data) {
             var component = ComponentsFactory<IComponent>.Create(componentType, this, data);
-            World.AddComponent(component, componentType);
+            World.AddComponent(component);
         }
 
         public void Destroy() {

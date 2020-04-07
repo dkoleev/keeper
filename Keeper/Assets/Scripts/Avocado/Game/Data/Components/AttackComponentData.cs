@@ -1,9 +1,9 @@
-using Avocado.Framework.Patterns.AbstractFactory;
+using Avocado.Game.Components;
 using JetBrains.Annotations;
 
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
-    [ObjectType("Attack")]
+    [ComponentType(ComponentType.Attack)]
     public readonly struct AttackComponentData : IComponentData {
         public readonly string Weapon;
         public readonly int StartAmmo;

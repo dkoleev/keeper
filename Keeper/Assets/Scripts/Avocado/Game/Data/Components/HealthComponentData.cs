@@ -1,12 +1,10 @@
-using Avocado.Framework.Patterns.AbstractFactory;
-using Avocado.Game.Entities;
+using Avocado.Game.Components;
 using JetBrains.Annotations;
-using Newtonsoft.Json;
 
 namespace Avocado.Game.Data.Components
 {
     [UsedImplicitly]
-    [ObjectType("Health")]
+    [ComponentType(ComponentType.Health)]
     public readonly struct HealthComponentData : IComponentData
     {
         public readonly int MaxHealth;

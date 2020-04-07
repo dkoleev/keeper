@@ -1,9 +1,9 @@
-using Avocado.Framework.Patterns.AbstractFactory;
+using Avocado.Game.Components;
 using JetBrains.Annotations;
 
-namespace Avocado.Game.Data.Components.Weapons {
+namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
-    [ObjectType("Weapon")]
+    [ComponentType(ComponentType.Weapon)]
     public struct WeaponComponentData : IComponentData {
         public readonly int Damage;
         public readonly int Clip;
