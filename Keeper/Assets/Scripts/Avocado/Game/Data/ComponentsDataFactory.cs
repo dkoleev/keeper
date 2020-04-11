@@ -25,11 +25,12 @@ namespace Avocado.Game.Data {
                     return new AttackComponentData(currentWeapon, startAmmo);
                 
                 case ComponentType.Weapon:
-                    var damage = data["Damage"].Value<int>();
+                    var damage = data["Damage"].Value<float>();
+                    var delay = data["Delay"].Value<float>();
                     var clip = data["Clip"].Value<int>();
-                    var range = data["Range"].Value<int>();
+                    var range = data["Range"].Value<float>();
                     
-                    return new WeaponComponentData(damage, clip, range);
+                    return new WeaponComponentData(damage, delay, clip, range);
             }
 
             return null;

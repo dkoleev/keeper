@@ -67,7 +67,7 @@ namespace Avocado.Game.Systems
                     _mooving = true;
                 }
 
-                components.move.MoveTransform.position += new Vector3(_moveAxis.x * Time.deltaTime * components.move.SpeedMove, 0, _moveAxis.y * Time.deltaTime * components.move.SpeedMove);
+                components.move.Entity.MoveTransform.position += new Vector3(_moveAxis.x * Time.deltaTime * components.move.SpeedMove, 0, _moveAxis.y * Time.deltaTime * components.move.SpeedMove);
             }
             else
             {
@@ -94,13 +94,13 @@ namespace Avocado.Game.Systems
                 move.Normalize();
             }
             
-            var angleCurrent = Mathf.Atan2( moveComponent.RotateTransform.forward.x, moveComponent.RotateTransform.forward.z) * Mathf.Rad2Deg;
+            var angleCurrent = Mathf.Atan2( moveComponent.Entity.RotateTransform.forward.x, moveComponent.Entity.RotateTransform.forward.z) * Mathf.Rad2Deg;
             var targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
             var deltaAngle = Mathf.DeltaAngle(angleCurrent, targetAngle);
             var targetLocalRot = Quaternion.Euler(0, deltaAngle, 0);
             var targetRotation = Quaternion.Slerp(Quaternion.identity, targetLocalRot, moveComponent.SpeedRotate * Time.deltaTime);
             
-            moveComponent.RotateTransform.rotation *= targetRotation;
+            moveComponent.Entity.RotateTransform.rotation *= targetRotation;
         }
     }
 }

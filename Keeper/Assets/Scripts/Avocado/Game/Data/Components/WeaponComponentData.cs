@@ -5,12 +5,14 @@ namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Weapon)]
     public struct WeaponComponentData : IComponentData {
-        public readonly int Damage;
+        public readonly float Damage;
+        public readonly float Delay;
         public readonly int Clip;
-        public readonly int Range;
+        public readonly float Range;
 
-        public WeaponComponentData(int damage, int clip, int range) {
+        public WeaponComponentData(float damage, float delay, int clip, float range) {
             Damage = damage;
+            Delay = delay;
             Clip = clip;
             Range = range;
         }

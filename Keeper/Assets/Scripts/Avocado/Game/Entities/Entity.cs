@@ -6,6 +6,8 @@ using UnityEngine;
 namespace Avocado.Game.Entities
 {
     public class Entity : MonoBehaviourWrapper {
+        public Transform RotateTransform { get; private set; }
+        public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
         public GameData GameData { get; private set; }
 
@@ -26,6 +28,8 @@ namespace Avocado.Game.Entities
         private void Initialize(in EntityData entityData, in GameData gameData) {
             GameData = gameData;
             Animator = GetComponentInChildren<Animator>();
+            RotateTransform = Animator == null ? transform : Animator.transform;
+            MoveTransform = transform;
             
             if (!string.IsNullOrEmpty(entityData.Parent)) {
                 AddComponents(entityData, gameData.Entities.Entities[entityData.Parent]);

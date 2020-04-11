@@ -19,8 +19,8 @@ namespace Avocado.Game.Components {
             if (!string.IsNullOrEmpty(Data.Weapon)) {
                 var weaponParent = Entity.gameObject.GetComponentInChildren<WeaponPlacer>();
                 _currentWeapon = Entity.Create(Entity.GameData, Data.Weapon, Vector3.zero, weaponParent.transform);
-                _currentWeapon.transform.position = Vector3.zero;
-                _currentWeapon.transform.rotation = Quaternion.identity;
+                _currentWeapon.transform.localPosition = Vector3.zero;
+                _currentWeapon.transform.localRotation = Quaternion.identity;
                 WeaponComponent = World.GetComponentForEntity<WeaponComponent>(_currentWeapon);
             }
         }

@@ -11,13 +11,9 @@ namespace Avocado.Game.Components {
         public float SpeedMove => Data.SpeedMove;
         public float CurrentSpeedMove { get; set; }
         public float SpeedRotate => Data.SpeedRotate;
-        public Transform RotateTransform { get; }
-        public Transform MoveTransform { get; }
 
         public MoveComponent(Entity entity, MoveComponentData data) : base(entity, data)
         {
-            RotateTransform = Entity.GetComponentInChildren<Animator>().transform;
-            MoveTransform = Entity.transform;
             CurrentSpeedMove = 0;
         }
     }

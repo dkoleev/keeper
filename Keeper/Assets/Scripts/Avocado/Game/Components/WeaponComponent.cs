@@ -8,8 +8,10 @@ namespace Avocado.Game.Components {
     [ComponentType(ComponentType.Weapon)]
     public class WeaponComponent : ComponentBase<WeaponComponentData> {
         public bool IsAttack { get; set; }
-        public int Damage => Data.Damage;
-        public int Range => Data.Range;
+        public float Damage => Data.Damage;
+        public float Delay => Data.Delay;
+        public float CurrentDelay { get; set; }
+        public float Range => Data.Range;
         public int Ammo {
             get => _currentAmmo;
             set => _currentAmmo = value;

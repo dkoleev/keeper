@@ -4,13 +4,12 @@ using Avocado.Game.Components;
 using Avocado.Game.Data;
 using Avocado.Game.Events;
 using Avocado.Game.Worlds;
-using Unity.Collections;
 using UnityEngine;
-using Unity.Jobs;
 
 namespace Avocado.Game.Systems {
     public class AttackSystem : BaseSystem {
         private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
+        private readonly int _idleWeaponAnimationKey = Animator.StringToHash("IdleWeapon");
         private List<(AttackComponent attackComponent, MoveComponent moveComponent)> _components = new List<(AttackComponent, MoveComponent)>();
         private List<HealthComponent> _targets = new List<HealthComponent>();
 
@@ -38,7 +37,7 @@ namespace Avocado.Game.Systems {
 
                                 if (!fireAttackComponent.IsAttack) {
                                     fireAttackComponent.IsAttack = true;
-                                    componentTuple.attackComponent.Entity.Animator.SetBool(_attackAnimationKey, fireAttackComponent.IsAttack);
+                                    componentTuple.attackComponent.Entity.RotateTransform.LookAt(target.Entity.transform);
                                 }
 
                                 break;
@@ -56,7 +55,23 @@ namespace Avocado.Game.Systems {
                     fireAttackComponent.IsAttack = false;
                     componentTuple.attackComponent.Entity.Animator.SetBool(_attackAnimationKey, fireAttackComponent.IsAttack);
                 }
+                
+               // componentTuple.attackComponent.Entity.Animator.SetBool(_idleWeaponAnimationKey, fireAttackComponent.IsAttack);
+
+                if (fireAttackComponent.IsAttack) {
+                    if (fireAttackComponent.CurrentDelay <= 0) {
+                        fireAttackComponent.CurrentDelay = fireAttackComponent.Delay;
+                        Shoot(componentTuple.attackComponent);
+                    }
+
+                    fireAttackComponent.CurrentDelay -= Time.deltaTime;
+                }
             }
+        }
+
+        private void Shoot(AttackComponent attack) {
+            attack.Entity.Animator.ResetTrigger(_attackAnimationKey);
+            attack.Entity.Animator.SetTrigger(_attackAnimationKey);
         }
     }
 }
