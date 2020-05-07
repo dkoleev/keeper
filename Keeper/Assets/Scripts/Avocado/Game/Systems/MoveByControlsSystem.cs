@@ -18,6 +18,7 @@ namespace Avocado.Game.Systems
         private bool _initialized;
         private bool _mooving;
         private readonly int _speedMoveAnimationKey = Animator.StringToHash("SpeedMove");
+        private readonly int _stateAnimationKey = Animator.StringToHash("State");
         private List<(ControlsComponent component1, MoveComponent component2)> _components = new List<(ControlsComponent, MoveComponent)>();
         
         public MoveByControlsSystem(GameData data) : base(data)
@@ -75,16 +76,18 @@ namespace Avocado.Game.Systems
             }
             
             if (_mooving) {
+                components.controls.Entity.Animator.SetInteger(_stateAnimationKey, 1);
                 var speed =(Mathf.Abs(_moveAxis.x) + Mathf.Abs(_moveAxis.y));
                 components.controls.Entity.Animator.SetFloat(_speedMoveAnimationKey, speed);
             } else {
+                components.controls.Entity.Animator.SetInteger(_stateAnimationKey, 0);
                 components.controls.Entity.Animator.SetFloat(_speedMoveAnimationKey, 0);
             }
 
-            Rotate(components.controls, components.move);
+            Rotate(components.move.Entity.RotateTransform, components.move.SpeedRotate);
         }
 
-        private void Rotate(ControlsComponent controlsComponent, MoveComponent moveComponent) {
+        private void Rotate(Transform target, float speed) {
             if (_moveAxis.magnitude < 0.001f) {
                 return;
             }
@@ -94,13 +97,13 @@ namespace Avocado.Game.Systems
                 move.Normalize();
             }
             
-            var angleCurrent = Mathf.Atan2( moveComponent.Entity.RotateTransform.forward.x, moveComponent.Entity.RotateTransform.forward.z) * Mathf.Rad2Deg;
+            var angleCurrent = Mathf.Atan2( target.forward.x, target.forward.z) * Mathf.Rad2Deg;
             var targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
             var deltaAngle = Mathf.DeltaAngle(angleCurrent, targetAngle);
             var targetLocalRot = Quaternion.Euler(0, deltaAngle, 0);
-            var targetRotation = Quaternion.Slerp(Quaternion.identity, targetLocalRot, moveComponent.SpeedRotate * Time.deltaTime);
+            var targetRotation = Quaternion.Slerp(Quaternion.identity, targetLocalRot, speed * Time.deltaTime);
             
-            moveComponent.Entity.RotateTransform.rotation *= targetRotation;
+            target.rotation *= targetRotation;
         }
     }
 }

@@ -8,8 +8,8 @@ using UnityEngine;
 
 namespace Avocado.Game.Systems {
     public class AttackSystem : BaseSystem {
-        private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
-        private readonly int _idleWeaponAnimationKey = Animator.StringToHash("IdleWeapon");
+        private readonly int _animatorConditionId = Animator.StringToHash("ID");
+        private readonly int _animatorMode = Animator.StringToHash("Mode");
         private List<(AttackComponent attackComponent, MoveComponent moveComponent)> _components = new List<(AttackComponent, MoveComponent)>();
         private List<HealthComponent> _targets = new List<HealthComponent>();
 
@@ -34,7 +34,6 @@ namespace Avocado.Game.Systems {
                     foreach (var target in _targets) {
                         if (componentTuple.moveComponent.Entity != target.Entity) {
                             if (Vector3.Distance(componentTuple.moveComponent.Entity.transform.position, target.Entity.transform.position) <= componentTuple.attackComponent.WeaponComponent.Range) {
-
                                 if (!fireAttackComponent.IsAttack) {
                                     fireAttackComponent.IsAttack = true;
                                     componentTuple.attackComponent.Entity.RotateTransform.LookAt(target.Entity.transform);
@@ -48,16 +47,12 @@ namespace Avocado.Game.Systems {
                             }
 
                             fireAttackComponent.IsAttack = false;
-                            componentTuple.attackComponent.Entity.Animator.SetBool(_attackAnimationKey,  fireAttackComponent.IsAttack);
                         }
                     }
                 } else if (fireAttackComponent.IsAttack) {
                     fireAttackComponent.IsAttack = false;
-                    componentTuple.attackComponent.Entity.Animator.SetBool(_attackAnimationKey, fireAttackComponent.IsAttack);
                 }
                 
-               // componentTuple.attackComponent.Entity.Animator.SetBool(_idleWeaponAnimationKey, fireAttackComponent.IsAttack);
-
                 if (fireAttackComponent.IsAttack) {
                     if (fireAttackComponent.CurrentDelay <= 0) {
                         fireAttackComponent.CurrentDelay = fireAttackComponent.Delay;
@@ -65,13 +60,15 @@ namespace Avocado.Game.Systems {
                     }
 
                     fireAttackComponent.CurrentDelay -= Time.deltaTime;
-                }
+                } 
+
+                componentTuple.attackComponent.Entity.Animator.SetInteger(_animatorConditionId,  fireAttackComponent.IsAttack ? 1 : 0);
+                componentTuple.attackComponent.Entity.Animator.SetInteger(_animatorMode,  fireAttackComponent.IsAttack ? 101 : 100);
             }
         }
 
         private void Shoot(AttackComponent attack) {
-            attack.Entity.Animator.ResetTrigger(_attackAnimationKey);
-            attack.Entity.Animator.SetTrigger(_attackAnimationKey);
+            attack.Entity.Animator.SetInteger(_animatorConditionId, 2);
         }
     }
 }
