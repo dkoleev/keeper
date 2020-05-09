@@ -17,11 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e2200c97a45d64a4dba7d6ce67be73ec
   m_SerializeEntries:
+  - m_GUID: 13bb602864959d44396cfe3bc99e978c
+    m_Address: Revolver
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 7e3fff33a5de28d41914b832f11756e5
     m_Address: Assets/Content
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 54b3282cd7e64384aab6557f2363a6af, type: 2}
   m_SchemaSet:
