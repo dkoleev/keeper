@@ -56,6 +56,76 @@
               </e>
             </e>
           </e>
+          <e p="UI Builder" t="Include">
+            <e p="0.11.0-preview" t="Include">
+              <e p="OptionsPanel" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="Resources" t="Include">
+                    <e p="UI Builder" t="Include">
+                      <e p="OptionsPanel" t="Include">
+                        <e p="options_panel.uss" t="Include" />
+                      </e>
+                    </e>
+                  </e>
+                </e>
+                <e p="options_panel.uxml" t="Include" />
+              </e>
+              <e p="TanksGameScreen" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="Resources" t="Include">
+                    <e p="UI Builder" t="Include">
+                      <e p="TanksGameScreen" t="Include">
+                        <e p="OFL.txt" t="Include" />
+                        <e p="TanksGameScreen.uss" t="Include" />
+                        <e p="TanksGameScreenStatsBox_USS.uss" t="Include" />
+                        <e p="TanksGameScreenStatsBox_UXML.uxml" t="Include" />
+                      </e>
+                    </e>
+                  </e>
+                </e>
+                <e p="TanksGameScreen.uxml" t="Include" />
+              </e>
+              <e p="TanksMainMenu" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="Resources" t="Include">
+                    <e p="UI Builder" t="Include">
+                      <e p="TanksMainMenu" t="Include">
+                        <e p="OFL.txt" t="Include" />
+                        <e p="TanksMainMenu.uss" t="Include" />
+                      </e>
+                    </e>
+                  </e>
+                </e>
+                <e p="TanksMainMenu.uxml" t="Include" />
+              </e>
+              <e p="TanksPlayerListItem" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="Resources" t="Include">
+                    <e p="UI Builder" t="Include">
+                      <e p="TanksPlayerListItem" t="Include">
+                        <e p="OFL.txt" t="Include" />
+                        <e p="TanksPlayerListItem.uss" t="Include" />
+                      </e>
+                    </e>
+                  </e>
+                </e>
+                <e p="TanksPlayerListItem.uxml" t="Include" />
+              </e>
+              <e p="TanksStatsBox" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="Resources" t="Include">
+                    <e p="UI Builder" t="Include">
+                      <e p="TanksStatsBox" t="Include">
+                        <e p="OFL.txt" t="Include" />
+                        <e p="TanksStatsBox.uss" t="Include" />
+                      </e>
+                    </e>
+                  </e>
+                </e>
+                <e p="TanksStatsBox.uxml" t="Include" />
+              </e>
+            </e>
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="Avocado" t="Include">
