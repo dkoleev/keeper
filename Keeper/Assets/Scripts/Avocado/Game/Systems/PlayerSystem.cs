@@ -20,16 +20,16 @@ namespace Avocado.Game.Systems {
         }
 
         private void CreateActors() {
-            var player = Entity.Create(Data, "Player");
-            
-            _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
-            if (_brain.ActiveVirtualCamera == null) {
-                _brain.m_CameraActivatedEvent.AddListener((arg0, camera) => {
+            Entity.Create(Data, "Player", player => {
+                _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
+                if (_brain.ActiveVirtualCamera == null) {
+                    _brain.m_CameraActivatedEvent.AddListener((arg0, camera) => {
+                        _brain.ActiveVirtualCamera.Follow = player.transform;
+                    });
+                } else {
                     _brain.ActiveVirtualCamera.Follow = player.transform;
-                });
-            } else {
-                _brain.ActiveVirtualCamera.Follow = player.transform;
-            }
+                }
+            });
         }
 
         public void Dead() {

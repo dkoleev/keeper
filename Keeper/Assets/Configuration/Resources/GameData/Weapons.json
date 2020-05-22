@@ -2,7 +2,7 @@
 	"Entities" : {
 		"Revolver": {
 			"Parent": null,
-			"Prefab": "Weapons/Revolver",
+			"Prefab": "Revolver",
 			"Components": {
 				"Weapon": {
 					"Type": "Weapon",

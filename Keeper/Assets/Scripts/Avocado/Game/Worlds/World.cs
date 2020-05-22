@@ -25,7 +25,11 @@ namespace Avocado.Game.Worlds {
         
         public static List<TComponent> GetComponents<TComponent>()
             where TComponent : IComponent {
-            List<TComponent> result = new List<TComponent>();
+            if (!Components.ContainsKey(typeof(TComponent))) {
+                return null;
+            }
+
+            var result = new List<TComponent>();
             var components1 = Components[typeof(TComponent)];
 
             foreach (var component in components1) {
