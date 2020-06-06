@@ -1,59 +1,44 @@
-﻿using System.Collections.Generic;
-using Avocado.Framework.Patterns.EventSystem;
+﻿using Avocado.Game.Core;
 using Avocado.Game.Data;
-using Avocado.Game.Events;
-using Avocado.Game.Systems;
+using Avocado.Game.Entities;
 using Avocado.Game.Worlds;
 using UnityEngine;
 
 namespace Avocado.Game {
     [DisallowMultipleComponent]
-    public class GameRunner : MonoBehaviourWrapper {
-        private List<BaseSystem> _systems;
-        private World _world;
-
-        private bool _initialized;
+    public class GameRunner : MonoBehaviourWrapper, IInitializable {
+        public bool Initialized { get; private set; }
         
         protected override void Start()
         {
             base.Start();
-            
+            Initialize();
+        }
+        
+        public void Initialize() {
             Load();
             var goLoop = new GameObject("GameLoop");
             goLoop.AddComponent<GameLoop>();
+
+            Initialized = true;
+        }
+        
+        private void Load() {
+            LoadGameState();
+            var gameData = LoadConfiguration();
+            LoadWorld(gameData);
         }
 
         protected override void Update()
         {
             base.Update();
 
-            if (!_initialized)
+            if (!Initialized)
             {
                 return;
             }
-
-            foreach (var system in _systems)
-            {
-                system.Update();
-            }
         }
-
-        private void Load() {
-            LoadGameState();
-            var gameData = LoadConfiguration();
-            LoadWorld();
-            LoadSystems(gameData);
-
-            EventSystem<PlayerDeadEvent>.Subscribe(data => {
-                Debug.Log("fire event " + data.LiveTime);
-            });
-
-            var playerSystem = GetSystem<PlayerSystem>();
-            playerSystem.Dead();
-
-            _initialized = true;
-        }
-
+        
         private GameData LoadConfiguration() {
             var loader = new DotNetJsonLoader();
             var config = new GameConfiguration();
@@ -64,33 +49,18 @@ namespace Avocado.Game {
             
         }
 
-        private void LoadWorld()
-        {
-            _world = new World();
+        private void LoadWorld(GameData data) {
+            World.CreateEntity<PlayerEntity>(data, "Player");
+            World.CreateEntity(data, "Zombie", new Vector3(10, 0, 10));
         }
 
-        private void LoadSystems(GameData gameData)
-        {
-            _systems = new List<BaseSystem> {
-                new MoveByControlsSystem(gameData),
-                new PlayerSystem(gameData),
-                new AttackSystem(gameData),
-                new SpawnSystem(gameData)
-            };
+        private void Test() {
+            /*EventSystem<PlayerDeadEvent>.Subscribe(data => {
+                Debug.Log("fire event " + data.LiveTime);
+            });
 
-            foreach (var system in _systems) {
-                system.Initialize();
-            }
-        }
-
-        private TSystem GetSystem<TSystem>() where TSystem : class {
-            foreach (var system in _systems) {
-                if (system is TSystem system1) {
-                    return system1;
-                }
-            }
-
-            return null;
+            var playerSystem = GetSystem<PlayerSystem>();
+            playerSystem.Dead();*/
         }
     }
 }

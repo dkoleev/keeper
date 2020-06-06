@@ -1,48 +1,55 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using Avocado.Game.Components;
 using Avocado.Game.Data;
-using Avocado.Game.Worlds;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Object = UnityEngine.Object;
 
-namespace Avocado.Game.Entities
-{
+namespace Avocado.Game.Entities {
     public class Entity : MonoBehaviourWrapper {
         public Transform RotateTransform { get; private set; }
         public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
+
         public GameData GameData { get; private set; }
+        public EntityData EntityData { get; private set; }
+        public string EntityId { get; private set; }
+        
+        private readonly List<IComponent> _components = new List<IComponent>(3);
 
-        public static void Create(GameData data, string entityId, Vector3 startPosition, Transform parent = null, Action<Entity> onCreate = null) {
-            var entityData = data.Entities.Entities[entityId];
-            Addressables.InstantiateAsync(entityData.Prefab, startPosition, Quaternion.identity, parent).Completed += onLoad;
-
-            void onLoad(AsyncOperationHandle<GameObject> handle) {
-                var go = handle.Result;
-                var entity = go.AddComponent<Entity>();
-                entity.Initialize(entityData, data);
-
-                onCreate?.Invoke(entity);
-            }
-        }
-
-        public static void Create(GameData data, string entityId, Action<Entity> onCreate = null) {
-            Create(data, entityId, Vector3.zero, null, onCreate);
-        }
-
-        private void Initialize(in EntityData entityData, in GameData gameData) {
+        public virtual void Initialize(string entityId, in EntityData entityData, in GameData gameData) {
             GameData = gameData;
-            Animator = GetComponentInChildren<Animator>();
-            RotateTransform = Animator == null ? transform : Animator.transform;
-            MoveTransform = transform;
+            EntityData = entityData;
+            EntityId = entityId;
             
-            if (!string.IsNullOrEmpty(entityData.Parent)) {
-                AddComponents(entityData, gameData.Entities.Entities[entityData.Parent]);
+            if (!string.IsNullOrEmpty(EntityData.Parent)) {
+                AddComponents(EntityData, GameData.Entities.Entities[EntityData.Parent]);
             } else {
-                AddComponents(entityData);
+                AddComponents(EntityData);
             }
+
+            InitializeComponents();
+
+            Animator = GetComponentInChildren<Animator>();
+            var mainTransform = transform;
+            RotateTransform = Animator == null ? mainTransform : Animator.transform;
+            MoveTransform = mainTransform;
+        }
+        
+        protected override void Update() {
+            base.Update();
+            UpdateComponents();
+        }
+
+        public IComponent GetComponentByType<T>() where T : IComponent{
+            foreach (var component in _components) {
+                if (component.GetType() == typeof(T)) {
+                    return component;
+                }
+            }
+
+            return null;
         }
 
         private void AddComponents(in EntityData data) {
@@ -63,11 +70,20 @@ namespace Avocado.Game.Entities
 
         private void AddComponent(ComponentType componentType, IComponentData data) {
             var component = ComponentsFactory<IComponent>.Create(componentType, this, data);
-            World.AddComponent(component);
+            _components.Add(component);
         }
 
-        public void Destroy() {
-            World.RemoveEntityComponents(this);
+        private void InitializeComponents() {
+            foreach (var component in _components) {
+                component.Initialize();
+            }
+        }
+
+        private void UpdateComponents() {
+            var tempComponents = _components.ToArray();
+            foreach (var component in tempComponents) {
+                component.Update();
+            }
         }
     }
 }

@@ -2,7 +2,6 @@ using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
 using JetBrains.Annotations;
-using UnityEngine;
 
 namespace Avocado.Game.Components {
     [UsedImplicitly]
