@@ -29,7 +29,7 @@ namespace Avocado.Game.Components {
             base.Initialize();
             if (!string.IsNullOrEmpty(Data.Weapon)) {
                 var weaponParent = Entity.gameObject.GetComponentInChildren<WeaponPlacer>();
-                World.CreateEntity(Entity.GameData, Data.Weapon, Vector3.zero, weaponParent.transform,
+                World.CreateEntity(Data.Weapon, Vector3.zero, weaponParent.transform,
                     weaponEntity => {
                         _currentWeapon = weaponEntity;
                         _currentWeapon.transform.localPosition = Vector3.zero;

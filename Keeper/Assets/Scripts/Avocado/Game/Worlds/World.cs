@@ -8,38 +8,50 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Avocado.Game.Worlds {
-    public static class World {
+    public class World{
+        private static GameData _gameData;
         private static readonly List<Entity> _entities = new List<Entity>();
+        private static WorldGenerator _generator;
+        
+        public static void Initialize(GameData gameData) {
+            _gameData = gameData;
+            _generator = new WorldGenerator();
+        }
 
-        public static void CreateEntity<T>(GameData data, string entityId, Vector3 startPosition, Transform parent = null, Action<Entity> onCreate = null)
+        public static void Create() {
+            CreateEntity<PlayerEntity>("Player");
+            _generator.Generate();
+        }
+
+        public static void CreateEntity<T>(string entityId, Vector3 startPosition, Transform parent = null, Action<Entity> onCreate = null)
             where T : Entity {
-            var entityData = data.Entities.Entities[entityId];
+            var entityData = _gameData.Entities.Entities[entityId];
             Addressables.InstantiateAsync(entityData.Prefab, startPosition, Quaternion.identity, parent).Completed += OnLoad;
             void OnLoad(AsyncOperationHandle<GameObject> handle) {
                 var go = handle.Result;
                 var entity = go.AddComponent<T>();
-                entity.Initialize(entityId, entityData, data);
+                entity.Initialize(entityId, entityData, _gameData);
                 _entities.Add(entity);
                 
                 onCreate?.Invoke(entity);
             }
         }
         
-        public static void CreateEntity(GameData data,
+        public static void CreateEntity(
             string entityId,
             Vector3 startPosition,
             Transform parent = null,
             Action<Entity> onCreate = null) {
-            CreateEntity<Entity>(data, entityId, startPosition, parent, onCreate);
+            CreateEntity<Entity>(entityId, startPosition, parent, onCreate);
         }
 
-        public static void CreateEntity<T>(GameData data, string entityId, Action<Entity> onCreate = null)
+        public static void CreateEntity<T>(string entityId, Action<Entity> onCreate = null)
             where T : Entity{
-            CreateEntity<T>(data, entityId, Vector3.zero, null, onCreate);
+            CreateEntity<T>(entityId, Vector3.zero, null, onCreate);
         }
         
-        public static void CreateEntity(GameData data, string entityId, Action<Entity> onCreate = null){
-            CreateEntity<Entity>(data, entityId, Vector3.zero, null, onCreate);
+        public static void CreateEntity( string entityId, Action<Entity> onCreate = null){
+            CreateEntity<Entity>(entityId, Vector3.zero, null, onCreate);
         }
 
         public static IReadOnlyList<Entity> GetEntitiesWithComponent<T>() where T : IComponent {

@@ -187,6 +187,9 @@
               <e p="GameLoop.cs" t="Include" />
               <e p="GameRunner.cs" t="Include" />
               <e p="MonoBehaviourWrapper.cs" t="Include" />
+              <e p="Systems" t="Include">
+                <e p="SpawnSystem.cs" t="Include" />
+              </e>
               <e p="UI" t="Include">
                 <e p="Tools" t="Include">
                   <e p="BackgroundBacther.cs" t="Include" />
@@ -194,6 +197,7 @@
               </e>
               <e p="Worlds" t="Include">
                 <e p="World.cs" t="Include" />
+                <e p="WorldGenerator.cs" t="Include" />
               </e>
             </e>
             <e p="Main.asmdef" t="Include" />

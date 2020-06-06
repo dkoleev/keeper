@@ -50,8 +50,8 @@ namespace Avocado.Game {
         }
 
         private void LoadWorld(GameData data) {
-            World.CreateEntity<PlayerEntity>(data, "Player");
-            World.CreateEntity(data, "Zombie", new Vector3(10, 0, 10));
+            World.Initialize(data);
+            World.Create();
         }
 
         private void Test() {
