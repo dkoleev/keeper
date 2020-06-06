@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: fda287911c8b12440b7bbd6197972197, type: 2}
 --- !u!4 &28137975 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422112, guid: 113d994385275e0429a00fdee9fe650b,
@@ -870,6 +870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SA_Env_ForestTile_01
       objectReference: {fileID: 0}
+    - target: {fileID: 158148, guid: 113d994385275e0429a00fdee9fe650b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 422112, guid: 113d994385275e0429a00fdee9fe650b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
@@ -914,7 +918,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 170388050953160754, guid: 113d994385275e0429a00fdee9fe650b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 170388050953160754, guid: 113d994385275e0429a00fdee9fe650b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 113d994385275e0429a00fdee9fe650b, type: 3}
 --- !u!1001 &797863123
 PrefabInstance:
@@ -997,6 +1007,10 @@ PrefabInstance:
     - target: {fileID: 1936706459568100, guid: 0d8974133bae69b4bb417ea8542855b1, type: 3}
       propertyPath: m_Name
       value: SM_Env_Rock_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936706459568100, guid: 0d8974133bae69b4bb417ea8542855b1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4059559679900616, guid: 0d8974133bae69b4bb417ea8542855b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1196,6 +1210,10 @@ PrefabInstance:
     - target: {fileID: 1259743623468626, guid: 8f3c2b79887cfc44c98b550b0b5da119, type: 3}
       propertyPath: m_Name
       value: SM_Env_Tree_Pine_Tall_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259743623468626, guid: 8f3c2b79887cfc44c98b550b0b5da119, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4745191290580200, guid: 8f3c2b79887cfc44c98b550b0b5da119, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1415,7 +1433,6 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
   m_Cameras: []
   m_RendererIndex: 0
   m_VolumeLayerMask:
@@ -1427,6 +1444,7 @@ MonoBehaviour:
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -1655,6 +1673,10 @@ PrefabInstance:
     - target: {fileID: 1163752509719478, guid: 09bb74408a476974c9b51750f5159573, type: 3}
       propertyPath: m_Name
       value: SM_Env_Overgrowth_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163752509719478, guid: 09bb74408a476974c9b51750f5159573, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4477281681761694, guid: 09bb74408a476974c9b51750f5159573, type: 3}
       propertyPath: m_LocalPosition.x
