@@ -6,7 +6,7 @@ namespace Avocado.Game.Systems {
      public class SpawnSystem : BaseSystem {
          public SpawnSystem(GameData data) : base(data) { }
          public override void Initialize() {
-             var enemy = Entity.Create(Data, "Zombie", new Vector3(10, 0, 10));
+             Entity.Create(Data, "Zombie", new Vector3(10, 0, 10));
          }
  
          public override void Update() {

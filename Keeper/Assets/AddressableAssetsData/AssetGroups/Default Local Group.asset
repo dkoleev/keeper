@@ -17,11 +17,22 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e2200c97a45d64a4dba7d6ce67be73ec
   m_SerializeEntries:
-  - m_GUID: 7e3fff33a5de28d41914b832f11756e5
-    m_Address: Assets/Content
+  - m_GUID: 13bb602864959d44396cfe3bc99e978c
+    m_Address: Revolver
     m_ReadOnly: 0
     m_SerializedLabels: []
-    m_mainAssetType: 
+  - m_GUID: 2f33f5be13784654b929377749507db6
+    m_Address: Zombie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 90ba9c491600b6d48b4e08b34a6d5ea0
+    m_Address: Player
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cc8ecd161bac65c47839e9a0cd63f815
+    m_Address: Weapons
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 54b3282cd7e64384aab6557f2363a6af, type: 2}
   m_SchemaSet:

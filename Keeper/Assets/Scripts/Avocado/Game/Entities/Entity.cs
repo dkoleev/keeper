@@ -1,7 +1,11 @@
-﻿using Avocado.Game.Components;
+﻿using System;
+using Avocado.Game.Components;
 using Avocado.Game.Data;
 using Avocado.Game.Worlds;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using Object = UnityEngine.Object;
 
 namespace Avocado.Game.Entities
 {
@@ -11,18 +15,21 @@ namespace Avocado.Game.Entities
         public Animator Animator { get; private set; }
         public GameData GameData { get; private set; }
 
-        public static Entity Create(GameData data, string entityId, Vector3 startPosition, Transform parent = null) {
+        public static void Create(GameData data, string entityId, Vector3 startPosition, Transform parent = null, Action<Entity> onCreate = null) {
             var entityData = data.Entities.Entities[entityId];
-            var entityPrefab = Resources.Load<GameObject>(entityData.Prefab);
-            var go = Object.Instantiate(entityPrefab, startPosition, Quaternion.identity, parent);
-            var entity = go.AddComponent<Entity>();
-            entity.Initialize(entityData, data);
+            Addressables.InstantiateAsync(entityData.Prefab, startPosition, Quaternion.identity, parent).Completed += onLoad;
 
-            return entity;
+            void onLoad(AsyncOperationHandle<GameObject> handle) {
+                var go = handle.Result;
+                var entity = go.AddComponent<Entity>();
+                entity.Initialize(entityData, data);
+
+                onCreate?.Invoke(entity);
+            }
         }
 
-        public static Entity Create(GameData data, string entityId) {
-            return Create(data, entityId, Vector3.zero);
+        public static void Create(GameData data, string entityId, Action<Entity> onCreate = null) {
+            Create(data, entityId, Vector3.zero, null, onCreate);
         }
 
         private void Initialize(in EntityData entityData, in GameData gameData) {

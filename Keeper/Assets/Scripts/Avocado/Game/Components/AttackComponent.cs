@@ -10,18 +10,21 @@ namespace Avocado.Game.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Attack)]
     public class AttackComponent : ComponentBase<AttackComponentData> {
-        public WeaponComponent WeaponComponent { get; }
+        public WeaponComponent WeaponComponent { get; private set; }
         public int StartAmmo => Data.StartAmmo;
-        
-        private Entity _currentWeapon { get; }
+
+        private Entity _currentWeapon;
 
         public AttackComponent(Entity entity, AttackComponentData data) : base(entity, data) {
             if (!string.IsNullOrEmpty(Data.Weapon)) {
                 var weaponParent = Entity.gameObject.GetComponentInChildren<WeaponPlacer>();
-                _currentWeapon = Entity.Create(Entity.GameData, Data.Weapon, Vector3.zero, weaponParent.transform);
-                _currentWeapon.transform.localPosition = Vector3.zero;
-                _currentWeapon.transform.localRotation = Quaternion.identity;
-                WeaponComponent = World.GetComponentForEntity<WeaponComponent>(_currentWeapon);
+                Entity.Create(Entity.GameData, Data.Weapon, Vector3.zero, weaponParent.transform,
+                    weaponEntity => {
+                        _currentWeapon = weaponEntity;
+                        _currentWeapon.transform.localPosition = Vector3.zero;
+                        _currentWeapon.transform.localRotation = Quaternion.identity;
+                        WeaponComponent = World.GetComponentForEntity<WeaponComponent>(_currentWeapon);
+                    });
             }
         }
     }

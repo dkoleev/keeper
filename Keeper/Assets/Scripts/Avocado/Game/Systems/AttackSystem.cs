@@ -32,7 +32,8 @@ namespace Avocado.Game.Systems {
                 var isMoving = componentTuple.moveComponent.CurrentSpeedMove > 0;
                 if (!isMoving) {
                     foreach (var target in _targets) {
-                        if (componentTuple.moveComponent.Entity != target.Entity) {
+                        if (componentTuple.moveComponent.Entity != target.Entity &&
+                            !(componentTuple.attackComponent.WeaponComponent is null)) {
                             if (Vector3.Distance(componentTuple.moveComponent.Entity.transform.position, target.Entity.transform.position) <= componentTuple.attackComponent.WeaponComponent.Range) {
                                 if (!fireAttackComponent.IsAttack) {
                                     fireAttackComponent.IsAttack = true;
@@ -52,7 +53,11 @@ namespace Avocado.Game.Systems {
                 } else if (fireAttackComponent.IsAttack) {
                     fireAttackComponent.IsAttack = false;
                 }
-                
+
+                if (fireAttackComponent is null) {
+                    return;
+                }
+
                 if (fireAttackComponent.IsAttack) {
                     if (fireAttackComponent.CurrentDelay <= 0) {
                         fireAttackComponent.CurrentDelay = fireAttackComponent.Delay;
