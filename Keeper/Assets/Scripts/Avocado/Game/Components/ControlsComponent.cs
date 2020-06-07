@@ -11,9 +11,9 @@ namespace Avocado.Game.Components {
     [ComponentType(ComponentType.PlayerControls)]
     public class ControlsComponent : ComponentBase<PlayerControlsComponentData>
     {
-        private Controls _controls;
+        private readonly Controls _controls;
         private Vector2 _moveAxis;
-        private float m_RotationAxisY;
+        private float _RotationAxisY;
         private bool _mooving;
         private readonly int _speedMoveAnimationKey = Animator.StringToHash("SpeedMove");
         private readonly int _stateAnimationKey = Animator.StringToHash("State");
@@ -23,7 +23,7 @@ namespace Avocado.Game.Components {
             _moveAxis = Vector2.zero;
             _controls = new Controls();
             _controls.Player.Move.performed += MoveOnPerformed;
-            _controls.Player.Move.canceled += MoveOnCanceled;
+            _controls.Player.Move.canceled += MoveOnCanceled; 
             _controls.Player.Enable();
         }
 
@@ -91,8 +91,9 @@ namespace Avocado.Game.Components {
             if (move.magnitude > 1f) {
                 move.Normalize();
             }
-            
-            var angleCurrent = Mathf.Atan2( target.forward.x, target.forward.z) * Mathf.Rad2Deg;
+
+            var forward = target.forward;
+            var angleCurrent = Mathf.Atan2( forward.x, forward.z) * Mathf.Rad2Deg;
             var targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
             var deltaAngle = Mathf.DeltaAngle(angleCurrent, targetAngle);
             var targetLocalRot = Quaternion.Euler(0, deltaAngle, 0);

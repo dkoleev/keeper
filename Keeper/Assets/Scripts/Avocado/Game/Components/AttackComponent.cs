@@ -32,8 +32,9 @@ namespace Avocado.Game.Components {
                 World.CreateEntity(Data.Weapon, Vector3.zero, weaponParent.transform,
                     weaponEntity => {
                         _currentWeapon = weaponEntity;
-                        _currentWeapon.transform.localPosition = Vector3.zero;
-                        _currentWeapon.transform.localRotation = Quaternion.identity;
+                        var transform = _currentWeapon.transform;
+                        transform.localPosition = Vector3.zero;
+                        transform.localRotation = Quaternion.identity;
                         WeaponComponent = (WeaponComponent) _currentWeapon.GetComponentByType<WeaponComponent>();
                     });
             }

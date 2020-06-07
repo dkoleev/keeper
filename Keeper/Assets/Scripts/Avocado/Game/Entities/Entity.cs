@@ -1,10 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Avocado.Game.Components;
 using Avocado.Game.Data;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Avocado.Game.Entities {
     public class Entity : MonoBehaviourWrapper {

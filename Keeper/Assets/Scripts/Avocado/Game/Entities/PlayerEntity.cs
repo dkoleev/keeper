@@ -11,7 +11,7 @@ namespace Avocado.Game.Entities {
             
             _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
             if (_brain.ActiveVirtualCamera == null) {
-                _brain.m_CameraActivatedEvent.AddListener((arg0, camera) => {
+                _brain.m_CameraActivatedEvent.AddListener((arg0, cam) => {
                     _brain.ActiveVirtualCamera.Follow = transform;
                 });
             } else {

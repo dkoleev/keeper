@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Avocado.Core.Loader {
+﻿namespace Avocado.Core.Loader {
     public interface ILoader {
         T LoadObject<T>(string path);
     }
