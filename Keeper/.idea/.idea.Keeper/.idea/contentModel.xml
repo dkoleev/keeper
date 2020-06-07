@@ -49,22 +49,6 @@
               <e p="NavMeshSurface.cs" t="Include" />
             </e>
           </e>
-          <e p="Tests" t="Include">
-            <e p="Editor" t="Include">
-              <e p="NavMeshComponentsTestsEditmode.asmdef" t="Include" />
-              <e p="NavMeshModifierVolumeInPrefabTests.cs" t="Include" />
-              <e p="NavMeshSurfaceInPrefabTests.cs" t="Include" />
-              <e p="NavMeshSurfaceInPrefabVariantTests.cs" t="Include" />
-              <e p="PrefabSavingUtil.cs" t="Include" />
-              <e p="PrefabStageAutoSavingUtil.cs" t="Include" />
-            </e>
-            <e p="NavMeshComponentsTestsPlaymode.asmdef" t="Include" />
-            <e p="NavMeshSurfaceAgentTests.cs" t="Include" />
-            <e p="NavMeshSurfaceLinkTests.cs" t="Include" />
-            <e p="NavMeshSurfaceModifierTests.cs" t="Include" />
-            <e p="NavMeshSurfaceModifierVolumeTests.cs" t="Include" />
-            <e p="NavMeshSurfaceTests.cs" t="Include" />
-          </e>
         </e>
         <e p="Samples" t="Include">
           <e p="Input System" t="Include">
@@ -199,6 +183,9 @@
                 <e p="WeaponPlacer.cs" t="Include" />
               </e>
               <e p="Components" t="Include">
+                <e p="AI" t="Include">
+                  <e p="BaseAi.cs" t="Include" />
+                </e>
                 <e p="AttackComponent.cs" t="Include" />
                 <e p="ComponentBase.cs" t="Include" />
                 <e p="ComponentsFactory.cs" t="Include" />
@@ -214,9 +201,14 @@
               </e>
               <e p="Core" t="Include">
                 <e p="IInitializable.cs" t="Include" />
+                <e p="StateMachine" t="Include">
+                  <e p="IState.cs" t="Include" />
+                  <e p="StateMachine.cs" t="Include" />
+                </e>
               </e>
               <e p="Data" t="Include">
                 <e p="Components" t="Include">
+                  <e p="AiComponentData.cs" t="Include" />
                   <e p="AttackComponentData.cs" t="Include" />
                   <e p="HealthComponentData.cs" t="Include" />
                   <e p="MoveComponentData.cs" t="Include" />
@@ -236,6 +228,14 @@
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
                 <e p="PlayerEntity.cs" t="Include" />
+                <e p="States" t="Include">
+                  <e p="Base" t="Include">
+                    <e p="EntityState.cs" t="Include" />
+                    <e p="EntityStateMachine.cs" t="Include" />
+                    <e p="IdleState.cs" t="Include" />
+                    <e p="WalkState.cs" t="Include" />
+                  </e>
+                </e>
               </e>
               <e p="Events" t="Include">
                 <e p="ComponentsUpdatedEvent.cs" t="Include" />
@@ -965,8 +965,6 @@
       <e p="NavMeshComponentsEditor.csproj" t="IncludeRecursive" />
       <e p="NavMeshComponentsExamples.csproj" t="IncludeRecursive" />
       <e p="NavMeshComponentsExamplesEditor.csproj" t="IncludeRecursive" />
-      <e p="NavMeshComponentsTestsEditmode.csproj" t="IncludeRecursive" />
-      <e p="NavMeshComponentsTestsPlaymode.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />

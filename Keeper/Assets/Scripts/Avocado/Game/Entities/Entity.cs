@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Avocado.Game.Components;
 using Avocado.Game.Data;
@@ -5,6 +6,10 @@ using UnityEngine;
 
 namespace Avocado.Game.Entities {
     public class Entity : MonoBehaviourWrapper {
+        [SerializeField]
+        private List<string> _currentComponents = new List<string>(3);
+        private readonly List<IComponent> _components = new List<IComponent>(3);
+        
         public Transform RotateTransform { get; private set; }
         public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
@@ -12,8 +17,6 @@ namespace Avocado.Game.Entities {
         public GameData GameData { get; private set; }
         public EntityData EntityData { get; private set; }
         public string EntityId { get; private set; }
-        
-        private readonly List<IComponent> _components = new List<IComponent>(3);
 
         public virtual void Initialize(string entityId, in EntityData entityData, in GameData gameData) {
             GameData = gameData;
@@ -68,6 +71,7 @@ namespace Avocado.Game.Entities {
         private void AddComponent(ComponentType componentType, IComponentData data) {
             var component = ComponentsFactory<IComponent>.Create(componentType, this, data);
             _components.Add(component);
+            _currentComponents.Add(componentType.ToString());
         }
 
         private void InitializeComponents() {

@@ -37,13 +37,17 @@
 			"Parent" : null,
 			"Prefab" : "Zombie",
 			"Components" : {
+				"AI" : {
+					"Type" : "AI",
+					"AiType" : "Base"
+				},
 				"Health" : {
 					"Type" : "Health",
 					"MaxHealth" : 50
 				},
 				"Move" : {
 					"Type" : "Move",
-					"SpeedMove" : 7,
+					"SpeedMove" : 5,
 					"SpeedRotate" : 6
 				}
 			}

@@ -9,6 +9,7 @@ namespace Avocado.Game.Data
         PlayerControls,
         Weapon,
         Attack,
+        AI
     }
     
     [JsonConverter(typeof(ComponentsConverter))]
