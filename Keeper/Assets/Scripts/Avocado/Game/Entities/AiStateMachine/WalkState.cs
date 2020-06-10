@@ -5,7 +5,7 @@ namespace Avocado.Game.Entities.AiStateMachine {
     public class WalkState : State {
         private static readonly int Walk = Animator.StringToHash("Walk");
 
-        public WalkState(StateMachine stateMachine, NavMeshAgent agent, Animator animator) : base(stateMachine, agent, animator) {
+        public WalkState(string name, StateMachine stateMachine, NavMeshAgent agent) : base(name, stateMachine, agent) {
             
         }
 
@@ -20,7 +20,6 @@ namespace Avocado.Game.Entities.AiStateMachine {
 
         public override void WalkTo(Vector3 target) {
             Agent.isStopped = false;
-            Animator.SetTrigger(Walk);
             MoveToPoint(target);
         }
 
@@ -41,7 +40,6 @@ namespace Avocado.Game.Entities.AiStateMachine {
         }
         
         public override void Leave() {
-            Animator.ResetTrigger(Walk);
         }
     }
 }

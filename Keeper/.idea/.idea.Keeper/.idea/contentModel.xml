@@ -241,6 +241,7 @@
               <e p="GameRunner.cs" t="Include" />
               <e p="MonoBehaviourWrapper.cs" t="Include" />
               <e p="Systems" t="Include">
+                <e p="AnimationSystem.cs" t="Include" />
                 <e p="SpawnSystem.cs" t="Include" />
               </e>
               <e p="UI" t="Include">

@@ -17,6 +17,9 @@ namespace Avocado.Game.Components {
         private bool _mooving;
         private readonly int _speedMoveAnimationKey = Animator.StringToHash("SpeedMove");
         private readonly int _stateAnimationKey = Animator.StringToHash("State");
+        private readonly int _idleAnimationKey = Animator.StringToHash("Idle");
+        private readonly int _walkAnimationKey = Animator.StringToHash("Walk");
+        private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
         private MoveComponent _moveComponent;
         
         public ControlsComponent(Entity entity, PlayerControlsComponentData data) : base(entity, data) {

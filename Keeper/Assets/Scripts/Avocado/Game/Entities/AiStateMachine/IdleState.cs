@@ -6,13 +6,12 @@ namespace Avocado.Game.Entities.AiStateMachine {
         private static readonly int Idle = Animator.StringToHash("Idle");
         private float _changeStateDelay = Random.Range(2, 5);
 
-        public IdleState(StateMachine stateMachine, NavMeshAgent agent, Animator animator) : base(stateMachine, agent, animator) {
+        public IdleState(string name, StateMachine stateMachine, NavMeshAgent agent) : base(name, stateMachine, agent) {
             
         }
 
         public override void Enter() {
             Agent.isStopped = true;
-            Animator.SetTrigger(Idle);
         }
 
         public override void Update() {
@@ -25,7 +24,6 @@ namespace Avocado.Game.Entities.AiStateMachine {
         }
 
         public override void Leave() {
-            Animator.ResetTrigger(Idle);
         }
 
         public override void WalkTo(Vector3 target) {

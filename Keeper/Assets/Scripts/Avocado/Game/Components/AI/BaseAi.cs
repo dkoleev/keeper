@@ -2,6 +2,7 @@ using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
 using Avocado.Game.Entities.AiStateMachine;
+using Avocado.Game.Systems;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,6 +16,7 @@ namespace Avocado.Game.Components.AI {
         private Animator _animator;
         private MoveComponent _moveComponent;
         private StateMachine _stateMachine;
+        private AnimationSystem _animationSystem;
         
         public BaseAi(Entity entity, AiComponentData data) : base(entity, data) {
             _agent = Entity.GetComponent<NavMeshAgent>();
@@ -23,7 +25,12 @@ namespace Avocado.Game.Components.AI {
             }
 
             _animator = Entity.GetComponentInChildren<Animator>();
+            _animationSystem = new AnimationSystem(_animator);
             _stateMachine = new StateMachine(_agent, _animator);
+            _stateMachine.OnStateChanged += state => {
+                _animationSystem.SetState(state.Name);
+            };
+            
             _stateMachine.SetIdle();
         }
         

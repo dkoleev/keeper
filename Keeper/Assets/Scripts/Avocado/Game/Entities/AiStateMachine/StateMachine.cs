@@ -1,10 +1,12 @@
 using System;
+using Avocado.Game.Systems;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Avocado.Game.Entities.AiStateMachine {
     public class StateMachine {
+        public Action<State> OnStateChanged;
         private State _currentState;
         private State _idleState;
         private State _walkState;
@@ -12,14 +14,12 @@ namespace Avocado.Game.Entities.AiStateMachine {
         private int _statesAmount;
         private Action _onTargetReached;
         private NavMeshAgent _agent;
-        private Animator _animator;
 
         public StateMachine(NavMeshAgent agent, Animator animator) {
             _agent = agent;
-            _animator = animator;
             
-            _idleState = new IdleState(this, _agent, _animator);
-            _walkState = new WalkState(this, _agent, _animator);
+            _idleState = new IdleState("Idle",this, _agent);
+            _walkState = new WalkState("Walk",this, _agent);
         }
 
         public void Update() {
@@ -42,6 +42,8 @@ namespace Avocado.Game.Entities.AiStateMachine {
             _currentState?.Leave();
             _currentState = state;
             _currentState.Enter();
+            
+            OnStateChanged?.Invoke(_currentState);
         }
     }
 }

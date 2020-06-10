@@ -3,14 +3,14 @@ using UnityEngine.AI;
 
 namespace Avocado.Game.Entities.AiStateMachine {
     public abstract class State {
+        public readonly string Name;
         protected readonly StateMachine StateMachine;
         protected readonly NavMeshAgent Agent;
-        protected readonly Animator Animator;
 
-        protected State(StateMachine stateMachine, NavMeshAgent agent, Animator animator) {
+        protected State(string name, StateMachine stateMachine, NavMeshAgent agent) {
+            Name = name;
             StateMachine = stateMachine;
             Agent = agent;
-            Animator = animator;
         }
 
         public abstract void Enter();
