@@ -13,6 +13,7 @@ namespace Avocado.Game.Components {
     public class AttackComponent : ComponentBase<AttackComponentData> {
         private readonly int _animatorConditionId = Animator.StringToHash("ID");
         private readonly int _animatorMode = Animator.StringToHash("Mode");
+        private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
         private IReadOnlyList<Entity> _targets = new List<Entity>();
 
         public WeaponComponent WeaponComponent { get; private set; }
@@ -20,6 +21,7 @@ namespace Avocado.Game.Components {
 
         private Entity _currentWeapon;
         private MoveComponent _moveComponent;
+        private Entity _currentTarget;
 
         public AttackComponent(Entity entity, AttackComponentData data) : base(entity, data) {
          
@@ -44,35 +46,40 @@ namespace Avocado.Game.Components {
         }
 
         public override void Update() {
-                var isMoving = _moveComponent.CurrentSpeedMove > 0;
-                if (!isMoving) {
-                    foreach (var target in _targets) {
-                        if (_moveComponent.Entity != target &&
-                            !(WeaponComponent is null)) {
-                            if (Vector3.Distance(Entity.transform.position, target.transform.position) <= WeaponComponent.Range) {
-                                if (!WeaponComponent.IsAttack) {
-                                    WeaponComponent.IsAttack = true;
-                                    Entity.RotateTransform.LookAt(target.transform);
-                                }
+            if (WeaponComponent is null) {
+                return;
+            }
 
-                                break;
-                            }
+            var isMoving = _moveComponent.CurrentSpeedMove > 0.01f;
+            if (!isMoving) {
+                if (_currentTarget != null) {
+                    if (CanShoot(_currentTarget)) {
+                        Entity.RotateTransform.LookAt(_currentTarget.transform);
+                        TryShoot();
+                        return;
+                    } 
+                    
+                    _currentTarget = null;
+                    WeaponComponent.IsAttack = false;
+                    Update();
+                }
 
-                            if (!WeaponComponent.IsAttack) {
-                                continue;
-                            }
-
-                            WeaponComponent.IsAttack = false;
+                foreach (var target in _targets) {
+                    if (_moveComponent.Entity != target &&
+                        !(WeaponComponent is null)) {
+                        if (CanShoot(target)) {
+                            _currentTarget = target;
+                            WeaponComponent.IsAttack = true;
+                            Entity.Animator.SetTrigger(_attackAnimationKey);
                         }
                     }
-                } else if (WeaponComponent.IsAttack) {
-                    WeaponComponent.IsAttack = false;
                 }
+            } else {
+                _currentTarget = null;
+                WeaponComponent.IsAttack = false;
+            }
 
-                if (WeaponComponent is null) {
-                    return;
-                }
-
+            void TryShoot() {
                 if (WeaponComponent.IsAttack) {
                     if (WeaponComponent.CurrentDelay <= 0) {
                         WeaponComponent.CurrentDelay = WeaponComponent.Delay;
@@ -81,13 +88,26 @@ namespace Avocado.Game.Components {
 
                     WeaponComponent.CurrentDelay -= Time.deltaTime;
                 }
+            }
 
-                Entity.Animator.SetInteger(_animatorConditionId, WeaponComponent.IsAttack ? 1 : 0);
-                Entity.Animator.SetInteger(_animatorMode, WeaponComponent.IsAttack ? 101 : 100);
+            /*Entity.Animator.SetInteger(_animatorConditionId, WeaponComponent.IsAttack ? 1 : 0);
+            Entity.Animator.SetInteger(_animatorMode, WeaponComponent.IsAttack ? 101 : 100);*/
+        }
+
+        private bool CanShoot(Entity target) {
+            return Vector3.Distance(Entity.transform.position, target.transform.position) <= WeaponComponent.Range;
+        }
+
+        public bool IsAttack() {
+            if (WeaponComponent == null) {
+                return false;
+            }
+
+            return WeaponComponent.IsAttack;
         }
 
         private void Shoot(AttackComponent attack) {
-            attack.Entity.Animator.SetInteger(_animatorConditionId, 2);
+           // attack.Entity.Animator.SetInteger(_animatorConditionId, 2);
         }
     }
 }

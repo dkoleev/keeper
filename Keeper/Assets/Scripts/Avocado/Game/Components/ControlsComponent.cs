@@ -19,8 +19,8 @@ namespace Avocado.Game.Components {
         private readonly int _stateAnimationKey = Animator.StringToHash("State");
         private readonly int _idleAnimationKey = Animator.StringToHash("Idle");
         private readonly int _walkAnimationKey = Animator.StringToHash("Walk");
-        private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
         private MoveComponent _moveComponent;
+        private AttackComponent _attackComponent;
         
         public ControlsComponent(Entity entity, PlayerControlsComponentData data) : base(entity, data) {
             _moveAxis = Vector2.zero;
@@ -34,6 +34,7 @@ namespace Avocado.Game.Components {
             base.Initialize();
             
             _moveComponent= (MoveComponent)Entity.GetComponentByType<MoveComponent>();
+            _attackComponent= (AttackComponent)Entity.GetComponentByType<AttackComponent>();
             
             Initialized = true;
         }
@@ -42,14 +43,12 @@ namespace Avocado.Game.Components {
             base.Update();
             Move();
         }
-        
-           private void MoveOnCanceled(InputAction.CallbackContext obj)
-        {
+
+        private void MoveOnCanceled(InputAction.CallbackContext obj) {
             _moveAxis = Vector2.zero;
         }
 
-        private void MoveOnPerformed(InputAction.CallbackContext context)
-        {
+        private void MoveOnPerformed(InputAction.CallbackContext context) {
             _moveAxis = context.ReadValue<Vector2>();
         }
 
@@ -74,12 +73,16 @@ namespace Avocado.Game.Components {
             }
             
             if (_mooving) {
-                Entity.Animator.SetInteger(_stateAnimationKey, 1);
+                /*Entity.Animator.SetInteger(_stateAnimationKey, 1);
                 var speed =(Mathf.Abs(_moveAxis.x) + Mathf.Abs(_moveAxis.y));
-                Entity.Animator.SetFloat(_speedMoveAnimationKey, speed);
+                Entity.Animator.SetFloat(_speedMoveAnimationKey, speed);*/
+                Entity.Animator.SetTrigger(_walkAnimationKey);
             } else {
-                Entity.Animator.SetInteger(_stateAnimationKey, 0);
-                Entity.Animator.SetFloat(_speedMoveAnimationKey, 0);
+                /*Entity.Animator.SetInteger(_stateAnimationKey, 0);
+                Entity.Animator.SetFloat(_speedMoveAnimationKey, 0);*/
+                if (_attackComponent == null || !_attackComponent.IsAttack()) {
+                    Entity.Animator.SetTrigger(_idleAnimationKey);
+                }
             }
 
             Rotate(_moveComponent.Entity.RotateTransform, _moveComponent.SpeedRotate);

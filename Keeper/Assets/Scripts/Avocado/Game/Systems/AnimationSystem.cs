@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Avocado.Game.Entities.AiStateMachine;
 using UnityEngine;
 using Logger = Avocado.Framework.Utilities.Logger;
 
