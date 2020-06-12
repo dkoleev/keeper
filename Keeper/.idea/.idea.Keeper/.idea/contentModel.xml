@@ -201,6 +201,10 @@
               </e>
               <e p="Core" t="Include">
                 <e p="IInitializable.cs" t="Include" />
+                <e p="StateMachine" t="Include">
+                  <e p="IState.cs" t="Include" />
+                  <e p="StateMachine.cs" t="Include" />
+                </e>
               </e>
               <e p="Data" t="Include">
                 <e p="Components" t="Include">
@@ -222,11 +226,9 @@
               </e>
               <e p="DotNetJsonLoader.cs" t="Include" />
               <e p="Entities" t="Include">
-                <e p="AiStateMachine" t="Include">
-                  <e p="IdleState.cs" t="Include" />
-                  <e p="State.cs" t="Include" />
-                  <e p="StateMachine.cs" t="Include" />
-                  <e p="WalkState.cs" t="Include" />
+                <e p="AI" t="Include">
+                  <e p="Idle.cs" t="Include" />
+                  <e p="MoveToPoint.cs" t="Include" />
                 </e>
                 <e p="Entity.cs" t="Include" />
                 <e p="PlayerEntity.cs" t="Include" />

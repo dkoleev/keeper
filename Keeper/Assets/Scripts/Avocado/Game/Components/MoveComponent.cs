@@ -10,6 +10,7 @@ namespace Avocado.Game.Components {
         public float SpeedMove => Data.SpeedMove;
         public float CurrentSpeedMove { get; set; }
         public float SpeedRotate => Data.SpeedRotate;
+        public bool IsMoving => CurrentSpeedMove > 0.01f;
 
         public MoveComponent(Entity entity, MoveComponentData data) : base(entity, data)
         {
