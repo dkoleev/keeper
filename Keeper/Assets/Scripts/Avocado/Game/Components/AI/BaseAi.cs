@@ -38,11 +38,14 @@ namespace Avocado.Game.Components.AI {
             var idle = new Idle(_agent, _animator);
             var walkState = new MoveToPoint(_agent, _animator);
             
-            _stateMachine.AddAnyTransition(walkState, CanMove());
+            To(walkState, CanMove());
             At(walkState, idle, IsTargetReached);
             
-            
-            void At(IState to, IState from, Func<bool> condition) => _stateMachine.AddTransition(to, from, condition);
+            _stateMachine.SetState(idle);
+
+
+            void To(IState to, Func<bool> condition) => _stateMachine.AddAnyTransition(to, condition);
+            void At(IState from, IState to, Func<bool> condition) => _stateMachine.AddTransition(from, to, condition);
             
             Func<bool> CanMove() => () => _idleDelay <= 0f;
         }
