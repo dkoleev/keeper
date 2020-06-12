@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Library/PackageCache/com.avocado.gameframework@b8e7d64a72</Path>
       <Path>Library/PackageCache/com.avocado.gameframework@d886055d16</Path>
       <Path>Library/PackageCache/com.unity.addressables@1.1.10</Path>
       <Path>Library/PackageCache/com.unity.burst@1.2.3</Path>

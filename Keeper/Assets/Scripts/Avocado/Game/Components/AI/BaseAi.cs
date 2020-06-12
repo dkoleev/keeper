@@ -1,5 +1,5 @@
 using System;
-using Avocado.Game.Core.StateMachine;
+using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Game.Entities;
@@ -10,7 +10,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Logger = Avocado.Framework.Utilities.Logger;
 using Random = UnityEngine.Random;
-using StateMachine = Avocado.Game.Core.StateMachine.StateMachine;
 
 namespace Avocado.Game.Components.AI {
     [UsedImplicitly]
@@ -19,7 +18,6 @@ namespace Avocado.Game.Components.AI {
         private NavMeshAgent _agent;
         private Animator _animator;
         private MoveComponent _moveComponent;
-       //private StateMachine _stateMachine;
         private AnimationSystem _animationSystem;
         private StateMachine _stateMachine;
         private float _idleDelay = Random.Range(2, 5);

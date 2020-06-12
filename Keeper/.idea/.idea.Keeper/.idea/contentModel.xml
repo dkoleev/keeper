@@ -201,10 +201,6 @@
               </e>
               <e p="Core" t="Include">
                 <e p="IInitializable.cs" t="Include" />
-                <e p="StateMachine" t="Include">
-                  <e p="IState.cs" t="Include" />
-                  <e p="StateMachine.cs" t="Include" />
-                </e>
               </e>
               <e p="Data" t="Include">
                 <e p="Components" t="Include">

@@ -1,4 +1,4 @@
-using Avocado.Game.Core.StateMachine;
+using Avocado.Framework.Patterns.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
 
