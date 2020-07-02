@@ -6,6 +6,7 @@ namespace Avocado.Game.Entities.AI {
     public class MoveToPoint : IState {
         private Animator _animator;
         private NavMeshAgent _agent;
+        private static readonly int Walk = Animator.StringToHash("Walk");
 
         public MoveToPoint(NavMeshAgent agent, Animator animator) {
     
@@ -22,7 +23,7 @@ namespace Avocado.Game.Entities.AI {
             _agent.isStopped = false;
             _agent.destination = targetPoint;
             
-            _animator.SetTrigger("Walk");
+            _animator.SetTrigger(Walk);
         }
 
         public void Tick() {
@@ -33,7 +34,7 @@ namespace Avocado.Game.Entities.AI {
         }
 
         public void Exit() {
-            _animator.ResetTrigger("Walk");
+            _animator.ResetTrigger(Walk);
         }
     }
 }
