@@ -1,5 +1,6 @@
 using Avocado.Game.Data.Converters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data
 {
@@ -13,7 +14,6 @@ namespace Avocado.Game.Data
     }
     
     [JsonConverter(typeof(ComponentsConverter))]
-    public interface IComponentData
-    {
+    public interface IComponentData {
     }
 }

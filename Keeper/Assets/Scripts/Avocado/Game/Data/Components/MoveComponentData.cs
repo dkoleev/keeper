@@ -1,5 +1,6 @@
 using Avocado.Game.Components;
 using JetBrains.Annotations;
+using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
@@ -9,10 +10,10 @@ namespace Avocado.Game.Data.Components {
         public readonly byte SpeedMove;
         public readonly byte SpeedRotate;
 
-        public MoveComponentData(byte speedMove, byte speedRotate)
+        public MoveComponentData(JObject data)
         {
-            SpeedMove = speedMove;
-            SpeedRotate = speedRotate;
+            SpeedMove = data["SpeedMove"].Value<byte>();
+            SpeedRotate = data["SpeedRotate"].Value<byte>();
         }
     }
 }

@@ -6,10 +6,7 @@ namespace Avocado.Game.Data {
         public static IComponentData Create(ComponentType type, JObject data) {
             switch (type) {
                 case ComponentType.Move:
-                    var speedMove = data["SpeedMove"].Value<byte>();
-                    var speedRotate = data["SpeedRotate"].Value<byte>();
-                    
-                    return new MoveComponentData(speedMove, speedRotate);
+                    return new MoveComponentData(data);
 
                 case ComponentType.Health:
                     var maxHealth = data["MaxHealth"].Value<int>();
