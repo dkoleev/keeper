@@ -1,30 +1,39 @@
-using Avocado.Game.Data.Components;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Avocado.Game.Components;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data {
-    public static class ComponentsDataFactory {
-        public static IComponentData Create(ComponentType type, JObject data) {
-            switch (type) {
-                case ComponentType.Move:
-                    return new MoveComponentData(data);
+    public static class ComponentsDataFactory<T> where T : class {
+        private static readonly Dictionary<ComponentType, Type> _types = new Dictionary<ComponentType, Type>();
 
-                case ComponentType.Health:
-                    return new HealthComponentData(data);
-                
-                case ComponentType.PlayerControls:
-                    return new PlayerControlsComponentData();
-                
-                case ComponentType.Attack:
-                    return new AttackComponentData(data);
-                
-                case ComponentType.Weapon:
-                    return new WeaponComponentData(data);
-                
-                case ComponentType.AI:
-                    return new AiComponentData(data);
+        static ComponentsDataFactory() {
+            var temp = Assembly.GetAssembly(typeof(T)).GetTypes().Where(mType =>
+                !mType.IsAbstract &&
+                (mType.IsSubclassOf(typeof(T)) || mType.GetInterfaces().Contains(typeof(T)))
+            ).ToList();
+
+            foreach (var type in temp) {
+                var attr = type.GetCustomAttribute<ComponentTypeAttribute>();
+                if (attr != null) {
+                    _types.Add(attr.Type, type);
+                }
+            }
+        }
+
+        public static T Create(ComponentType type, JObject data) {
+            if (!_types.ContainsKey(type)) {
+                throw new KeyNotFoundException("Not found key for type " + type);
             }
 
-            return null;
+            var constructor = _types[type].GetConstructor(new[] {data.GetType()});
+            if (constructor is null) {
+                return (T)Activator.CreateInstance(_types[type]);
+            }
+            
+            return (T)Activator.CreateInstance(_types[type], data);
         }
     }
 }

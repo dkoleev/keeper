@@ -1,4 +1,5 @@
 using System;
+using Avocado.Game.Components;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -11,7 +12,9 @@ namespace Avocado.Game.Data.Converters {
         public override IComponentData ReadJson(JsonReader reader, Type objectType, IComponentData existingValue, bool hasExistingValue, JsonSerializer serializer) {
             var item = JObject.Load(reader);
             var type = item["Type"].ToObject<ComponentType>();
-            return ComponentsDataFactory.Create(type, item);
+
+            var componentData = ComponentsDataFactory<IComponentData>.Create(type, item);
+            return componentData;
         }
     }
 }
