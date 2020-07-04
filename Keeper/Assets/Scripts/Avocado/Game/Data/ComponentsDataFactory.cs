@@ -9,25 +9,19 @@ namespace Avocado.Game.Data {
                     return new MoveComponentData(data);
 
                 case ComponentType.Health:
-                    var maxHealth = data["MaxHealth"].Value<int>();
-                    
-                    return new HealthComponentData(maxHealth);
+                    return new HealthComponentData(data);
                 
                 case ComponentType.PlayerControls:
                     return new PlayerControlsComponentData();
                 
                 case ComponentType.Attack:
-                    var currentWeapon = data["Weapon"].Value<string>();
-                    var startAmmo = data["StartAmmo"].Value<int>();
-                    return new AttackComponentData(currentWeapon, startAmmo);
+                    return new AttackComponentData(data);
                 
                 case ComponentType.Weapon:
-                    var damage = data["Damage"].Value<float>();
-                    var delay = data["Delay"].Value<float>();
-                    var clip = data["Clip"].Value<int>();
-                    var range = data["Range"].Value<float>();
-                    
-                    return new WeaponComponentData(damage, delay, clip, range);
+                    return new WeaponComponentData(data);
+                
+                case ComponentType.AI:
+                    return new AiComponentData(data);
             }
 
             return null;

@@ -1,5 +1,6 @@
 using Avocado.Game.Components;
 using JetBrains.Annotations;
+using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
@@ -10,11 +11,11 @@ namespace Avocado.Game.Data.Components {
         public readonly int Clip;
         public readonly float Range;
 
-        public WeaponComponentData(float damage, float delay, int clip, float range) {
-            Damage = damage;
-            Delay = delay;
-            Clip = clip;
-            Range = range;
+        public WeaponComponentData(JObject data) {
+            Damage = data["Damage"].Value<float>();
+            Delay = data["Delay"].Value<float>();
+            Clip = data["Clip"].Value<int>();
+            Range = data["Range"].Value<float>();
         }
     }
 }

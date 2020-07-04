@@ -1,5 +1,6 @@
 using Avocado.Game.Components;
 using JetBrains.Annotations;
+using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data.Components
 {
@@ -9,9 +10,9 @@ namespace Avocado.Game.Data.Components
     {
         public readonly int MaxHealth;
 
-        public HealthComponentData(int maxHealth)
+        public HealthComponentData(JObject data)
         {
-            MaxHealth = maxHealth;
+            MaxHealth = data["MaxHealth"].Value<int>();
         }
     }
 }
