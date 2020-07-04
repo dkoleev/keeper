@@ -1,5 +1,6 @@
 using Avocado.Game.Components;
 using JetBrains.Annotations;
+using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data.Components {
     [UsedImplicitly]
@@ -8,9 +9,9 @@ namespace Avocado.Game.Data.Components {
         public readonly string Weapon;
         public readonly int StartAmmo;
 
-        public AttackComponentData(string currentWeapon, int startAmmo) {
-            Weapon = currentWeapon;
-            StartAmmo = startAmmo;
+        public AttackComponentData(JObject data) {
+            Weapon = data["Weapon"].Value<string>();
+            StartAmmo = data["StartAmmo"].Value<int>();
         }
     }
 }
