@@ -8,14 +8,14 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Avocado.Game.Worlds {
-    public class World{
+    public static class World{
         private static GameData _gameData;
         private static readonly List<Entity> _entities = new List<Entity>();
-        private static WorldGenerator _generator;
+        private static IWorldGenerator _generator;
         
         public static void Initialize(GameData gameData) {
             _gameData = gameData;
-            _generator = new WorldGenerator();
+            _generator = new WorldGeneratorLogDecorator(new WorldGenerator());
         }
 
         public static void Create() {

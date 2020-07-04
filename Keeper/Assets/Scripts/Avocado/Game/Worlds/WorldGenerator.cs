@@ -2,7 +2,8 @@ using Avocado.Game.Entities;
 using UnityEngine;
 
 namespace Avocado.Game.Worlds {
-    public class WorldGenerator {
+    public class WorldGenerator : IWorldGenerator {
+        private const string ZombieId = "Zombie";
         public void Generate() {
             GenerateEnemies();            
         }
@@ -13,12 +14,14 @@ namespace Avocado.Game.Worlds {
                 SpawnEnemy();
             }
 
-            void SpawnEnemy() {
-                World.CreateEntity<Entity>("Zombie",
-                    new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30)), null, entity => {
+            SpawnEnemy();
+        }
+
+        private void SpawnEnemy() {
+            World.CreateEntity<Entity>(ZombieId,
+                new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30)), null, entity => {
                         
-                    });
-            }
+                });
         }
     }
 }
