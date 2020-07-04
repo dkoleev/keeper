@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Climb
+  - Fly
   - LevelBounds
   - FX
   - Enemy
@@ -32,14 +34,14 @@ TagManager:
   - Camera2
   - Camera3
   - Camera4
+  - Enemy
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - Item
   - 
   m_SortingLayers:
   - name: Default
