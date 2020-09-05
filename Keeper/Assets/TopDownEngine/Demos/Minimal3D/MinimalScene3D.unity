@@ -97,6 +97,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000001, guid: 604bb26d9af981d46bbfa5fc8a7cbac2,
     type: 2}
   m_UseShadowmask: 0
@@ -169,13 +170,40 @@ MonoBehaviour:
   PlayerPrefabs:
   - {fileID: 114839196621103566, guid: 2513a92f10a3a1746bfe8e1034ae9f1a, type: 3}
   AutoAttributePlayerIDs: 1
+  SceneCharacters: []
   InitialSpawnPoint: {fileID: 1618121293}
   CurrentCheckpoint: {fileID: 0}
   PointsOfEntry: []
   IntroFadeDuration: 0.1
   OutroFadeDuration: 0.1
   FaderID: 0
-  FadeCurve: 4
+  FadeCurve:
+    MMTweenDefinitionType: 0
+    MMTweenCurve: 6
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   RespawnDelay: 2
   DelayBeforeDeathScreen: 1
 --- !u!1 &139856174
@@ -217,6 +245,38 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1967243807}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &172648970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172648968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras:
+  - {fileID: 1986966512}
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!114 &172648977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +291,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Channel: 0
   ShakeDuration: 1
-  RelativeIntensity: 1
+  PlayOnAwake: 0
+  Shaking: 0
+  RelativeValues: 1
   ShakePostExposure:
     serializedVersion: 2
     m_Curve:
@@ -265,7 +327,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakePostExposureAmplitude: 0.2
+  RemapPostExposureZero: 0
+  RemapPostExposureOne: 1
   ShakeHueShift:
     serializedVersion: 2
     m_Curve:
@@ -299,7 +362,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeHueShiftAmplitude: -50
+  RemapHueShiftZero: 0
+  RemapHueShiftOne: 180
   ShakeSaturation:
     serializedVersion: 2
     m_Curve:
@@ -333,7 +397,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeSaturationAmplitude: 200
+  RemapSaturationZero: 0
+  RemapSaturationOne: 100
   ShakeContrast:
     serializedVersion: 2
     m_Curve:
@@ -367,9 +432,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeContrastAmplitude: 100
-  Shaking: 0
-  TestShakeButton: 0
+  RemapContrastZero: 0
+  RemapContrastOne: 100
 --- !u!114 &172648978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +447,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Channel: 0
+  ShakeDuration: 0.2
+  PlayOnAwake: 0
+  Shaking: 0
   RelativeIntensity: 0
   ShakeIntensity:
     serializedVersion: 2
@@ -417,10 +484,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeDuration: 0.2
-  ShakeAmplitude: 1
-  Shaking: 0
-  TestShakeButton: 0
+  RemapIntensityZero: 0
+  RemapIntensityOne: 1
 --- !u!114 &172648979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +499,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Channel: 0
+  ShakeDuration: 0.8
+  PlayOnAwake: 0
+  Shaking: 0
   RelativeIntensity: 0
   ShakeIntensity:
     serializedVersion: 2
@@ -531,10 +599,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeDuration: 0.8
-  ShakeAmplitude: 50
-  Shaking: 0
-  TestShakeButton: 0
+  RemapIntensityZero: 0
+  RemapIntensityOne: 50
 --- !u!114 &172648980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +615,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Channel: 0
   ShakeDuration: 0.2
-  RelativeIntensities: 0
+  PlayOnAwake: 0
+  Shaking: 0
+  RelativeValues: 1
   ShakeFocusDistance:
     serializedVersion: 2
     m_Curve:
@@ -583,7 +651,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeFocusDistanceAmplitude: 1
+  RemapFocusDistanceZero: 0
+  RemapFocusDistanceOne: 3
   ShakeAperture:
     serializedVersion: 2
     m_Curve:
@@ -617,7 +686,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeApertureAmplitude: 1
+  RemapApertureZero: 0
+  RemapApertureOne: 0
   ShakeFocalLength:
     serializedVersion: 2
     m_Curve:
@@ -651,9 +721,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeFocalLengthAmplitude: 1
-  Shaking: 0
-  TestShakeButton: 0
+  RemapFocalLengthZero: 0
+  RemapFocalLengthOne: 0
 --- !u!114 &172648981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -667,6 +736,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Channel: 0
+  ShakeDuration: 0.2
+  PlayOnAwake: 0
+  Shaking: 0
+  RelativeIntensity: 0
   ShakeIntensity:
     serializedVersion: 2
     m_Curve:
@@ -700,11 +773,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeDuration: 0.2
-  ShakeAmplitude: 1
-  RelativeIntensity: 0
-  Shaking: 0
-  TestShakeButton: 0
+  RemapIntensityZero: 0
+  RemapIntensityOne: 1
 --- !u!114 &172648982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +789,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Channel: 0
   ShakeDuration: 0.2
-  RelativeIntensity: 0
+  PlayOnAwake: 0
+  Shaking: 0
+  RelativeValues: 1
   ShakeIntensity:
     serializedVersion: 2
     m_Curve:
@@ -753,7 +825,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeIntensityAmplitude: 1
+  RemapIntensityZero: 0
+  RemapIntensityOne: 1
   ShakeThreshold:
     serializedVersion: 2
     m_Curve:
@@ -787,9 +860,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ShakeThresholdAmplitude: 1
-  Shaking: 0
-  TestShakeButton: 0
+  RemapThresholdZero: 0
+  RemapThresholdOne: 0
 --- !u!1 &253826985
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,8 +1071,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015704714}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.97417927, b: 0.928, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -1084,6 +1157,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1251,6 +1325,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1356,6 +1431,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1601,6 +1677,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1916,6 +1993,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9edcf7e494cf3e640b18cb7495fb179a, type: 3}
+--- !u!1 &1986966509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1737468962540040, guid: 9edcf7e494cf3e640b18cb7495fb179a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1967243807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1986966512 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20646998284766860, guid: 9edcf7e494cf3e640b18cb7495fb179a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1967243807}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1986966513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986966509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 1
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &2043279810
 GameObject:
   m_ObjectHideFlags: 0

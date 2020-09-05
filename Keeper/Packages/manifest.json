@@ -3,16 +3,16 @@
     "com.avocado.gameframework": "https://github.com/dkoleev/GameFramework.git",
     "com.unity.2d.pixel-perfect": "2.0.4",
     "com.unity.2d.sprite": "1.0.0",
-    "com.unity.addressables": "1.1.10",
+    "com.unity.addressables": "1.8.4",
     "com.unity.burst": "1.2.3",
     "com.unity.cinemachine": "2.5.0",
     "com.unity.device-simulator": "2.0.0-preview",
     "com.unity.ide.rider": "1.2.1",
     "com.unity.ide.visualstudio": "2.0.0",
-    "com.unity.ide.vscode": "1.2.0",
+    "com.unity.ide.vscode": "1.2.1",
     "com.unity.inputsystem": "1.0.0-preview.5",
     "com.unity.mobile.android-logcat": "1.1.1",
-    "com.unity.nuget.newtonsoft-json": "1.1.2",
+    "com.unity.nuget.newtonsoft-json": "2.0.0",
     "com.unity.postprocessing": "2.3.0",
     "com.unity.progrids": "3.0.3-preview.4",
     "com.unity.purchasing": "2.0.6",
@@ -53,11 +53,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "com.avocado.gameframework": {
-      "revision": "HEAD",
-      "hash": "b8e7d64a728d91da4f1d7c7d3c281bce46ebd0f8"
-    }
   }
 }

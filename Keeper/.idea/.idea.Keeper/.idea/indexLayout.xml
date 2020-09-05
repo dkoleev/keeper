@@ -3,6 +3,7 @@
   <component name="ContentModelUserStore">
     <attachedFolders />
     <explicitIncludes>
+      <Path>Library/PackageCache/com.avocado.gameframework@95711e02e3</Path>
       <Path>Library/PackageCache/com.avocado.gameframework@b8e7d64a72</Path>
       <Path>Library/PackageCache/com.avocado.gameframework@d886055d16</Path>
       <Path>Library/PackageCache/com.unity.2d.pixel-perfect@2.0.4</Path>
@@ -17,7 +18,7 @@
       <Path>Library/PackageCache/com.unity.inputsystem@1.0.0-preview.5</Path>
       <Path>Library/PackageCache/com.unity.mathematics@1.1.0</Path>
       <Path>Library/PackageCache/com.unity.mobile.android-logcat@1.1.1</Path>
-      <Path>Library/PackageCache/com.unity.nuget.newtonsoft-json@1.1.2</Path>
+      <Path>Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0</Path>
       <Path>Library/PackageCache/com.unity.postprocessing@2.3.0</Path>
       <Path>Library/PackageCache/com.unity.progrids@3.0.3-preview.4</Path>
       <Path>Library/PackageCache/com.unity.purchasing@2.0.6</Path>
