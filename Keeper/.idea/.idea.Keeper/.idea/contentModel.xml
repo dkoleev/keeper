@@ -7,32 +7,6 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="CodeMonkey" t="Include">
-          <e p="Assets.cs" t="Include" />
-          <e p="CMDebug.cs" t="Include" />
-          <e p="MonoBehaviours" t="Include">
-            <e p="CameraFollow.cs" t="Include" />
-            <e p="CameraFollowSetup.cs" t="Include" />
-            <e p="ComponentActions.cs" t="Include" />
-            <e p="PositionRendererSorter.cs" t="Include" />
-          </e>
-          <e p="ReadMe.txt" t="Include" />
-          <e p="Utils" t="Include">
-            <e p="Button_Sprite.cs" t="Include" />
-            <e p="Button_UI.cs" t="Include" />
-            <e p="FunctionPeriodic.cs" t="Include" />
-            <e p="FunctionTimer.cs" t="Include" />
-            <e p="FunctionUpdater.cs" t="Include" />
-            <e p="UI_Bar.cs" t="Include" />
-            <e p="UI_BarMultiple.cs" t="Include" />
-            <e p="UI_Sprite.cs" t="Include" />
-            <e p="UI_TextComplex.cs" t="Include" />
-            <e p="UtilsClass.cs" t="Include" />
-            <e p="World_Bar.cs" t="Include" />
-            <e p="World_Mesh.cs" t="Include" />
-            <e p="World_Sprite.cs" t="Include" />
-          </e>
-        </e>
         <e p="Navmesh" t="Include">
           <e p="Examples" t="Include">
             <e p="Editor" t="Include">
@@ -198,89 +172,91 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Avocado" t="Include">
+            <e p="Avocado.Keeper.asmdef" t="Include" />
+            <e p="Behaviuor" t="Include">
+              <e p="WeaponPlacer.cs" t="Include" />
+            </e>
+            <e p="Components" t="Include">
+              <e p="AI" t="Include">
+                <e p="BaseAi.cs" t="Include" />
+              </e>
+              <e p="AttackComponent.cs" t="Include" />
+              <e p="ComponentBase.cs" t="Include" />
+              <e p="ComponentsFactory.cs" t="Include" />
+              <e p="ControlsComponent.cs" t="Include" />
+              <e p="HealthComponent.cs" t="Include" />
+              <e p="IComponent.cs" t="Include" />
+              <e p="MoveComponent.cs" t="Include" />
+              <e p="WeaponComponent.cs" t="Include" />
+            </e>
             <e p="Core" t="Include">
-              <e p="Core.asmdef" t="Include" />
+              <e p="Avocado.Keeper.Core.asmdef" t="Include" />
+              <e p="IInitializable.cs" t="Include" />
               <e p="Loader" t="Include">
                 <e p="ILoader.cs" t="Include" />
+                <e p="Variants" t="Include">
+                  <e p="DotNetJsonLoader.cs" t="Include" />
+                </e>
               </e>
+              <e p="MonoBehaviourWrapper.cs" t="Include" />
+            </e>
+            <e p="Data" t="Include">
+              <e p="Avocado.Keeper.Data.asmdef" t="Include" />
+              <e p="Components" t="Include">
+                <e p="AiComponentData.cs" t="Include" />
+                <e p="AttackComponentData.cs" t="Include" />
+                <e p="HealthComponentData.cs" t="Include" />
+                <e p="MoveComponentData.cs" t="Include" />
+                <e p="PlayerControlsComponentData.cs" t="Include" />
+                <e p="WeaponComponentData.cs" t="Include" />
+              </e>
+              <e p="ComponentsDataFactory.cs" t="Include" />
+              <e p="ComponentTypeAttribute.cs" t="Include" />
+              <e p="Converters" t="Include">
+                <e p="ComponentsConverter.cs" t="Include" />
+              </e>
+              <e p="EntitiesData.cs" t="Include" />
+              <e p="EntityData.cs" t="Include" />
+              <e p="GameData.cs" t="Include" />
+              <e p="IComponentData.cs" t="Include" />
+            </e>
+            <e p="Entities" t="Include">
+              <e p="AI" t="Include">
+                <e p="Idle.cs" t="Include" />
+                <e p="MoveToPoint.cs" t="Include" />
+              </e>
+              <e p="Entity.cs" t="Include" />
+              <e p="PlayerEntity.cs" t="Include" />
+            </e>
+            <e p="Events" t="Include">
+              <e p="ComponentsUpdatedEvent.cs" t="Include" />
+              <e p="PlayerDeadEvent.cs" t="Include" />
+              <e p="PlayerResurrectEvent.cs" t="Include" />
             </e>
             <e p="Game" t="Include">
-              <e p="Behaviuor" t="Include">
-                <e p="WeaponPlacer.cs" t="Include" />
-              </e>
-              <e p="Components" t="Include">
-                <e p="AI" t="Include">
-                  <e p="BaseAi.cs" t="Include" />
-                </e>
-                <e p="AttackComponent.cs" t="Include" />
-                <e p="ComponentBase.cs" t="Include" />
-                <e p="ComponentsFactory.cs" t="Include" />
-                <e p="ComponentTypeAttribute.cs" t="Include" />
-                <e p="ControlsComponent.cs" t="Include" />
-                <e p="HealthComponent.cs" t="Include" />
-                <e p="IComponent.cs" t="Include" />
-                <e p="MoveComponent.cs" t="Include" />
-                <e p="WeaponComponent.cs" t="Include" />
-              </e>
               <e p="Controllers" t="Include">
                 <e p="Controls.cs" t="Include" />
               </e>
-              <e p="Core" t="Include">
-                <e p="IInitializable.cs" t="Include" />
-              </e>
-              <e p="Data" t="Include">
-                <e p="Components" t="Include">
-                  <e p="AiComponentData.cs" t="Include" />
-                  <e p="AttackComponentData.cs" t="Include" />
-                  <e p="HealthComponentData.cs" t="Include" />
-                  <e p="MoveComponentData.cs" t="Include" />
-                  <e p="PlayerControlsComponentData.cs" t="Include" />
-                  <e p="WeaponComponentData.cs" t="Include" />
-                </e>
-                <e p="ComponentsDataFactory.cs" t="Include" />
-                <e p="Converters" t="Include">
-                  <e p="ComponentsConverter.cs" t="Include" />
-                </e>
-                <e p="EntitiesData.cs" t="Include" />
-                <e p="EntityData.cs" t="Include" />
-                <e p="GameData.cs" t="Include" />
-                <e p="IComponentData.cs" t="Include" />
-              </e>
-              <e p="DotNetJsonLoader.cs" t="Include" />
-              <e p="Entities" t="Include">
-                <e p="AI" t="Include">
-                  <e p="Idle.cs" t="Include" />
-                  <e p="MoveToPoint.cs" t="Include" />
-                </e>
-                <e p="Entity.cs" t="Include" />
-                <e p="PlayerEntity.cs" t="Include" />
-              </e>
-              <e p="Events" t="Include">
-                <e p="ComponentsUpdatedEvent.cs" t="Include" />
-                <e p="PlayerDeadEvent.cs" t="Include" />
-                <e p="PlayerResurrectEvent.cs" t="Include" />
-              </e>
-              <e p="GameConfiguration.cs" t="Include" />
-              <e p="GameLoop.cs" t="Include" />
-              <e p="GameRunner.cs" t="Include" />
-              <e p="MonoBehaviourWrapper.cs" t="Include" />
-              <e p="Systems" t="Include">
-                <e p="AnimationSystem.cs" t="Include" />
-                <e p="SpawnSystem.cs" t="Include" />
-              </e>
-              <e p="UI" t="Include">
-                <e p="Tools" t="Include">
-                  <e p="BackgroundBacther.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Worlds" t="Include">
-                <e p="IWorldGenerator.cs" t="Include" />
-                <e p="World.cs" t="Include" />
-                <e p="WorldGenerator.cs" t="Include" />
-                <e p="WorldGeneratorLogDecorator.cs" t="Include" />
+            </e>
+            <e p="GameConfiguration.cs" t="Include" />
+            <e p="GameLoop.cs" t="Include" />
+            <e p="GameRunner.cs" t="Include" />
+            <e p="Systems" t="Include">
+              <e p="AnimationSystem.cs" t="Include" />
+              <e p="SpawnSystem.cs" t="Include" />
+            </e>
+            <e p="UI" t="Include">
+              <e p="Avocado.Keeper.UI.asmdef" t="Include" />
+              <e p="Tools" t="Include">
+                <e p="BackgroundBacther.cs" t="Include" />
               </e>
             </e>
-            <e p="Main.asmdef" t="Include" />
+            <e p="Worlds" t="Include">
+              <e p="IWorldGenerator.cs" t="Include" />
+              <e p="World.cs" t="Include" />
+              <e p="WorldGenerator.cs" t="Include" />
+              <e p="WorldGeneratorLogDecorator.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="ThirdParty" t="Include">
@@ -1961,8 +1937,10 @@
           </e>
         </e>
       </e>
-      <e p="Core.csproj" t="IncludeRecursive" />
-      <e p="Game.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.Core.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.Data.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.UI.csproj" t="IncludeRecursive" />
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
       <e p="Keeper.sln" t="IncludeFlat" />
       <e p="MoreMountains.Feedbacks.Cinemachine.csproj" t="IncludeRecursive" />

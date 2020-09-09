@@ -1,4 +1,6 @@
-﻿namespace Avocado.Game {
+﻿using Avocado.Core;
+
+namespace Avocado.Game {
     public class GameLoop : MonoBehaviourWrapper
     {
         protected override void Update() {

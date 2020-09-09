@@ -1,4 +1,3 @@
-using Avocado.Game.Components;
 using JetBrains.Annotations;
 
 namespace Avocado.Game.Data.Components {

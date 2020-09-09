@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Avocado.Game.Components;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Game.Data {

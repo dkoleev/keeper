@@ -1,8 +1,7 @@
-using Avocado.Core.Loader;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace Avocado.Game {
+namespace Avocado.Core.Loader.Variants {
     public class DotNetJsonLoader : ILoader {
         public T LoadObject<T>(string path) {
             string filePath = path.Replace(".json", "");

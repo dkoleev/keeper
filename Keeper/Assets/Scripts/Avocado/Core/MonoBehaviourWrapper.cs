@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Avocado.Game
+namespace Avocado.Core
 {
     public class MonoBehaviourWrapper : MonoBehaviour
     {
