@@ -53,36 +53,23 @@ namespace Avocado.Game.Components {
         }
 
         private void Move() {
-            if(!Initialized)
+            if (!Initialized)
                 return;
 
             _moveComponent.CurrentSpeedMove = _moveAxis.magnitude;
             if (_moveAxis.magnitude > 0) {
                 if (!_mooving) {
                     _mooving = true;
+                    Entity.Animator.SetTrigger(_walkAnimationKey);
                 }
 
                 _moveComponent.Entity.MoveTransform.position += new Vector3(
-                    _moveAxis.x * Time.deltaTime * _moveComponent.SpeedMove, 
-                    0, 
+                    _moveAxis.x * Time.deltaTime * _moveComponent.SpeedMove,
+                    0,
                     _moveAxis.y * Time.deltaTime * _moveComponent.SpeedMove);
-            }
-            else
-            {
+            } else if (_mooving) {
                 _mooving = false;
-            }
-            
-            if (_mooving) {
-                /*Entity.Animator.SetInteger(_stateAnimationKey, 1);
-                var speed =(Mathf.Abs(_moveAxis.x) + Mathf.Abs(_moveAxis.y));
-                Entity.Animator.SetFloat(_speedMoveAnimationKey, speed);*/
-                Entity.Animator.SetTrigger(_walkAnimationKey);
-            } else {
-                /*Entity.Animator.SetInteger(_stateAnimationKey, 0);
-                Entity.Animator.SetFloat(_speedMoveAnimationKey, 0);*/
-                if (_attackComponent == null || !_attackComponent.IsAttack()) {
-                    Entity.Animator.SetTrigger(_idleAnimationKey);
-                }
+                Entity.Animator.SetTrigger(_idleAnimationKey);
             }
 
             Rotate(_moveComponent.Entity.RotateTransform, _moveComponent.SpeedRotate);

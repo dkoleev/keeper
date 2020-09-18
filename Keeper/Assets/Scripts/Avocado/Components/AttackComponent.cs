@@ -70,7 +70,7 @@ namespace Avocado.Game.Components {
                         if (CanShoot(target)) {
                             _currentTarget = target;
                             WeaponComponent.IsAttack = true;
-                            Entity.Animator.SetTrigger(_attackAnimationKey);
+                            TryShoot();
                         }
                     }
                 }
@@ -83,31 +83,20 @@ namespace Avocado.Game.Components {
                 if (WeaponComponent.IsAttack) {
                     if (WeaponComponent.CurrentDelay <= 0) {
                         WeaponComponent.CurrentDelay = WeaponComponent.Delay;
-                        Shoot(this);
+                        Shoot();
                     }
 
                     WeaponComponent.CurrentDelay -= Time.deltaTime;
                 }
             }
-
-            /*Entity.Animator.SetInteger(_animatorConditionId, WeaponComponent.IsAttack ? 1 : 0);
-            Entity.Animator.SetInteger(_animatorMode, WeaponComponent.IsAttack ? 101 : 100);*/
+            
+            void Shoot() {
+                Entity.Animator.SetTrigger(_attackAnimationKey);
+            }
         }
 
         private bool CanShoot(Entity target) {
             return Vector3.Distance(Entity.transform.position, target.transform.position) <= WeaponComponent.Range;
-        }
-
-        public bool IsAttack() {
-            if (WeaponComponent == null) {
-                return false;
-            }
-
-            return WeaponComponent.IsAttack;
-        }
-
-        private void Shoot(AttackComponent attack) {
-           // attack.Entity.Animator.SetInteger(_animatorConditionId, 2);
         }
     }
 }

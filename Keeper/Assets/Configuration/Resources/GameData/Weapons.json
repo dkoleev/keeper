@@ -7,7 +7,7 @@
 				"Weapon": {
 					"Type": "Weapon",
 					"Damage": 5,
-					"Delay" : 2,
+					"Delay" : 0.5,
 					"Clip": 10,
 					"Range": 10
 				}
