@@ -1,0 +1,15 @@
+{
+    "name": "Avocado.Keeper.Editor",
+    "references": [
+        "GUID:ce01096f7a2a93745b48b35c2cae7b38"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

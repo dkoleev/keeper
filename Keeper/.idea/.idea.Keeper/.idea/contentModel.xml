@@ -50,6 +50,22 @@
             </e>
           </e>
         </e>
+        <e p="Plugins" t="Include">
+          <e p="Relay" t="Include">
+            <e p="Editor" t="Include">
+              <e p="Relay.Editor.asmdef" t="Include" />
+              <e p="RelayProfile.cs" t="Include" />
+              <e p="RelayTests.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Relay.asmdef" t="Include" />
+              <e p="Relay.cs" t="Include" />
+              <e p="Relay.Debug.cs" t="Include" />
+              <e p="RelayBinding.cs" t="Include" />
+              <e p="RelayLink.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Samples" t="Include">
           <e p="Input System" t="Include">
             <e p="1.0.0-preview.4" t="Include">
@@ -219,6 +235,10 @@
               <e p="EntityData.cs" t="Include" />
               <e p="GameData.cs" t="Include" />
               <e p="IComponentData.cs" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="Avocado.Keeper.Editor.asmdef" t="Include" />
+              <e p="Test.cs" t="Include" />
             </e>
             <e p="Entities" t="Include">
               <e p="AI" t="Include">
@@ -1940,6 +1960,7 @@
       <e p="Avocado.Keeper.Core.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Data.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.Editor.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.UI.csproj" t="IncludeRecursive" />
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
       <e p="Keeper.sln" t="IncludeFlat" />
@@ -1970,6 +1991,8 @@
       <e p="NavMeshComponentsExamplesEditor.csproj" t="IncludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
+      <e p="Relay.csproj" t="IncludeRecursive" />
+      <e p="Relay.Editor.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="Unity.InputSystem.InGameHints.csproj" t="IncludeRecursive" />
       <e p="Unity.InputSystem.RebindingUI.csproj" t="IncludeRecursive" />
