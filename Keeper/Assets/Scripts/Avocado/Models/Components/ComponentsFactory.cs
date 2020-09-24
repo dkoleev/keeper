@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Avocado.Game.Data;
-using Avocado.Game.Entities;
+using Avocado.Models.Entities;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     public static class ComponentsFactory<T> where T : class {
         private static readonly Dictionary<ComponentType, Type> _types = new Dictionary<ComponentType, Type>();
 

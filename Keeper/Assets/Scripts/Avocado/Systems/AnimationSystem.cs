@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Logger = Avocado.Framework.Utilities.Logger;
 
-namespace Avocado.Game.Systems {
+namespace Avocado.Systems {
     public class AnimationSystem {
         private Animator _animator;
         private string _currentState;

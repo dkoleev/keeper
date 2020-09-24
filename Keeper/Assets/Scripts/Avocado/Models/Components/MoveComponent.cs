@@ -1,9 +1,9 @@
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
-using Avocado.Game.Entities;
+using Avocado.Models.Entities;
 using JetBrains.Annotations;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Move)]
     public class MoveComponent : ComponentBase<MoveComponentData> {

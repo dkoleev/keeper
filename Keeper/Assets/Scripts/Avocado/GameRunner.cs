@@ -1,15 +1,17 @@
 ﻿using Avocado.Core;
 using Avocado.Core.Loader.Variants;
+using Avocado.Game;
 using Avocado.Game.Core;
 using Avocado.Game.Data;
-using Avocado.Game.Worlds;
+using Avocado.Models.Worlds;
+using Avocado.ModelViews;
 using UnityEngine;
 
-namespace Avocado.Game {
+namespace Avocado {
     [DisallowMultipleComponent]
     public class GameRunner : MonoBehaviourWrapper, IInitializable {
         public bool Initialized { get; private set; }
-        
+
         protected override void Start()
         {
             base.Start();
@@ -51,8 +53,19 @@ namespace Avocado.Game {
         }
 
         private void LoadWorld(GameData data) {
-            World.Initialize(data);
-            World.Create();
+            LoadModeViews( LoadModels(data));
+        }
+
+        private World LoadModels(GameData data) {
+            var world = new World(data);
+            world.Create();
+
+            return world;
+        }
+
+        private void LoadModeViews(World world) {
+            var worldView = new WorldView(world);
+            worldView.Create();
         }
 
         private void Test() {

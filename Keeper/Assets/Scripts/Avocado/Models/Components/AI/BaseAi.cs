@@ -2,16 +2,16 @@ using System;
 using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
-using Avocado.Game.Entities;
-using Avocado.Game.Entities.AI;
-using Avocado.Game.Systems;
+using Avocado.Models.Entities;
+using Avocado.Models.Entities.AI;
+using Avocado.Systems;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 using Logger = Avocado.Framework.Utilities.Logger;
 using Random = UnityEngine.Random;
 
-namespace Avocado.Game.Components.AI {
+namespace Avocado.Models.Components.AI {
     [UsedImplicitly]
     [ComponentType(ComponentType.AI)]
     public class BaseAi : ComponentBase<AiComponentData> {

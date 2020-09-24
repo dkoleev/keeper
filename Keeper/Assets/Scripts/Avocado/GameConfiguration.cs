@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Avocado.Core.Loader;
 using Avocado.Game.Data;
 
-namespace Avocado.Game {
+namespace Avocado {
     public class GameConfiguration {
         private const string DataPath = "GameData/";
         private GameData _data;

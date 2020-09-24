@@ -2,7 +2,7 @@ using Avocado.Framework.Patterns.StateMachine;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Avocado.Game.Entities.AI {
+namespace Avocado.Models.Entities.AI {
     public class MoveToPoint : IState {
         private Animator _animator;
         private NavMeshAgent _agent;

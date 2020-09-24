@@ -1,13 +1,14 @@
 using Avocado.Game.Data;
+using Avocado.Models.Worlds;
 using Cinemachine;
 using UnityEngine;
 
-namespace Avocado.Game.Entities {
+namespace Avocado.Models.Entities {
     public class PlayerEntity : Entity {
         private CinemachineBrain _brain;
 
-        public override void Initialize(string entityId, in EntityData entityData, in GameData gameData) {
-            base.Initialize(entityId, in entityData, in gameData);
+        public override void Initialize(string entityId, in EntityData entityData, World world) {
+            base.Initialize(entityId, in entityData, world);
             
             _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
             if (_brain.ActiveVirtualCamera == null) {

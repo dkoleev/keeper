@@ -1,11 +1,11 @@
-using System;
 using System.Collections.Generic;
 using Avocado.Core;
-using Avocado.Game.Components;
 using Avocado.Game.Data;
+using Avocado.Models.Components;
+using Avocado.Models.Worlds;
 using UnityEngine;
 
-namespace Avocado.Game.Entities {
+namespace Avocado.Models.Entities {
     public class Entity : MonoBehaviourWrapper {
         [SerializeField]
         private List<string> _currentComponents = new List<string>(3);
@@ -15,12 +15,13 @@ namespace Avocado.Game.Entities {
         public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
 
+        public World World { get; private set; }
         public GameData GameData { get; private set; }
         public EntityData EntityData { get; private set; }
         public string EntityId { get; private set; }
 
-        public virtual void Initialize(string entityId, in EntityData entityData, in GameData gameData) {
-            GameData = gameData;
+        public virtual void Initialize(string entityId, in EntityData entityData, World world) {
+            World = world;
             EntityData = entityData;
             EntityId = entityId;
             

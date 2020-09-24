@@ -2,12 +2,11 @@ using System.Collections.Generic;
 using Avocado.Game.Behaviuor;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
-using Avocado.Game.Entities;
-using Avocado.Game.Worlds;
+using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Attack)]
     public class AttackComponent : ComponentBase<AttackComponentData> {
@@ -21,7 +20,7 @@ namespace Avocado.Game.Components {
 
         private Entity _currentWeapon;
         private MoveComponent _moveComponent;
-        private Entity _currentTarget;
+        private (Entity entity, HealthComponent health) _currentTarget;
 
         public AttackComponent(Entity entity, AttackComponentData data) : base(entity, data) {
          
@@ -31,7 +30,7 @@ namespace Avocado.Game.Components {
             base.Initialize();
             if (!string.IsNullOrEmpty(Data.Weapon)) {
                 var weaponParent = Entity.gameObject.GetComponentInChildren<WeaponPlacer>();
-                World.CreateEntity(Data.Weapon, Vector3.zero, weaponParent.transform,
+                Entity.World.CreateEntity(Data.Weapon, Vector3.zero, weaponParent.transform,
                     weaponEntity => {
                         _currentWeapon = weaponEntity;
                         var transform = _currentWeapon.transform;
@@ -42,7 +41,7 @@ namespace Avocado.Game.Components {
             }
 
             _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
-            _targets = World.GetEntitiesWithComponent<HealthComponent>();
+            _targets = Entity.World.GetEntitiesWithComponent<HealthComponent>();
         }
 
         public override void Update() {
@@ -52,14 +51,14 @@ namespace Avocado.Game.Components {
 
             var isMoving = _moveComponent.CurrentSpeedMove > 0.01f;
             if (!isMoving) {
-                if (_currentTarget != null) {
-                    if (CanShoot(_currentTarget)) {
-                        Entity.RotateTransform.LookAt(_currentTarget.transform);
+                if (_currentTarget.entity != null) {
+                    if (CanShoot(_currentTarget.entity)) {
+                        Entity.RotateTransform.LookAt(_currentTarget.entity.transform);
                         TryShoot();
                         return;
                     } 
                     
-                    _currentTarget = null;
+                    _currentTarget.entity = null;
                     WeaponComponent.IsAttack = false;
                     Update();
                 }
@@ -68,14 +67,14 @@ namespace Avocado.Game.Components {
                     if (_moveComponent.Entity != target &&
                         !(WeaponComponent is null)) {
                         if (CanShoot(target)) {
-                            _currentTarget = target;
+                            _currentTarget = (target, (HealthComponent)target.GetComponentByType<HealthComponent>());
                             WeaponComponent.IsAttack = true;
                             TryShoot();
                         }
                     }
                 }
             } else {
-                _currentTarget = null;
+                _currentTarget.entity = null;
                 WeaponComponent.IsAttack = false;
             }
 
@@ -91,6 +90,7 @@ namespace Avocado.Game.Components {
             }
             
             void Shoot() {
+                _currentTarget.health.Damage(WeaponComponent.Damage);
                 Entity.Animator.SetTrigger(_attackAnimationKey);
             }
         }

@@ -1,6 +1,6 @@
 using Avocado.Framework.Utilities;
 
-namespace Avocado.Game.Worlds {
+namespace Avocado.Models.Worlds {
     public class WorldGeneratorLogDecorator : IWorldGenerator {
         private IWorldGenerator _generator;
 
@@ -8,8 +8,8 @@ namespace Avocado.Game.Worlds {
             _generator = generator;
         }
 
-        public void Generate() {
-            _generator.Generate();
+        public void Generate(World world) {
+            _generator.Generate(world);
             Logger.Log("Start generation");
         }
     }

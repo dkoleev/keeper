@@ -1,4 +1,4 @@
-namespace Avocado.Game.Systems {
+namespace Avocado.Systems {
     public class SpawnSystem {
         
     }

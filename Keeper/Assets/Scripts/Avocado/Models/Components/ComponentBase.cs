@@ -1,8 +1,8 @@
 using System;
 using Avocado.Game.Data;
-using Avocado.Game.Entities;
+using Avocado.Models.Entities;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     [Serializable]
     public abstract class ComponentBase<TComponentData> : IComponent
         where TComponentData : IComponentData {

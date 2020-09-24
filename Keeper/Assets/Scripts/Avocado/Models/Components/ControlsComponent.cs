@@ -1,12 +1,12 @@
 using Avocado.Game.Controllers;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
-using Avocado.Game.Entities;
+using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.PlayerControls)]
     public class ControlsComponent : ComponentBase<PlayerControlsComponentData>

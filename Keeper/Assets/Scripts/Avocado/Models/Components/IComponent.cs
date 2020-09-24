@@ -1,7 +1,6 @@
-using System;
-using Avocado.Game.Entities;
+using Avocado.Models.Entities;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     public interface IComponent {
         Entity Entity { get; }
         bool Initialized { get; }

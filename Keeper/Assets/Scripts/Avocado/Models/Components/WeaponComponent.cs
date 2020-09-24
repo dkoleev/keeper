@@ -1,14 +1,14 @@
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
-using Avocado.Game.Entities;
+using Avocado.Models.Entities;
 using JetBrains.Annotations;
 
-namespace Avocado.Game.Components {
+namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Weapon)]
     public class WeaponComponent : ComponentBase<WeaponComponentData> {
         public bool IsAttack { get; set; }
-        public float Damage => Data.Damage;
+        public int Damage => Data.Damage;
         public float Delay => Data.Delay;
         public float CurrentDelay { get; set; }
         public float Range => Data.Range;
