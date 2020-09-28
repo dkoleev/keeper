@@ -21,10 +21,8 @@ namespace Avocado.Models.Worlds {
         }
 
         private void SpawnEnemy() {
-            _world.CreateEntity<Entity>(ZombieId,
-                new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30)), null, entity => {
-                        
-                });
+           var entity = _world.CreateEntity<Entity>(ZombieId);
+           entity.SetPosition(new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30)));
         }
     }
 }

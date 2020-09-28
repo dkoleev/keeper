@@ -1,6 +1,5 @@
 ﻿using Avocado.Core;
 using Avocado.Core.Loader.Variants;
-using Avocado.Game;
 using Avocado.Game.Core;
 using Avocado.Game.Data;
 using Avocado.Models.Worlds;
@@ -19,17 +18,20 @@ namespace Avocado {
         }
         
         public void Initialize() {
-            Load();
+            Load(out var world);
+            
             var goLoop = new GameObject("GameLoop");
-            goLoop.AddComponent<GameLoop>();
+            var gameLoop = goLoop.AddComponent<GameLoop>();
+            gameLoop.Initialize(world);
 
             Initialized = true;
         }
         
-        private void Load() {
+        private void Load(out World world) {
             LoadGameState();
             var gameData = LoadConfiguration();
-            LoadWorld(gameData);
+            LoadWorld(gameData, out world);
+            LoadWorldView(world);
         }
 
         protected override void Update()
@@ -52,18 +54,20 @@ namespace Avocado {
             
         }
 
-        private void LoadWorld(GameData data) {
-            LoadModeViews( LoadModels(data));
+        private void LoadWorld(GameData data, out World world) {
+           LoadModels(data, out world);
         }
 
-        private World LoadModels(GameData data) {
-            var world = new World(data);
+        private void LoadWorldView(World world) {
+            LoadModelViews(world);
+        }
+
+        private void LoadModels(GameData data, out World world) {
+            world = new World(data);
             world.Create();
-
-            return world;
         }
 
-        private void LoadModeViews(World world) {
+        private void LoadModelViews(World world) {
             var worldView = new WorldView(world);
             worldView.Create();
         }

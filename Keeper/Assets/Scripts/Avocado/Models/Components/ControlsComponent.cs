@@ -3,6 +3,7 @@ using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
+using Sigtrap.Relays;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,14 +12,16 @@ namespace Avocado.Models.Components {
     [ComponentType(ComponentType.PlayerControls)]
     public class ControlsComponent : ComponentBase<PlayerControlsComponentData>
     {
+        public float RotationSpeed => _moveComponent.SpeedRotate;
+        public Vector2 MoveAxis => _moveAxis;
+        
+        public Relay<bool> OnMove = new Relay<bool>();
+        
         private readonly Controls _controls;
         private Vector2 _moveAxis;
         private float _RotationAxisY;
         private bool _mooving;
-        private readonly int _speedMoveAnimationKey = Animator.StringToHash("SpeedMove");
-        private readonly int _stateAnimationKey = Animator.StringToHash("State");
-        private readonly int _idleAnimationKey = Animator.StringToHash("Idle");
-        private readonly int _walkAnimationKey = Animator.StringToHash("Walk");
+     
         private MoveComponent _moveComponent;
         private AttackComponent _attackComponent;
         
@@ -60,39 +63,17 @@ namespace Avocado.Models.Components {
             if (_moveAxis.magnitude > 0) {
                 if (!_mooving) {
                     _mooving = true;
-                    Entity.Animator.SetTrigger(_walkAnimationKey);
+                    OnMove.Dispatch(true);
                 }
 
-                _moveComponent.Entity.MoveTransform.position += new Vector3(
+                Entity.Position += new Vector3(
                     _moveAxis.x * Time.deltaTime * _moveComponent.SpeedMove,
                     0,
                     _moveAxis.y * Time.deltaTime * _moveComponent.SpeedMove);
             } else if (_mooving) {
                 _mooving = false;
-                Entity.Animator.SetTrigger(_idleAnimationKey);
+                OnMove.Dispatch(false);
             }
-
-            Rotate(_moveComponent.Entity.RotateTransform, _moveComponent.SpeedRotate);
-        }
-
-        private void Rotate(Transform target, float speed) {
-            if (_moveAxis.magnitude < 0.001f) {
-                return;
-            }
-
-            var move = new Vector3(_moveAxis.x, 0, _moveAxis.y);
-            if (move.magnitude > 1f) {
-                move.Normalize();
-            }
-
-            var forward = target.forward;
-            var angleCurrent = Mathf.Atan2( forward.x, forward.z) * Mathf.Rad2Deg;
-            var targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-            var deltaAngle = Mathf.DeltaAngle(angleCurrent, targetAngle);
-            var targetLocalRot = Quaternion.Euler(0, deltaAngle, 0);
-            var targetRotation = Quaternion.Slerp(Quaternion.identity, targetLocalRot, speed * Time.deltaTime);
-            
-            target.rotation *= targetRotation;
         }
     }
 }

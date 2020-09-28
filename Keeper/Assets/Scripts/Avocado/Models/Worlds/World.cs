@@ -1,17 +1,18 @@
-using System;
 using System.Collections.Generic;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.Models.Entities;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
+using Avocado.ModelViews;
 
 namespace Avocado.Models.Worlds {
     public class World {
+        public WorldView WorldView;
         public GameData GameData { get; }
+        public List<Entity> Entities => _entities;
+        public Dictionary<Entity, Entity> ChildEntities => _childEntities;
         
         private readonly List<Entity> _entities = new List<Entity>();
+        private readonly Dictionary<Entity, Entity> _childEntities = new Dictionary<Entity, Entity>();
         private IWorldGenerator _generator;
         
         public World(in GameData gameData) {
@@ -24,35 +25,36 @@ namespace Avocado.Models.Worlds {
             _generator.Generate(this);
         }
 
-        public void CreateEntity<T>(string entityId, Vector3 startPosition, Transform parent = null, Action<Entity> onCreate = null)
-            where T : Entity {
-            var entityData = GameData.Entities.Entities[entityId];
-            Addressables.InstantiateAsync(entityData.Prefab, startPosition, Quaternion.identity, parent).Completed += OnLoad;
-            void OnLoad(AsyncOperationHandle<GameObject> handle) {
-                var go = handle.Result;
-                var entity = go.AddComponent<T>();
-                entity.Initialize(entityId, entityData, this);
-                _entities.Add(entity);
-                
-                onCreate?.Invoke(entity);
-            }
-        }
-        
-        public void CreateEntity(
-            string entityId,
-            Vector3 startPosition,
-            Transform parent = null,
-            Action<Entity> onCreate = null) {
-            CreateEntity<Entity>(entityId, startPosition, parent, onCreate);
+        public Entity CreateEntity<T>(string entityId)
+            where T : Entity, new() {
+            var entity = CreateEntityBase<T>(entityId);
+            _entities.Add(entity);
+
+            return entity;
         }
 
-        public void CreateEntity<T>(string entityId, Action<Entity> onCreate = null)
-            where T : Entity{
-            CreateEntity<T>(entityId, Vector3.zero, null, onCreate);
+        public Entity CreateEntity(string entityId){
+            return CreateEntity<Entity>(entityId);
         }
         
-        public void CreateEntity( string entityId, Action<Entity> onCreate = null){
-            CreateEntity<Entity>(entityId, Vector3.zero, null, onCreate);
+        public Entity CreateChildEntity<T>(string entityId, Entity parent)
+            where T : Entity, new() {
+            var entity = CreateEntityBase<T>(entityId);
+            _childEntities.Add(entity, parent);
+
+            return entity;
+        }
+        
+        public Entity CreateChildEntity(string entityId, Entity parent){
+            return CreateChildEntity<Entity>(entityId, parent);
+        }
+
+        private Entity CreateEntityBase<T>(string entityId)  where T : Entity, new() {
+            var entityData = GameData.Entities.Entities[entityId];
+            var entity = new T();
+            entity.Initialize(entityId, entityData, this);
+
+            return entity;
         }
 
         public IReadOnlyList<Entity> GetEntitiesWithComponent<T>() where T : IComponent {

@@ -1,4 +1,4 @@
-using Avocado.Framework.Utilities;
+using Avocado.UnityToolbox;
 
 namespace Avocado.Models.Worlds {
     public class WorldGeneratorLogDecorator : IWorldGenerator {

@@ -1,6 +1,6 @@
 ﻿using Avocado.Core;
 
-namespace Avocado.Game.Behaviuor {
+namespace Avocado.Behaviuor {
     public class WeaponPlacer : MonoBehaviourWrapper
     {
 

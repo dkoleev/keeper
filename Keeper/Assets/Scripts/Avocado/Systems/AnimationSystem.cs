@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Logger = Avocado.Framework.Utilities.Logger;
+using Logger = Avocado.UnityToolbox.Logger;
 
 namespace Avocado.Systems {
     public class AnimationSystem {

@@ -1,29 +1,29 @@
 using System.Collections.Generic;
-using Avocado.Core;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.Models.Worlds;
 using UnityEngine;
 
 namespace Avocado.Models.Entities {
-    public class Entity : MonoBehaviourWrapper {
-        [SerializeField]
-        private List<string> _currentComponents = new List<string>(3);
+    public class Entity {
+        public string Id { get; private set; }
+        public List<IComponent> Components => _components;
+
         private readonly List<IComponent> _components = new List<IComponent>(3);
-        
-        public Transform RotateTransform { get; private set; }
-        public Transform MoveTransform { get; private set; }
-        public Animator Animator { get; private set; }
+        public Vector3 Position { get; set; }
 
         public World World { get; private set; }
         public GameData GameData { get; private set; }
         public EntityData EntityData { get; private set; }
-        public string EntityId { get; private set; }
+
+        public Entity() {
+            Position = Vector3.zero;
+        }
 
         public virtual void Initialize(string entityId, in EntityData entityData, World world) {
             World = world;
             EntityData = entityData;
-            EntityId = entityId;
+            Id = entityId;
             
             if (!string.IsNullOrEmpty(EntityData.Parent)) {
                 AddComponents(EntityData, GameData.Entities.Entities[EntityData.Parent]);
@@ -32,15 +32,13 @@ namespace Avocado.Models.Entities {
             }
 
             InitializeComponents();
-
-            Animator = GetComponentInChildren<Animator>();
-            var mainTransform = transform;
-            RotateTransform = Animator == null ? mainTransform : Animator.transform;
-            MoveTransform = mainTransform;
         }
-        
-        protected override void Update() {
-            base.Update();
+
+        public void SetPosition(Vector3 position) {
+            Position = position;
+        }
+
+        public void Update() {
             UpdateComponents();
         }
 
@@ -73,7 +71,6 @@ namespace Avocado.Models.Entities {
         private void AddComponent(ComponentType componentType, IComponentData data) {
             var component = ComponentsFactory<IComponent>.Create(componentType, this, data);
             _components.Add(component);
-            _currentComponents.Add(componentType.ToString());
         }
 
         private void InitializeComponents() {

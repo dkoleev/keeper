@@ -1,18 +1,22 @@
 using System.Collections.Generic;
-using Avocado.Game.Behaviuor;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
+using Sigtrap.Relays;
 using UnityEngine;
 
 namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Attack)]
     public class AttackComponent : ComponentBase<AttackComponentData> {
-        private readonly int _animatorConditionId = Animator.StringToHash("ID");
-        private readonly int _animatorMode = Animator.StringToHash("Mode");
-        private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
+        public Vector3 CurrentPosition { get; private set; }
+        public Entity CurrentWeapon => _currentWeapon;
+        public bool IsAttack => WeaponComponent.IsAttack;
+        public Entity CurrentTarget => _currentTarget.entity;
+        
+        public Relay OnShoot = new Relay();
+        
         private IReadOnlyList<Entity> _targets = new List<Entity>();
 
         public WeaponComponent WeaponComponent { get; private set; }
@@ -28,16 +32,10 @@ namespace Avocado.Models.Components {
 
         public override void Initialize() {
             base.Initialize();
+            
             if (!string.IsNullOrEmpty(Data.Weapon)) {
-                var weaponParent = Entity.gameObject.GetComponentInChildren<WeaponPlacer>();
-                Entity.World.CreateEntity(Data.Weapon, Vector3.zero, weaponParent.transform,
-                    weaponEntity => {
-                        _currentWeapon = weaponEntity;
-                        var transform = _currentWeapon.transform;
-                        transform.localPosition = Vector3.zero;
-                        transform.localRotation = Quaternion.identity;
-                        WeaponComponent = (WeaponComponent) _currentWeapon.GetComponentByType<WeaponComponent>();
-                    });
+                _currentWeapon = Entity.World.CreateChildEntity(Data.Weapon, Entity);
+                WeaponComponent = (WeaponComponent) _currentWeapon.GetComponentByType<WeaponComponent>();
             }
 
             _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
@@ -53,7 +51,6 @@ namespace Avocado.Models.Components {
             if (!isMoving) {
                 if (_currentTarget.entity != null) {
                     if (CanShoot(_currentTarget.entity)) {
-                        Entity.RotateTransform.LookAt(_currentTarget.entity.transform);
                         TryShoot();
                         return;
                     } 
@@ -91,12 +88,12 @@ namespace Avocado.Models.Components {
             
             void Shoot() {
                 _currentTarget.health.Damage(WeaponComponent.Damage);
-                Entity.Animator.SetTrigger(_attackAnimationKey);
+                OnShoot.Dispatch();
             }
         }
 
         private bool CanShoot(Entity target) {
-            return Vector3.Distance(Entity.transform.position, target.transform.position) <= WeaponComponent.Range;
+            return Vector3.Distance(Entity.Position, target.Position) <= WeaponComponent.Range;
         }
     }
 }

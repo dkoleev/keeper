@@ -2,52 +2,63 @@ using System;
 using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
+using Avocado.Models.Components.AI.States;
 using Avocado.Models.Entities;
-using Avocado.Models.Entities.AI;
-using Avocado.Systems;
 using JetBrains.Annotations;
+using Sigtrap.Relays;
 using UnityEngine;
 using UnityEngine.AI;
-using Logger = Avocado.Framework.Utilities.Logger;
 using Random = UnityEngine.Random;
 
 namespace Avocado.Models.Components.AI {
     [UsedImplicitly]
     [ComponentType(ComponentType.AI)]
     public class BaseAi : ComponentBase<AiComponentData> {
-        private NavMeshAgent _agent;
-        private Animator _animator;
+        public Relay<IState, IState> OnStateChanged = new Relay<IState, IState>();
+        
         private MoveComponent _moveComponent;
-        private AnimationSystem _animationSystem;
         private StateMachine _stateMachine;
         private float _idleDelay = Random.Range(2, 5);
         private Action _canMove;
-        
+        private NavMeshAgent _agent;
+
+        private IState _idleState;
+        private IState _moveState;
+
         public BaseAi(Entity entity, AiComponentData data) : base(entity, data) {
-            _agent = Entity.GetComponent<NavMeshAgent>();
-            if (_agent is null) {
-                Logger.LogError($"Not found NavMeshAgent component for entity {Entity.EntityId}");
-            }
-
-            _animator = Entity.GetComponentInChildren<Animator>();
-            _animationSystem = new AnimationSystem(_animator);
             _stateMachine = new StateMachine();
-            
-            var idle = new Idle(_agent, _animator);
-            var walkState = new MoveToPoint(_agent, _animator);
-            
-            To(walkState, CanMove());
-            At(walkState, idle, IsTargetReached);
-            
-            _stateMachine.SetState(idle);
 
+            _stateMachine.OnStateChanged += (prevState, newState) => {
+                OnStateChanged.Dispatch(prevState, newState);
+            };
+        }
+
+        public override void Initialize() {
+            base.Initialize();
+            _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
+        }
+
+        public void SetNavMeEshAgent(NavMeshAgent agent) {
+            _agent = agent;
+            _agent.speed = _moveComponent.SpeedMove;
+            CreateStates();
+        }
+
+        private void CreateStates() {
+            _idleState = new Idle(_agent);
+            _moveState = new MoveToPoint(_agent);
+            
+            To(_moveState, CanMove());
+            At(_moveState, _idleState, IsTargetReached);
 
             void To(IState to, Func<bool> condition) => _stateMachine.AddAnyTransition(to, condition);
             void At(IState from, IState to, Func<bool> condition) => _stateMachine.AddTransition(from, to, condition);
             
             Func<bool> CanMove() => () => _idleDelay <= 0f;
+            
+            _stateMachine.SetState(_idleState);
         }
-        
+
         private bool IsTargetReached() {
             if (!_agent.pathPending) {
                 if (_agent.remainingDistance <= _agent.stoppingDistance) {
@@ -58,11 +69,6 @@ namespace Avocado.Models.Components.AI {
             }
 
             return false;
-        }
-        
-        public override void Initialize() {
-            _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
-            _agent.speed = _moveComponent.SpeedMove;
         }
 
         public override void Update() {

@@ -7,6 +7,65 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Avocado" t="Include">
+          <e p="DependenciesVisualizer" t="Include">
+            <e p="Base" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Avocado.DependenciesVisualizer.Editor.asmdef" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="AssembliesWindow.cs" t="Include" />
+                  <e p="Commands" t="Include">
+                    <e p="DeleteAssemblyCommand.cs" t="Include" />
+                    <e p="ICommand.cs" t="Include" />
+                  </e>
+                  <e p="DependencyManager.cs" t="Include" />
+                  <e p="LayersWindow.cs" t="Include" />
+                  <e p="MainWindow.cs" t="Include" />
+                  <e p="Models" t="Include">
+                    <e p="Node.cs" t="Include" />
+                  </e>
+                  <e p="NodeView.cs" t="Include" />
+                  <e p="ReorderList" t="Include">
+                    <e p="Element Adder Menu" t="Include">
+                      <e p="ElementAdderMenuBuilder.cs" t="Include" />
+                      <e p="ElementAdderMenuCommandAttribute.cs" t="Include" />
+                      <e p="ElementAdderMeta.cs" t="Include" />
+                      <e p="GenericElementAdderMenu.cs" t="Include" />
+                      <e p="GenericElementAdderMenuBuilder.cs" t="Include" />
+                      <e p="IElementAdder.cs" t="Include" />
+                      <e p="IElementAdderMenu.cs" t="Include" />
+                      <e p="IElementAdderMenuBuilder.cs" t="Include" />
+                      <e p="IElementAdderMenuCommand.cs" t="Include" />
+                    </e>
+                    <e p="GenericListAdaptor.cs" t="Include" />
+                    <e p="Internal" t="Include">
+                      <e p="GUIHelper.cs" t="Include" />
+                      <e p="ReorderableListResources.cs" t="Include" />
+                      <e p="SerializedPropertyUtility.cs" t="Include" />
+                    </e>
+                    <e p="IReorderableListAdaptor.cs" t="Include" />
+                    <e p="IReorderableListDropTarget.cs" t="Include" />
+                    <e p="ReorderableListControl.cs" t="Include" />
+                    <e p="ReorderableListEvents.cs" t="Include" />
+                    <e p="ReorderableListFlags.cs" t="Include" />
+                    <e p="ReorderableListGUI.cs" t="Include" />
+                    <e p="ReorderableListStyles.cs" t="Include" />
+                    <e p="SerializedPropertyAdaptor.cs" t="Include" />
+                  </e>
+                  <e p="SceneEditorGuiTools.cs" t="Include" />
+                  <e p="State" t="Include">
+                    <e p="LayerData.cs" t="Include" />
+                    <e p="NodeData.cs" t="Include" />
+                    <e p="SceneEditorPref.xml" t="Include" />
+                    <e p="VisualizerState.cs" t="Include" />
+                  </e>
+                  <e p="UserActions.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="ReadMe.txt" t="Include" />
+        </e>
         <e p="Navmesh" t="Include">
           <e p="Examples" t="Include">
             <e p="Editor" t="Include">
@@ -192,19 +251,6 @@
             <e p="Behaviuor" t="Include">
               <e p="WeaponPlacer.cs" t="Include" />
             </e>
-            <e p="Components" t="Include">
-              <e p="AI" t="Include">
-                <e p="BaseAi.cs" t="Include" />
-              </e>
-              <e p="AttackComponent.cs" t="Include" />
-              <e p="ComponentBase.cs" t="Include" />
-              <e p="ComponentsFactory.cs" t="Include" />
-              <e p="ControlsComponent.cs" t="Include" />
-              <e p="HealthComponent.cs" t="Include" />
-              <e p="IComponent.cs" t="Include" />
-              <e p="MoveComponent.cs" t="Include" />
-              <e p="WeaponComponent.cs" t="Include" />
-            </e>
             <e p="Core" t="Include">
               <e p="Avocado.Keeper.Core.asmdef" t="Include" />
               <e p="IInitializable.cs" t="Include" />
@@ -240,14 +286,6 @@
               <e p="Avocado.Keeper.Editor.asmdef" t="Include" />
               <e p="Test.cs" t="Include" />
             </e>
-            <e p="Entities" t="Include">
-              <e p="AI" t="Include">
-                <e p="Idle.cs" t="Include" />
-                <e p="MoveToPoint.cs" t="Include" />
-              </e>
-              <e p="Entity.cs" t="Include" />
-              <e p="PlayerEntity.cs" t="Include" />
-            </e>
             <e p="Events" t="Include">
               <e p="ComponentsUpdatedEvent.cs" t="Include" />
               <e p="PlayerDeadEvent.cs" t="Include" />
@@ -261,6 +299,53 @@
             <e p="GameConfiguration.cs" t="Include" />
             <e p="GameLoop.cs" t="Include" />
             <e p="GameRunner.cs" t="Include" />
+            <e p="Models" t="Include">
+              <e p="Components" t="Include">
+                <e p="AI" t="Include">
+                  <e p="BaseAi.cs" t="Include" />
+                  <e p="States" t="Include">
+                    <e p="Idle.cs" t="Include" />
+                    <e p="MoveToPoint.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="AttackComponent.cs" t="Include" />
+                <e p="ComponentBase.cs" t="Include" />
+                <e p="ComponentsFactory.cs" t="Include" />
+                <e p="ControlsComponent.cs" t="Include" />
+                <e p="HealthComponent.cs" t="Include" />
+                <e p="IComponent.cs" t="Include" />
+                <e p="MoveComponent.cs" t="Include" />
+                <e p="WeaponComponent.cs" t="Include" />
+              </e>
+              <e p="Entities" t="Include">
+                <e p="Entity.cs" t="Include" />
+                <e p="PlayerEntity.cs" t="Include" />
+              </e>
+              <e p="Worlds" t="Include">
+                <e p="IWorldGenerator.cs" t="Include" />
+                <e p="World.cs" t="Include" />
+                <e p="WorldGenerator.cs" t="Include" />
+                <e p="WorldGeneratorLogDecorator.cs" t="Include" />
+              </e>
+            </e>
+            <e p="ModelViews" t="Include">
+              <e p="ComponentViews" t="Include">
+                <e p="AI" t="Include">
+                  <e p="BaseAiView.cs" t="Include" />
+                  <e p="States" t="Include">
+                    <e p="IdleState.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="AttackComponentView.cs" t="Include" />
+                <e p="BaseComponentView.cs" t="Include" />
+                <e p="ComponentsViewFactory.cs" t="Include" />
+                <e p="ControlsComponentView.cs" t="Include" />
+                <e p="IComponentViewFactory.cs" t="Include" />
+              </e>
+              <e p="EntityView.cs" t="Include" />
+              <e p="PlayerEntityView.cs" t="Include" />
+              <e p="WorldView.cs" t="Include" />
+            </e>
             <e p="Systems" t="Include">
               <e p="AnimationSystem.cs" t="Include" />
               <e p="SpawnSystem.cs" t="Include" />
@@ -270,12 +355,6 @@
               <e p="Tools" t="Include">
                 <e p="BackgroundBacther.cs" t="Include" />
               </e>
-            </e>
-            <e p="Worlds" t="Include">
-              <e p="IWorldGenerator.cs" t="Include" />
-              <e p="World.cs" t="Include" />
-              <e p="WorldGenerator.cs" t="Include" />
-              <e p="WorldGeneratorLogDecorator.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -1957,6 +2036,7 @@
           </e>
         </e>
       </e>
+      <e p="Avocado.ArchitecureVisualizer.Editor.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Core.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Data.csproj" t="IncludeRecursive" />

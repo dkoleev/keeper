@@ -7,8 +7,7 @@ namespace Avocado.Models.Components {
     public abstract class ComponentBase<TComponentData> : IComponent
         where TComponentData : IComponentData {
         public Entity Entity { get; }
-        public virtual void Update() { }
-
+        
         protected TComponentData Data { get; }
 
         protected ComponentBase(Entity entity, TComponentData data) {
@@ -21,5 +20,7 @@ namespace Avocado.Models.Components {
         public virtual void Initialize() {
             
         }
+        
+        public virtual void Update() { }
     }
 }
