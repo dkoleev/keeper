@@ -2,11 +2,9 @@ using System.Collections.Generic;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.Models.Entities;
-using Avocado.ModelViews;
 
 namespace Avocado.Models.Worlds {
     public class World {
-        public WorldView WorldView;
         public GameData GameData { get; }
         public List<Entity> Entities => _entities;
         public Dictionary<Entity, Entity> ChildEntities => _childEntities;

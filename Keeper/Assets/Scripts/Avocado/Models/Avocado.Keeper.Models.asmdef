@@ -1,0 +1,20 @@
+{
+    "name": "Avocado.Keeper.Models",
+    "references": [
+        "GUID:1a4ce56a965a93442869544b09351753",
+        "GUID:0cbd354503b3fe64ba04eab66bb04b41",
+        "GUID:1d2b2f80479ed524c9c094ffb41ee887",
+        "GUID:a828ecafe63fe85498e6fc142a1b909a",
+        "GUID:d5b8e34db245354478ac5eeafeaeb103",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

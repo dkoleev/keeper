@@ -248,9 +248,6 @@
         <e p="Scripts" t="Include">
           <e p="Avocado" t="Include">
             <e p="Avocado.Keeper.asmdef" t="Include" />
-            <e p="Behaviuor" t="Include">
-              <e p="WeaponPlacer.cs" t="Include" />
-            </e>
             <e p="Core" t="Include">
               <e p="Avocado.Keeper.Core.asmdef" t="Include" />
               <e p="IInitializable.cs" t="Include" />
@@ -291,15 +288,11 @@
               <e p="PlayerDeadEvent.cs" t="Include" />
               <e p="PlayerResurrectEvent.cs" t="Include" />
             </e>
-            <e p="Game" t="Include">
-              <e p="Controllers" t="Include">
-                <e p="Controls.cs" t="Include" />
-              </e>
-            </e>
             <e p="GameConfiguration.cs" t="Include" />
             <e p="GameLoop.cs" t="Include" />
             <e p="GameRunner.cs" t="Include" />
             <e p="Models" t="Include">
+              <e p="Avocado.Keeper.Models.asmdef" t="Include" />
               <e p="Components" t="Include">
                 <e p="AI" t="Include">
                   <e p="BaseAi.cs" t="Include" />
@@ -317,6 +310,9 @@
                 <e p="MoveComponent.cs" t="Include" />
                 <e p="WeaponComponent.cs" t="Include" />
               </e>
+              <e p="Controllers" t="Include">
+                <e p="Controls.cs" t="Include" />
+              </e>
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
                 <e p="PlayerEntity.cs" t="Include" />
@@ -329,6 +325,10 @@
               </e>
             </e>
             <e p="ModelViews" t="Include">
+              <e p="Avocado.Keeper.ModelViews.asmdef" t="Include" />
+              <e p="Behaviour" t="Include">
+                <e p="WeaponPlacer.cs" t="Include" />
+              </e>
               <e p="ComponentViews" t="Include">
                 <e p="AI" t="Include">
                   <e p="BaseAiView.cs" t="Include" />
@@ -2041,6 +2041,8 @@
       <e p="Avocado.Keeper.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Data.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Editor.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.Models.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.ModelViews.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.UI.csproj" t="IncludeRecursive" />
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
       <e p="Keeper.sln" t="IncludeFlat" />

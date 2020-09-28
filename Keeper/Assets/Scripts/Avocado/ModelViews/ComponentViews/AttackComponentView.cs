@@ -1,6 +1,6 @@
-using Avocado.Behaviuor;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
+using Avocado.ModelViews.Behaviour;
 using JetBrains.Annotations;
 using UnityEngine;
 
