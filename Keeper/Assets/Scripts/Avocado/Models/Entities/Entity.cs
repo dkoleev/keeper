@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Avocado.Models.Entities {
     public class Entity {
         public string Id { get; private set; }
+        public Entity Parent { get; private set; }
         public List<IComponent> Components => _components;
 
         private readonly List<IComponent> _components = new List<IComponent>(3);
@@ -20,17 +21,20 @@ namespace Avocado.Models.Entities {
             Position = Vector3.zero;
         }
 
-        public virtual void Initialize(string entityId, in EntityData entityData, World world) {
+        public virtual void Initialize(string entityId, in EntityData entityData, World world, Entity parent = null) {
             World = world;
             EntityData = entityData;
             Id = entityId;
+            Parent = parent;
             
             if (!string.IsNullOrEmpty(EntityData.Parent)) {
                 AddComponents(EntityData, GameData.Entities.Entities[EntityData.Parent]);
             } else {
                 AddComponents(EntityData);
             }
+        }
 
+        public void PostInitialize() {
             InitializeComponents();
         }
 
@@ -81,7 +85,7 @@ namespace Avocado.Models.Entities {
 
         private void UpdateComponents() {
             var tempComponents = _components.ToArray();
-            foreach (var component in tempComponents) {
+            foreach (var component in _components) {
                 component.Update();
             }
         }
