@@ -1,31 +1,26 @@
-using System.Collections.Generic;
+using System;
+using System.Reflection;
+using Avocado.Data;
+using Avocado.Game.Data;
 using Avocado.Models.Components;
-using Avocado.Models.Components.AI;
-using Avocado.ModelViews.ComponentViews.AI;
 
 namespace Avocado.ModelViews.ComponentViews {
-    public class ComponentsViewFactory : IComponentViewFactory {
-        public BaseComponentView Create(IComponent component, EntityView entityView) {
-            if (component is BaseAi baseAi) {
-                return new BaseAiView(baseAi, entityView);
-            }
-            if (component is AttackComponent attackComponent) {
-                return new AttackComponentView(attackComponent, entityView);
-            }
-            if (component is ControlsComponent controlsComponent) {
-                return new ControlsComponentView(controlsComponent, entityView);
-            }
-
-            return new BaseComponentView(component, entityView);
+    public class ComponentsViewFactory<T> where T : class {
+        private readonly ComponentBaseFactory<T> _baseFactory;
+        
+        public ComponentsViewFactory() {
+            _baseFactory = new ComponentBaseFactory<T>();
+            _baseFactory.Initialize();
         }
-
-        public List<BaseComponentView> Create(IEnumerable<IComponent> components, EntityView entityView) {
-            var result = new List<BaseComponentView>();
-            foreach (var component in components) {
-                result.Add(Create(component, entityView));
+        
+        public T Create(IComponent component, EntityView entityView) {
+            var type = component.GetType().GetCustomAttribute<ComponentTypeAttribute>().Type;
+            
+            if (!_baseFactory.Types.ContainsKey(type)) {
+                type = ComponentType.None;
             }
 
-            return result;
+            return (T)Activator.CreateInstance(_baseFactory.Types[type], component, entityView);
         }
     }
 }

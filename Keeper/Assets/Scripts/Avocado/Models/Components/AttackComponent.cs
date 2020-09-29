@@ -34,7 +34,7 @@ namespace Avocado.Models.Components {
             base.Initialize();
             
             if (!string.IsNullOrEmpty(Data.Weapon)) {
-                _currentWeapon = Entity.World.CreateChildEntity(Data.Weapon, Entity);
+                _currentWeapon = Entity.World.CreateEntity(Data.Weapon, Entity);
                 WeaponComponent = (WeaponComponent) _currentWeapon.GetComponentByType<WeaponComponent>();
             }
 

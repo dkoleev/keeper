@@ -7,20 +7,27 @@ using UnityEngine;
 namespace Avocado.ModelViews {
     public class EntityView : MonoBehaviourWrapper {
         public Entity Entity { get; private set; }
-        public List<BaseComponentView> Components { get; private set; }
+        public List<IComponentView> Components { get; private set; }
         public WorldView WorldView { get; private set; }
         public Transform RotateTransform { get; private set; }
         public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
 
-        public virtual void Initialize(Entity entity, WorldView worldView, IComponentViewFactory componentViewFactory) {
+        private ComponentsViewFactory<IComponentView> _componentsViewFactory;
+
+        public virtual void Initialize(Entity entity, WorldView worldView) {
             Entity = entity;
             WorldView = worldView;
             Animator = GetComponentInChildren<Animator>();
             var mainTransform = transform;
             RotateTransform = Animator == null ? mainTransform : Animator.transform;
             MoveTransform = mainTransform;
-            Components = componentViewFactory.Create(Entity.Components, this);
+            Components = new List<IComponentView>();
+            _componentsViewFactory = new ComponentsViewFactory<IComponentView>();
+
+            foreach (var component in Entity.Components) {
+                Components.Add(_componentsViewFactory.Create(component, this));
+            }
 
             foreach (var component in Components) {
                 component.Initialize();

@@ -17,8 +17,11 @@ namespace Avocado.Models.Entities {
         public GameData GameData { get; private set; }
         public EntityData EntityData { get; private set; }
 
+        private readonly ComponentsFactory<IComponent> _componentsFactory;
+
         public Entity() {
             Position = Vector3.zero;
+            _componentsFactory = new ComponentsFactory<IComponent>();
         }
 
         public virtual void Initialize(string entityId, in EntityData entityData, World world, Entity parent = null) {
@@ -73,7 +76,7 @@ namespace Avocado.Models.Entities {
         }
 
         private void AddComponent(ComponentType componentType, IComponentData data) {
-            var component = ComponentsFactory<IComponent>.Create(componentType, this, data);
+            var component = _componentsFactory.Create(componentType, this, data);
             _components.Add(component);
         }
 

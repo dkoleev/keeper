@@ -1,9 +1,10 @@
-using Avocado.Game.Data.Converters;
+using Avocado.Data.Converters;
 using Newtonsoft.Json;
 
 namespace Avocado.Game.Data
 {
     public enum ComponentType {
+        None,
         Move,
         Health,
         PlayerControls,

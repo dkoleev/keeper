@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Avocado.Models.Entities;
 using Avocado.Models.Worlds;
-using Avocado.ModelViews.ComponentViews;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -13,11 +12,9 @@ namespace Avocado.ModelViews {
         private World _worldModel;
         private Dictionary<Entity, EntityView> _entityViews;
 
-        private ComponentsViewFactory _componentsViewFactory;
         public WorldView(World worldModel) {
             _worldModel = worldModel;
             _entityViews = new Dictionary<Entity, EntityView>();
-            _componentsViewFactory = new ComponentsViewFactory();
         }
 
         public void Create() {
@@ -36,7 +33,7 @@ namespace Avocado.ModelViews {
             void OnLoad(AsyncOperationHandle<GameObject> handle) {
                 var go = handle.Result;
                 var view = go.AddComponent<T>();
-                view.Initialize(entity, this, _componentsViewFactory);
+                view.Initialize(entity, this);
                 _entityViews.Add(entity, view);
                 
                 onCreate?.Invoke(view);

@@ -7,8 +7,8 @@ namespace Avocado.ModelViews {
     public class PlayerEntityView : EntityView {
         private CinemachineBrain _brain;
 
-        public override void Initialize(Entity entity, WorldView worldView, IComponentViewFactory componentViewFactory) {
-            base.Initialize(entity, worldView, componentViewFactory);
+        public override void Initialize(Entity entity, WorldView worldView) {
+            base.Initialize(entity, worldView);
             
             _brain = GameObject.FindWithTag("MainCamera").GetComponent<CinemachineBrain>();
             if (_brain.ActiveVirtualCamera == null) {

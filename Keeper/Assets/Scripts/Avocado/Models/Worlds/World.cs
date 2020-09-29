@@ -35,34 +35,17 @@ namespace Avocado.Models.Worlds {
             }
         }
 
-        public Entity CreateEntity<T>(string entityId)
+        public Entity CreateEntity<T>(string entityId, T parent = null)
             where T : Entity, new() {
-            var entity = CreateEntityBase<T>(entityId);
-            _entities.Add(entity);
-
-            return entity;
-        }
-
-        public Entity CreateEntity(string entityId){
-            return CreateEntity<Entity>(entityId);
-        }
-        
-        public Entity CreateChildEntity<T>(string entityId, Entity parent)
-            where T : Entity, new() {
-            var entity = CreateEntityBase<T>(entityId, parent);
-            _childEntities.Add(entity);
-
-            return entity;
-        }
-        
-        public Entity CreateChildEntity(string entityId, Entity parent){
-            return CreateChildEntity<Entity>(entityId, parent);
-        }
-
-        private Entity CreateEntityBase<T>(string entityId, Entity parent = null)  where T : Entity, new() {
             var entityData = GameData.Entities.Entities[entityId];
             var entity = new T();
             entity.Initialize(entityId, entityData, this, parent);
+            
+            if (parent is null) {
+                _entities.Add(entity);
+            } else {
+                _childEntities.Add(entity);
+            }
 
             return entity;
         }

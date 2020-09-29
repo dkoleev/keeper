@@ -261,6 +261,7 @@
             </e>
             <e p="Data" t="Include">
               <e p="Avocado.Keeper.Data.asmdef" t="Include" />
+              <e p="ComponentBaseFactory.cs" t="Include" />
               <e p="Components" t="Include">
                 <e p="AiComponentData.cs" t="Include" />
                 <e p="AttackComponentData.cs" t="Include" />
@@ -340,7 +341,7 @@
                 <e p="BaseComponentView.cs" t="Include" />
                 <e p="ComponentsViewFactory.cs" t="Include" />
                 <e p="ControlsComponentView.cs" t="Include" />
-                <e p="IComponentViewFactory.cs" t="Include" />
+                <e p="IComponentView.cs" t="Include" />
               </e>
               <e p="EntityView.cs" t="Include" />
               <e p="PlayerEntityView.cs" t="Include" />

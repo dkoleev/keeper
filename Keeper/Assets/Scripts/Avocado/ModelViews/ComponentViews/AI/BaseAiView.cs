@@ -1,11 +1,15 @@
 using Avocado.Framework.Patterns.StateMachine;
+using Avocado.Game.Data;
 using Avocado.Models.Components.AI;
 using Avocado.Models.Components.AI.States;
 using Avocado.ModelViews.ComponentViews.AI.States;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Avocado.ModelViews.ComponentViews.AI {
+    [UsedImplicitly]
+    [ComponentType(ComponentType.AI)]
     public class BaseAiView : BaseComponentView {
         private Animator _animator;
         private BaseAi AiModel;

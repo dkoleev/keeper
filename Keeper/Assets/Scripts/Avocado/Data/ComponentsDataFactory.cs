@@ -1,38 +1,28 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+using Avocado.Game.Data;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data {
-    public static class ComponentsDataFactory<T> where T : class {
-        private static readonly Dictionary<ComponentType, Type> _types = new Dictionary<ComponentType, Type>();
+namespace Avocado.Data {
+    public class ComponentsDataFactory<T> where T : class {
+        private readonly ComponentBaseFactory<T> _baseFactory;
 
-        static ComponentsDataFactory() {
-            var temp = Assembly.GetAssembly(typeof(T)).GetTypes().Where(mType =>
-                !mType.IsAbstract &&
-                (mType.IsSubclassOf(typeof(T)) || mType.GetInterfaces().Contains(typeof(T)))
-            ).ToList();
-
-            foreach (var type in temp) {
-                var attr = type.GetCustomAttribute<ComponentTypeAttribute>();
-                if (attr != null) {
-                    _types.Add(attr.Type, type);
-                }
-            }
+        public ComponentsDataFactory() {
+            _baseFactory = new ComponentBaseFactory<T>();
+            _baseFactory.Initialize();
         }
 
-        public static T Create(ComponentType type, JObject data) {
-            if (!_types.ContainsKey(type)) {
+        public T Create(ComponentType type, JObject data) {
+            if (!_baseFactory.Types.ContainsKey(type)) {
                 throw new KeyNotFoundException("Not found key for type " + type);
             }
 
-            var constructor = _types[type].GetConstructor(new[] {data.GetType()});
+            var constructor = _baseFactory.Types[type].GetConstructor(new[] {data.GetType()});
             if (constructor is null) {
-                return (T)Activator.CreateInstance(_types[type]);
+                return (T)Activator.CreateInstance(_baseFactory.Types[type]);
             }
             
-            return (T)Activator.CreateInstance(_types[type], data);
+            return (T)Activator.CreateInstance(_baseFactory.Types[type], data);
         }
     }
 }

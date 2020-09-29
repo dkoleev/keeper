@@ -1,9 +1,14 @@
+using Avocado.Game.Data;
 using Avocado.Models.Components;
+using JetBrains.Annotations;
 
 namespace Avocado.ModelViews.ComponentViews {
-    public class BaseComponentView {
-        protected EntityView EntityView;
-        protected IComponent Model;
+    [UsedImplicitly]
+    [ComponentType(ComponentType.None)]
+    public class BaseComponentView : IComponentView {
+        public EntityView EntityView { get; }
+        public IComponent Model { get; }
+        
         public BaseComponentView(IComponent componentModel, EntityView entityView) {
             Model = componentModel;
             EntityView = entityView;
