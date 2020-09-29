@@ -1,3 +1,4 @@
+using Avocado.Data;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
 using JetBrains.Annotations;
@@ -6,35 +7,32 @@ using UnityEngine;
 namespace Avocado.ModelViews.ComponentViews {
     [UsedImplicitly]
     [ComponentType(ComponentType.PlayerControls)]
-    public class ControlsComponentView : BaseComponentView {
+    public class ControlsComponentView : BaseComponentView<ControlsComponent> {
         private readonly int _idleAnimationKey = Animator.StringToHash("Idle");
         private readonly int _walkAnimationKey = Animator.StringToHash("Walk");
         
-        private ControlsComponent ControlsModel;
-        
         public ControlsComponentView(ControlsComponent componentModel, EntityView entityView) : base(componentModel, entityView) {
-            ControlsModel = componentModel;
-            ControlsModel.OnMove.AddListener(isMove => {
+            Model.OnMove.AddListener(isMove => {
                 EntityView.Animator.SetTrigger(isMove ? _walkAnimationKey : _idleAnimationKey);
             });
         }
 
         public override void Update() {
             base.Update();
-            Rotate(EntityView.RotateTransform, ControlsModel.RotationSpeed);
+            Rotate(EntityView.RotateTransform, Model.RotationSpeed);
             Move();
         }
 
         private void Move() {
-            EntityView.transform.position = ControlsModel.Entity.Position;
+            EntityView.transform.position = Model.Entity.Position;
         }
 
         private void Rotate(Transform target, float speed) {
-            if (ControlsModel.MoveAxis.magnitude < 0.001f) {
+            if (Model.MoveAxis.magnitude < 0.001f) {
                 return;
             }
 
-            var move = new Vector3(ControlsModel.MoveAxis.x, 0, ControlsModel.MoveAxis.y);
+            var move = new Vector3(Model.MoveAxis.x, 0, Model.MoveAxis.y);
             if (move.magnitude > 1f) {
                 move.Normalize();
             }

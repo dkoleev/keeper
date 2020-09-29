@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Avocado.Data;
 using Avocado.Game.Data;
@@ -17,7 +18,7 @@ namespace Avocado.ModelViews.ComponentViews {
             var type = component.GetType().GetCustomAttribute<ComponentTypeAttribute>().Type;
             
             if (!_baseFactory.Types.ContainsKey(type)) {
-                type = ComponentType.None;
+                throw new KeyNotFoundException("Not found key for type " + type);
             }
 
             return (T)Activator.CreateInstance(_baseFactory.Types[type], component, entityView);

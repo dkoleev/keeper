@@ -1,3 +1,4 @@
+using Avocado.Data;
 using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Game.Data;
 using Avocado.Models.Components.AI;
@@ -10,9 +11,8 @@ using UnityEngine.AI;
 namespace Avocado.ModelViews.ComponentViews.AI {
     [UsedImplicitly]
     [ComponentType(ComponentType.AI)]
-    public class BaseAiView : BaseComponentView {
+    public class BaseAiView : BaseComponentView<BaseAi> {
         private Animator _animator;
-        private BaseAi AiModel;
         private NavMeshAgent _agent;
         
         private static readonly int IdleState = Animator.StringToHash("Idle");
@@ -20,9 +20,8 @@ namespace Avocado.ModelViews.ComponentViews.AI {
 
         public BaseAiView(BaseAi componentModel, EntityView entityView) : base(componentModel, entityView) {
             _agent = EntityView.GetComponent<NavMeshAgent>();
-            AiModel = componentModel;
-            AiModel.SetNavMeEshAgent(_agent);
-            AiModel.OnStateChanged.AddListener(ModelStateChanged);
+            Model.SetNavMeEshAgent(_agent);
+            Model.OnStateChanged.AddListener(ModelStateChanged);
         }
 
         private void ModelStateChanged(IState prevState, IState newState) {

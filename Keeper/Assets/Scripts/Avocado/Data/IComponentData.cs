@@ -1,10 +1,8 @@
 using Avocado.Data.Converters;
 using Newtonsoft.Json;
 
-namespace Avocado.Game.Data
-{
+namespace Avocado.Data {
     public enum ComponentType {
-        None,
         Move,
         Health,
         PlayerControls,
@@ -12,8 +10,7 @@ namespace Avocado.Game.Data
         Attack,
         AI
     }
-    
+
     [JsonConverter(typeof(ComponentsConverter))]
-    public interface IComponentData {
-    }
+    public interface IComponentData { }
 }

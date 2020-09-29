@@ -1,3 +1,4 @@
+using Avocado.Data;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.ModelViews.Behaviour;
@@ -7,13 +8,10 @@ using UnityEngine;
 namespace Avocado.ModelViews.ComponentViews {
     [UsedImplicitly]
     [ComponentType(ComponentType.Attack)]
-    public class AttackComponentView : BaseComponentView {
-        private AttackComponent AttackModel;
+    public class AttackComponentView : BaseComponentView<AttackComponent> {
         private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
-        
         public AttackComponentView(AttackComponent componentModel, EntityView entityView) : base(componentModel, entityView) {
-            AttackModel = componentModel;
-            AttackModel.OnShoot.AddListener(() => {
+            Model.OnShoot.AddListener(() => {
                 EntityView.Animator.SetTrigger(_attackAnimationKey);
             });
         }
@@ -26,7 +24,7 @@ namespace Avocado.ModelViews.ComponentViews {
 
         private void CreateWeapon() {
             var weaponParent = EntityView.gameObject.GetComponentInChildren<WeaponPlacer>();
-            EntityView.WorldView.CreateEntityView<EntityView>(AttackModel.CurrentWeapon, weaponParent.transform, entityView => {
+            EntityView.WorldView.CreateEntityView<EntityView>(Model.CurrentWeapon, weaponParent.transform, entityView => {
                     entityView.transform.localPosition = Vector3.zero;
                     entityView.transform.localRotation = Quaternion.identity;
                 });
@@ -35,8 +33,8 @@ namespace Avocado.ModelViews.ComponentViews {
         public override void Update() {
             base.Update();
 
-            if (AttackModel.IsAttack) {
-                EntityView.RotateTransform.LookAt(EntityView.WorldView.Entities[AttackModel.CurrentTarget].transform);
+            if (Model.IsAttack) {
+                EntityView.RotateTransform.LookAt(EntityView.WorldView.Entities[Model.CurrentTarget].transform);
             }
         }
     }

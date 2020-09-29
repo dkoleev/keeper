@@ -1,4 +1,5 @@
 using System;
+using Avocado.Data;
 
 namespace Avocado.Game.Data {
     public class ComponentTypeAttribute : Attribute {

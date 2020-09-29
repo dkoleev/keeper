@@ -341,7 +341,10 @@
                 <e p="BaseComponentView.cs" t="Include" />
                 <e p="ComponentsViewFactory.cs" t="Include" />
                 <e p="ControlsComponentView.cs" t="Include" />
+                <e p="HealthComponentView.cs" t="Include" />
                 <e p="IComponentView.cs" t="Include" />
+                <e p="MoveComponentView.cs" t="Include" />
+                <e p="WeaponComponentView.cs" t="Include" />
               </e>
               <e p="EntityView.cs" t="Include" />
               <e p="PlayerEntityView.cs" t="Include" />
