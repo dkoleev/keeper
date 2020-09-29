@@ -18,6 +18,7 @@ namespace Avocado.Models.Components.AI {
         public Relay<IState, IState> OnStateChanged = new Relay<IState, IState>();
         
         private MoveComponent _moveComponent;
+        private HealthComponent _healthComponent;
         private StateMachine _stateMachine;
         private float _idleDelay = Random.Range(2, 5);
         private Action _canMove;
@@ -25,6 +26,7 @@ namespace Avocado.Models.Components.AI {
 
         private IState _idleState;
         private IState _moveState;
+        private IState _dieState;
 
         public BaseAi(Entity entity, AiComponentData data) : base(entity, data) {
             _stateMachine = new StateMachine();
@@ -37,6 +39,7 @@ namespace Avocado.Models.Components.AI {
         public override void Initialize() {
             base.Initialize();
             _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
+            _healthComponent = (HealthComponent)Entity.GetComponentByType<HealthComponent>();
         }
 
         public void SetNavMeEshAgent(NavMeshAgent agent) {
@@ -48,6 +51,7 @@ namespace Avocado.Models.Components.AI {
         private void CreateStates() {
             _idleState = new Idle(_agent);
             _moveState = new MoveToPoint(_agent);
+            _dieState = new Die(_agent);
             
             To(_moveState, CanMove());
             At(_moveState, _idleState, IsTargetReached);
@@ -58,6 +62,9 @@ namespace Avocado.Models.Components.AI {
             Func<bool> CanMove() => () => _idleDelay <= 0f;
             
             _stateMachine.SetState(_idleState);
+            _healthComponent.OnDead.AddListener(() => {
+                _stateMachine.SetState(_dieState);
+            });
         }
 
         private bool IsTargetReached() {
@@ -71,7 +78,7 @@ namespace Avocado.Models.Components.AI {
 
             return false;
         }
-
+        
         public override void Update() {
            _stateMachine.Tick();
            UpdateIdleTime();

@@ -298,6 +298,7 @@
                 <e p="AI" t="Include">
                   <e p="BaseAi.cs" t="Include" />
                   <e p="States" t="Include">
+                    <e p="Die.cs" t="Include" />
                     <e p="Idle.cs" t="Include" />
                     <e p="MoveToPoint.cs" t="Include" />
                   </e>
