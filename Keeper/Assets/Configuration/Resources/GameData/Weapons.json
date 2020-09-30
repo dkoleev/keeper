@@ -6,7 +6,7 @@
 			"Components": {
 				"Weapon": {
 					"Type": "Weapon",
-					"Damage": 5,
+					"Damage": 500,
 					"Delay" : 0.5,
 					"Clip": 10,
 					"Range": 10

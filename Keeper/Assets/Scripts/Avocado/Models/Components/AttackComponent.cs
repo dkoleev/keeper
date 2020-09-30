@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Avocado.Data;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
@@ -18,7 +19,7 @@ namespace Avocado.Models.Components {
         
         public Relay OnShoot = new Relay();
         
-        private IReadOnlyList<Entity> _targets = new List<Entity>();
+        private List<Entity> _targets = new List<Entity>();
 
         public WeaponComponent WeaponComponent { get; private set; }
         public int StartAmmo => Data.StartAmmo;
@@ -27,8 +28,8 @@ namespace Avocado.Models.Components {
         private MoveComponent _moveComponent;
         private (Entity entity, HealthComponent health) _currentTarget;
 
-        public AttackComponent(Entity entity, AttackComponentData data) : base(entity, data) {
-         
+        public AttackComponent(Entity entity, AttackComponentData data) : base(entity, data) {    
+            
         }
 
         public override void Initialize() {
@@ -41,6 +42,13 @@ namespace Avocado.Models.Components {
 
             _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
             _targets = Entity.World.GetEntitiesWithComponent<HealthComponent>();
+
+            Entity.World.OnEntityCreate.AddListener(entity => {
+                var health = entity.GetComponentByType<HealthComponent>();
+                if (health != null) {
+                    _targets.Add(entity);
+                }
+            });
         }
 
         public override void Update() {
@@ -51,14 +59,21 @@ namespace Avocado.Models.Components {
             var isMoving = _moveComponent.CurrentSpeedMove > 0.01f;
             if (!isMoving) {
                 if (_currentTarget.entity != null) {
-                    if (CanShoot(_currentTarget.entity)) {
-                        TryShoot();
-                        return;
-                    } 
+                    if (!_currentTarget.health.IsAlive) {
+                        if (_targets.Contains(_currentTarget.entity)) {
+                            _targets.Remove(_currentTarget.entity);
+                        }
+                        _currentTarget.entity = null;
+                        WeaponComponent.IsAttack = false;
+                    } else {
+                        if (CanShoot(_currentTarget.entity)) {
+                            TryShoot();
+                            return;
+                        } 
                     
-                    _currentTarget.entity = null;
-                    WeaponComponent.IsAttack = false;
-                    Update();
+                        _currentTarget.entity = null;
+                        WeaponComponent.IsAttack = false;
+                    }
                 }
 
                 foreach (var target in _targets) {

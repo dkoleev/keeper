@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.Models.Entities;
+using Sigtrap.Relays;
 
 namespace Avocado.Models.Worlds {
     public class World {
+        public Relay<Entity> OnEntityCreate = new Relay<Entity>();
         public GameData GameData { get; }
         public List<Entity> Entities => _entities;
         public List<Entity> ChildEntities => _childEntities;
@@ -46,11 +48,13 @@ namespace Avocado.Models.Worlds {
             } else {
                 _childEntities.Add(entity);
             }
+            
+            OnEntityCreate.Dispatch(entity);
 
             return entity;
         }
 
-        public IReadOnlyList<Entity> GetEntitiesWithComponent<T>() where T : IComponent {
+        public List<Entity> GetEntitiesWithComponent<T>() where T : IComponent {
             var result = new List<Entity>();
             foreach (var entity in _entities) {
                 if (entity.GetComponentByType<T>() is null) {

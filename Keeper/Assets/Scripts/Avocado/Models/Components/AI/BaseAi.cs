@@ -59,14 +59,14 @@ namespace Avocado.Models.Components.AI {
             void To(IState to, Func<bool> condition) => _stateMachine.AddAnyTransition(to, condition);
             void At(IState from, IState to, Func<bool> condition) => _stateMachine.AddTransition(from, to, condition);
             
-            Func<bool> CanMove() => () => _idleDelay <= 0f;
+            Func<bool> CanMove() => () => _idleDelay <= 0f && _healthComponent.IsAlive;
             
             _stateMachine.SetState(_idleState);
             _healthComponent.OnDead.AddListener(() => {
                 _stateMachine.SetState(_dieState);
             });
         }
-
+        
         private bool IsTargetReached() {
             if (!_agent.pathPending) {
                 if (_agent.remainingDistance <= _agent.stoppingDistance) {
@@ -82,6 +82,15 @@ namespace Avocado.Models.Components.AI {
         public override void Update() {
            _stateMachine.Tick();
            UpdateIdleTime();
+           UpdatePosition();
+        }
+
+        private void UpdatePosition() {
+            if (_agent is null) {
+                return;
+            }
+
+            Entity.Position = _agent.transform.position;
         }
 
         private void UpdateIdleTime() {
