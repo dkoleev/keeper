@@ -19,7 +19,6 @@ namespace Avocado.Models.Worlds {
         }
 
         private void UpdateWorld() {
-            Debug.LogError(_enemies.Count);
             if (_enemies.Count < 3) {
                 SpawnEnemy();
             }
