@@ -1,7 +1,7 @@
-using Avocado.Data;
+using Avocado.Game.Data;
 using JetBrains.Annotations;
 
-namespace Avocado.Game.Data.Components {
+namespace Avocado.Data.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.PlayerControls)]
     public readonly struct PlayerControlsComponentData : IComponentData {

@@ -1,9 +1,9 @@
 using System;
-using Avocado.Data;
+using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data.Components {
+namespace Avocado.Data.Components {
     [Serializable]
     [UsedImplicitly]
     [ComponentType(ComponentType.AI)]

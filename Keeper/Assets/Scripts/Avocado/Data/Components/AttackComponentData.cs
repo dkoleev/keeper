@@ -1,8 +1,8 @@
-using Avocado.Data;
+using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data.Components {
+namespace Avocado.Data.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Attack)]
     public readonly struct AttackComponentData : IComponentData {

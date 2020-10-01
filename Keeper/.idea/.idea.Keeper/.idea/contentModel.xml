@@ -266,6 +266,7 @@
                 <e p="AiComponentData.cs" t="Include" />
                 <e p="AttackComponentData.cs" t="Include" />
                 <e p="HealthComponentData.cs" t="Include" />
+                <e p="InventoryData.cs" t="Include" />
                 <e p="MoveComponentData.cs" t="Include" />
                 <e p="PlayerControlsComponentData.cs" t="Include" />
                 <e p="WeaponComponentData.cs" t="Include" />
@@ -309,6 +310,7 @@
                 <e p="ControlsComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />
+                <e p="Inventory.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
                 <e p="WeaponComponent.cs" t="Include" />
               </e>
