@@ -15,17 +15,24 @@ namespace Avocado.ModelViews {
         public WorldView(World worldModel) {
             _worldModel = worldModel;
             _entityViews = new Dictionary<Entity, EntityView>();
+
+            _worldModel.OnEntityCreate.AddListener(Create);
         }
 
         public void Create() {
             foreach (var entity in _worldModel.Entities) {
-                if (entity is PlayerEntity) {
-                    CreateEntityView<PlayerEntityView>(entity);
-                } else {
-                    CreateEntityView<EntityView>(entity);
-                }
+                Create(entity);
             }
         }
+        
+        public void Create(Entity entity) {
+            if (entity is PlayerEntity) {
+                CreateEntityView<PlayerEntityView>(entity);
+            } else {
+                CreateEntityView<EntityView>(entity);
+            }
+        }
+        
         
         public void CreateEntityView<T>(Entity entity, Transform parent = null, Action<EntityView> onCreate = null)
             where T : EntityView {

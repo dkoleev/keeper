@@ -16,6 +16,7 @@ namespace Avocado.Models.Components.AI {
     [ComponentType(ComponentType.AI)]
     public class BaseAi : ComponentBase<AiComponentData> {
         public Relay<IState, IState> OnStateChanged = new Relay<IState, IState>();
+        public bool IsAlive => _healthComponent.IsAlive;
         
         private MoveComponent _moveComponent;
         private HealthComponent _healthComponent;
@@ -62,7 +63,7 @@ namespace Avocado.Models.Components.AI {
             Func<bool> CanMove() => () => _idleDelay <= 0f && _healthComponent.IsAlive;
             
             _stateMachine.SetState(_idleState);
-            _healthComponent.OnDead.AddListener(() => {
+            _healthComponent.OnDead.AddListener(health => {
                 _stateMachine.SetState(_dieState);
             });
         }

@@ -3,6 +3,7 @@ using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.Models.Entities;
 using Sigtrap.Relays;
+using UnityEngine;
 
 namespace Avocado.Models.Worlds {
     public class World {
@@ -23,25 +24,17 @@ namespace Avocado.Models.Worlds {
         public void Create() {
             CreateEntity<PlayerEntity>("Player");
             _generator.Generate(this);
-
-            PostInitializeEntities();
         }
 
-        public void PostInitializeEntities() {
-            foreach (var entity in _entities) {
-                entity.PostInitialize();
-            }
-
-            foreach (var childEntity in _childEntities) {
-                childEntity.PostInitialize();
-            }
-        }
-
-        public Entity CreateEntity<T>(string entityId, T parent = null)
+        public Entity CreateEntity<T>(string entityId, T parent = null, Vector3? position = null)
             where T : Entity, new() {
             var entityData = GameData.Entities.Entities[entityId];
             var entity = new T();
             entity.Initialize(entityId, entityData, this, parent);
+            entity.PostInitialize();
+            if (position != null) {
+                entity.SetPosition(position.Value);
+            }
             
             if (parent is null) {
                 _entities.Add(entity);

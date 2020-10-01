@@ -10,7 +10,7 @@ namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ComponentType(ComponentType.Health)]
     public class HealthComponent : ComponentBase<HealthComponentData> {
-        public readonly Relay OnDead = new Relay();
+        public readonly Relay<HealthComponent> OnDead = new Relay<HealthComponent>();
         public int CurrentHealth { get; private set; }
         public bool IsAlive => CurrentHealth > 0;
 
@@ -18,10 +18,16 @@ namespace Avocado.Models.Components {
             CurrentHealth = Data.MaxHealth;
         }
 
+        public override void Initialize() {
+            base.Initialize();
+
+            Initialized = true;
+        }
+
         public void Damage(int value) {
             CurrentHealth = Mathf.Max(0, CurrentHealth - value);
             if (CurrentHealth == 0) {
-                OnDead.Dispatch();
+                OnDead.Dispatch(this);
             }
         }
 

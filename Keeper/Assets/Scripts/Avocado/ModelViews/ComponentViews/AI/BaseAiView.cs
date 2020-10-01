@@ -17,11 +17,16 @@ namespace Avocado.ModelViews.ComponentViews.AI {
         
         private static readonly int IdleState = Animator.StringToHash("Idle");
         private static readonly int Walk = Animator.StringToHash("Walk");
+        private readonly int _deadAnimationKey = Animator.StringToHash("Die");
 
         public BaseAiView(BaseAi componentModel, EntityView entityView) : base(componentModel, entityView) {
             _agent = EntityView.GetComponent<NavMeshAgent>();
             Model.SetNavMeEshAgent(_agent);
+            if (!Model.IsAlive) {
+                EntityView.Animator.SetTrigger(_deadAnimationKey);
+            }
             Model.OnStateChanged.AddListener(ModelStateChanged);
+     
         }
 
         private void ModelStateChanged(IState prevState, IState newState) {
@@ -39,6 +44,10 @@ namespace Avocado.ModelViews.ComponentViews.AI {
 
             if (newState is MoveToPoint) {
                 EntityView.Animator.SetTrigger(Walk);
+            }
+            
+            if (newState is Die) {
+                EntityView.Animator.SetTrigger(_deadAnimationKey);
             }
         }
     }

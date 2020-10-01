@@ -36,10 +36,11 @@ namespace Avocado.Models.Entities {
             } else {
                 AddComponents(EntityData);
             }
+            
+            InitializeComponents();
         }
 
         public void PostInitialize() {
-            InitializeComponents();
         }
 
         public void SetPosition(Vector3 position) {

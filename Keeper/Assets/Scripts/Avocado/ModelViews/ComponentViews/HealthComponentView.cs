@@ -11,9 +11,9 @@ namespace Avocado.ModelViews.ComponentViews {
         private readonly int _deadAnimationKey = Animator.StringToHash("Die");
         public HealthComponentView(HealthComponent componentModel, EntityView entityView) :
             base(componentModel, entityView) {
-            Model.OnDead.AddListener(() => {
+            /*Model.OnDead.AddListener(health => {
                 EntityView.Animator.SetTrigger(_deadAnimationKey);
-            });
+            });*/
         }
     }
 }

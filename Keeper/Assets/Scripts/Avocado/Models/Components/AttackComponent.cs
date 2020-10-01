@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Avocado.Data;
 using Avocado.Game.Data;
 using Avocado.Game.Data.Components;
@@ -41,17 +40,23 @@ namespace Avocado.Models.Components {
             }
 
             _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
+            
             _targets = Entity.World.GetEntitiesWithComponent<HealthComponent>();
-
             Entity.World.OnEntityCreate.AddListener(entity => {
                 var health = entity.GetComponentByType<HealthComponent>();
-                if (health != null) {
+                if (health != null && !_targets.Contains(entity)) {
                     _targets.Add(entity);
                 }
             });
+
+            Initialized = true;
         }
 
         public override void Update() {
+            if (!Initialized) {
+                return;
+            }
+            
             if (WeaponComponent is null) {
                 return;
             }
@@ -103,6 +108,10 @@ namespace Avocado.Models.Components {
             }
             
             void Shoot() {
+                if (!_currentTarget.health.Initialized) {
+                    return;
+                }
+
                 _currentTarget.health.Damage(WeaponComponent.Damage);
                 OnShoot.Dispatch();
             }
