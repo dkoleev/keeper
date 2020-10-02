@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Avocado.Game.Data;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
@@ -8,6 +9,7 @@ namespace Avocado.Data.Components {
     [ComponentType(ComponentType.Inventory)]
     public readonly struct InventoryData : IComponentData {
         public readonly int Size;
+        public readonly Dictionary<string, int> Content;
 
         public InventoryData(JObject data) {
             if (data["Size"] is null) {
@@ -15,6 +17,10 @@ namespace Avocado.Data.Components {
             }
 
             Size = data["Size"].Value<int>();
+            Content = new Dictionary<string, int>();
+            if (!(data["Content"] is null)) {
+                Content = data["Content"].ToObject<Dictionary<string, int>>();
+            }
         }
     }
 }

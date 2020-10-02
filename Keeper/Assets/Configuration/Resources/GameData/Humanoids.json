@@ -49,6 +49,13 @@
 					"Type" : "Move",
 					"SpeedMove" : 3,
 					"SpeedRotate" : 6
+				},
+				"Inventory" : {
+					"Type" : "Inventory",
+					"Size" : 10,
+					"Content" : {
+						"Revolver" : 1
+					}
 				}
 			}
 		},

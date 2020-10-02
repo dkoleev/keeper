@@ -3,6 +3,7 @@
 		"Revolver": {
 			"Parent": null,
 			"Prefab": "Revolver",
+			"MaxStack" : 1,
 			"Components": {
 				"Weapon": {
 					"Type": "Weapon",

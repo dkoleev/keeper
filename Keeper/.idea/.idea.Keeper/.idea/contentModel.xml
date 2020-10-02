@@ -276,6 +276,9 @@
               <e p="Converters" t="Include">
                 <e p="ComponentsConverter.cs" t="Include" />
               </e>
+              <e p="DataTypes" t="Include">
+                <e p="ResourcePile.cs" t="Include" />
+              </e>
               <e p="EntitiesData.cs" t="Include" />
               <e p="EntityData.cs" t="Include" />
               <e p="GameData.cs" t="Include" />
@@ -346,6 +349,7 @@
                 <e p="ControlsComponentView.cs" t="Include" />
                 <e p="HealthComponentView.cs" t="Include" />
                 <e p="IComponentView.cs" t="Include" />
+                <e p="InventoryView.cs" t="Include" />
                 <e p="MoveComponentView.cs" t="Include" />
                 <e p="WeaponComponentView.cs" t="Include" />
               </e>
