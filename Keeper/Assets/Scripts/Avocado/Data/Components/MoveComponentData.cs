@@ -10,8 +10,6 @@ namespace Avocado.Data.Components {
         public readonly byte SpeedMove;
         public readonly byte SpeedRotate;
 
-        public MoveComponentData(JObject data) : base(data) {
-            var s = SpeedMove;
-        }
+        public MoveComponentData(JObject data) : base(data) { }
     }
 }
