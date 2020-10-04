@@ -26,7 +26,7 @@ namespace Avocado.ModelViews {
         }
         
         public void Create(Entity entity) {
-            if (entity is PlayerEntity) {
+            if (entity is Player) {
                 CreateEntityView<PlayerEntityView>(entity);
             } else {
                 CreateEntityView<EntityView>(entity);

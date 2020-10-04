@@ -22,8 +22,12 @@ namespace Avocado.Models.Worlds {
         }
 
         public void Create() {
-            CreateEntity<PlayerEntity>("Player");
+            CreateEntity<Player>("Player");
             _generator.Generate(this);
+        }
+
+        public Entity CreateEntity(string entityId, Entity parent = null, Vector3? position = null) {
+            return CreateEntity<Entity>(entityId, parent, position);
         }
 
         public Entity CreateEntity<T>(string entityId, T parent = null, Vector3? position = null)

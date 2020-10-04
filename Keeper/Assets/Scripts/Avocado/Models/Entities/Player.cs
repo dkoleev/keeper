@@ -1,4 +1,4 @@
 namespace Avocado.Models.Entities {
-    public class PlayerEntity : Entity {
+    public class Player : Entity {
     }
 }

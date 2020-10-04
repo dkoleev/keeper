@@ -66,6 +66,13 @@
 						"Revolver" : 2,
 						"Revolver2" : 1,
 					}
+				},
+				"Reward" : {
+					"Type" : "Reward",
+					"Trigger" : "Dead",
+					"Content" : {
+						"Revolver" : 1
+					}
 				}
 			}
 		},
