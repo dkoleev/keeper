@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Avocado.Game.Data;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data {

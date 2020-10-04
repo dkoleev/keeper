@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Avocado.Data;
-using Avocado.Game.Data;
 using Avocado.Models.Entities;
 
 namespace Avocado.Models.Components {

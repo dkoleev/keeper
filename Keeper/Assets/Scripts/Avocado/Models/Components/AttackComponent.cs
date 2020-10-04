@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Avocado.Data;
+using Avocado.Data.Components;
 using Avocado.Game.Data;
-using Avocado.Game.Data.Components;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using Sigtrap.Relays;

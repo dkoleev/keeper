@@ -9,6 +9,7 @@
 				},
 				"Health" : {
 					"Type" : "Health",
+					"StartHealth" : 10,
 					"MaxHealth" : 50
 				},
 				"Move" : {
@@ -20,6 +21,13 @@
 					"Type" : "Attack",
 					"Weapon" : "Revolver",
 					"StartAmmo" : 10
+				},
+				"Inventory" : {
+					"Type" : "Inventory",
+					"Size" : 10,
+					"Content" : {
+						"Revolver" : 1
+					}
 				}
 			}
 		},
@@ -49,6 +57,15 @@
 					"Type" : "Move",
 					"SpeedMove" : 3,
 					"SpeedRotate" : 6
+				},
+				"Inventory" : {
+					"Type" : "Inventory",
+					"Size" : 10,
+					"Content" : {
+						"Revolver" : 1,
+						"Revolver" : 2,
+						"Revolver2" : 1,
+					}
 				}
 			}
 		},

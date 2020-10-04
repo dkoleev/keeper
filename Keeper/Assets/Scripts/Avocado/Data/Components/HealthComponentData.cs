@@ -1,18 +1,15 @@
-using Avocado.Data;
+using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data.Components
+namespace Avocado.Data.Components
 {
-    [UsedImplicitly]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [ComponentType(ComponentType.Health)]
-    public readonly struct HealthComponentData : IComponentData
+    public class HealthComponentData : BaseComponentData
     {
         public readonly int MaxHealth;
-
-        public HealthComponentData(JObject data)
-        {
-            MaxHealth = data["MaxHealth"].Value<int>();
-        }
+        public readonly int StartHealth;
+        public HealthComponentData(JObject data) : base(data) { }
     }
 }

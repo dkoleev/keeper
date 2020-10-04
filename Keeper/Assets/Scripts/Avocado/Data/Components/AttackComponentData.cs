@@ -1,17 +1,14 @@
-using Avocado.Data;
+using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data.Components {
-    [UsedImplicitly]
+namespace Avocado.Data.Components {
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [ComponentType(ComponentType.Attack)]
-    public readonly struct AttackComponentData : IComponentData {
+    public class AttackComponentData : BaseComponentData {
         public readonly string Weapon;
         public readonly int StartAmmo;
 
-        public AttackComponentData(JObject data) {
-            Weapon = data["Weapon"].Value<string>();
-            StartAmmo = data["StartAmmo"].Value<int>();
-        }
+        public AttackComponentData(JObject data) : base(data) { }
     }
 }

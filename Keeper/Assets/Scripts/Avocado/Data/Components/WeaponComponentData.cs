@@ -1,21 +1,15 @@
-using Avocado.Data;
+using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Game.Data.Components {
-    [UsedImplicitly]
+namespace Avocado.Data.Components {
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [ComponentType(ComponentType.Weapon)]
-    public struct WeaponComponentData : IComponentData {
+    public class WeaponComponentData : BaseComponentData {
         public readonly int Damage;
         public readonly float Delay;
         public readonly int Clip;
         public readonly float Range;
-
-        public WeaponComponentData(JObject data) {
-            Damage = data["Damage"].Value<int>();
-            Delay = data["Delay"].Value<float>();
-            Clip = data["Clip"].Value<int>();
-            Range = data["Range"].Value<float>();
-        }
+        public WeaponComponentData(JObject data) : base(data) { }
     }
 }

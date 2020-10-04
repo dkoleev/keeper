@@ -1,8 +1,8 @@
 using System;
 using Avocado.Data;
+using Avocado.Data.Components;
 using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Game.Data;
-using Avocado.Game.Data.Components;
 using Avocado.Models.Components.AI.States;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
