@@ -1,9 +1,11 @@
 using Avocado.Game.Data;
 using JetBrains.Annotations;
+using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
-    [UsedImplicitly]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [ComponentType(ComponentType.PlayerControls)]
-    public readonly struct PlayerControlsComponentData : IComponentData {
+    public class PlayerControlsComponentData : BaseComponentData {
+        public PlayerControlsComponentData(JObject data) : base(data) { }
     }
 }

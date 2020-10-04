@@ -5,13 +5,10 @@ using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
     [Serializable]
-    [UsedImplicitly]
+    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
     [ComponentType(ComponentType.AI)]
-    public readonly struct AiComponentData : IComponentData {
+    public class AiComponentData : BaseComponentData {
         public readonly string AiType;
-
-        public AiComponentData(JObject data) {
-            AiType = data["AiType"].Value<string>();
-        }
+        public AiComponentData(JObject data) : base(data) { }
     }
 }
