@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Avocado.Data;
 using Avocado.Data.Components;
+using Avocado.Data.Components.Reward;
 using Avocado.Game.Data;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
@@ -27,11 +28,13 @@ namespace Avocado.Models.Components.Reward {
             }
         }
 
-        public void Award() {
-            foreach (var rewardItem in Data.Content) {
-                Entity.World.CreateEntity(rewardItem.Key, position: Entity.Position);
+        private void Award() {
+            if (Data.Reward is SimpleReward simpleReward) {
+                foreach (var rewardItem in simpleReward.Content) {
+                    Entity.World.CreateEntity(rewardItem.Key, position: Entity.Position);
+                }
+                OnAward.Dispatch(simpleReward.Content);
             }
-            OnAward.Dispatch(Data.Content);
         }
     }
 }

@@ -69,6 +69,7 @@
 				},
 				"Reward" : {
 					"Type" : "Reward",
+					"RewardType" : "Simple",
 					"Trigger" : "Dead",
 					"Content" : {
 						"Revolver" : 1
@@ -77,12 +78,35 @@
 			}
 		},
 		"FatZombie" : {
-			"Parent" : "Zombie",
-			"Prefab" : "FatZombie",
+			"Parent" : null,
+			"Prefab" : "Zombie",
 			"Components" : {
+				"AI" : {
+					"Type" : "AI",
+					"AiType" : "Base"
+				},
 				"Health" : {
 					"Type" : "Health",
-					"MaxHealth" : 200
+					"MaxHealth" : 50
+				},
+				"Move" : {
+					"Type" : "Move",
+					"SpeedMove" : 3,
+					"SpeedRotate" : 6
+				},
+				"Inventory" : {
+					"Type" : "Inventory",
+					"Size" : 10,
+					"Content" : {
+						"Revolver" : 1,
+						"Revolver" : 2,
+						"Revolver2" : 1,
+					}
+				},
+				"Reward" : {
+					"Type" : "Reward",
+					"RewardType" : "Inventory",
+					"Trigger" : "Dead"
 				}
 			}
 		}

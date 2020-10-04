@@ -273,6 +273,12 @@
                 <e p="InventoryData.cs" t="Include" />
                 <e p="MoveComponentData.cs" t="Include" />
                 <e p="PlayerControlsComponentData.cs" t="Include" />
+                <e p="Reward" t="Include">
+                  <e p="CompositeReward.cs" t="Include" />
+                  <e p="InventoryReward.cs" t="Include" />
+                  <e p="IReward.cs" t="Include" />
+                  <e p="SimpleReward.cs" t="Include" />
+                </e>
                 <e p="RewardData.cs" t="Include" />
                 <e p="WeaponComponentData.cs" t="Include" />
               </e>

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Reflection;
 using Avocado.Core.Extensions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
@@ -11,6 +13,10 @@ namespace Avocado.Data.Components {
         public void LoadData(JObject data) {
             var fields = GetType().GetFields();
             foreach (var field in fields) {
+                if (field.GetCustomAttribute<JsonIgnoreAttribute>() != null) {
+                    continue;
+                }
+
                 if (data[field.Name] is null) {
                     continue;
                 }
