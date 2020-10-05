@@ -1,6 +1,6 @@
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
-using Avocado.Models.Components.Reward;
+using Avocado.Core.Factories.ObjectTypes;
+using Avocado.Models.Components;
 using JetBrains.Annotations;
 
 namespace Avocado.ModelViews.ComponentViews {

@@ -1,4 +1,4 @@
-namespace Avocado.Core.Factories.Components {
+namespace Avocado.Core.Factories.ObjectTypes {
     public static class ComponentTypes {
         public const string Inventory = "Inventory";
         public const string AI = "AI";

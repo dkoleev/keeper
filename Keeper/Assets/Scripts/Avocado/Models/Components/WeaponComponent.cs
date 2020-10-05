@@ -1,5 +1,5 @@
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
+using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;

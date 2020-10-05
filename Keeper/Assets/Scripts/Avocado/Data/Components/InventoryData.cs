@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
+using Avocado.Core.Factories.ObjectTypes;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 

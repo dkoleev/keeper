@@ -28,7 +28,7 @@ namespace Avocado.Core.Factories {
 
         public T Create(string type, params Object[] data) {
             if (!Types.ContainsKey(type)) {
-                throw new KeyNotFoundException("Not found key for type " + type);
+                throw new KeyNotFoundException("Not found key for type " + type + " in " + typeof(T));
             }
 
             return (T)Activator.CreateInstance(Types[type], data);

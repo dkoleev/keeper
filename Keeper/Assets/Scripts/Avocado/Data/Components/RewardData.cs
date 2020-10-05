@@ -1,5 +1,5 @@
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
+using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components.Reward;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -12,10 +12,10 @@ namespace Avocado.Data.Components {
         public readonly string Trigger;
         public readonly string RewardType;
         [JsonIgnore]
-        public readonly IReward Reward;
+        public readonly IRewardData Reward;
 
         public RewardData(JObject data) : base(data) {
-            var rewardFactory = new Factory<IReward>();
+            var rewardFactory = new Factory<IRewardData>();
             Reward = rewardFactory.Create(RewardType, data);
         }
     }

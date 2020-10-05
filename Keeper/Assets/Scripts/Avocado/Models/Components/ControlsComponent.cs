@@ -1,5 +1,5 @@
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
+using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components;
 using Avocado.Game.Controllers;
 using Avocado.Models.Entities;

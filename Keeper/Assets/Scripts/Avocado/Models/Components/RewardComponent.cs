@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
+using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components;
 using Avocado.Data.Components.Reward;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using Sigtrap.Relays;
 
-namespace Avocado.Models.Components.Reward {
+namespace Avocado.Models.Components {
     [UsedImplicitly]
     [ObjectType(ComponentTypes.Reward)]
     public class RewardComponent : ComponentBase<RewardData> {

@@ -1,6 +1,5 @@
 using System;
 using Avocado.Core.Factories;
-using Avocado.Core.Factories.Components;
 using Avocado.Game.Data;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

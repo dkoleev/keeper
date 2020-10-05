@@ -1,5 +1,5 @@
 namespace Avocado.Data.Components.Reward {
-    public interface IReward {
+    public interface IRewardData {
         
     }
 }
