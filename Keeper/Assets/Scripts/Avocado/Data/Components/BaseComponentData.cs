@@ -5,9 +5,12 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
-    public  abstract class BaseComponentData : IComponentData {
-     protected BaseComponentData(JObject data) {
-            LoadData(data);
+    public abstract class BaseComponentData : IComponentData {
+        private JObject _data;
+
+        protected BaseComponentData(JObject data) {
+            _data = data;
+            LoadData(_data);
         }
 
         public void LoadData(JObject data) {
@@ -37,7 +40,7 @@ namespace Avocado.Data.Components {
                     var valueType = type.GetGenericArguments()[1];
                     if (valueType.IsInt()) {
                         field.SetValue(this, data[field.Name].ToObject<IReadOnlyDictionary<string, int>>());
-                    }else if (valueType.IsString()) {
+                    } else if (valueType.IsString()) {
                         field.SetValue(this, data[field.Name].ToObject<IReadOnlyDictionary<string, string>>());
                     }
                 }

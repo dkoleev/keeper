@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Avocado.Game.Core;
 
 namespace Avocado.Core.Factories {
     public class Factory<T> where T : class {
@@ -31,7 +32,9 @@ namespace Avocado.Core.Factories {
                 throw new KeyNotFoundException("Not found key for type " + type + " in " + typeof(T));
             }
 
-            return (T)Activator.CreateInstance(Types[type], data);
+            var result = (T)Activator.CreateInstance(Types[type], data);
+
+            return result;
         }
     }
 }

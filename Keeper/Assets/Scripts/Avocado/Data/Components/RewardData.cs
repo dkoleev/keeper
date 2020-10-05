@@ -11,6 +11,7 @@ namespace Avocado.Data.Components {
     public class RewardData : BaseComponentData {
         public readonly string Trigger;
         public readonly string RewardType;
+
         [JsonIgnore]
         public readonly IRewardData Reward;
 

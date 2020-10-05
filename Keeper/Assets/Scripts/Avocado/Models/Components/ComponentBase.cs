@@ -8,8 +8,7 @@ namespace Avocado.Models.Components {
         where TComponentData : IComponentData {
         public string Type { get; }
         public Entity Entity { get; }
-        
-        protected TComponentData Data { get; }
+        public TComponentData Data { get; }
 
         protected ComponentBase(string type, Entity entity, TComponentData data) {
             Type = type;

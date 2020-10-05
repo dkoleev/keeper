@@ -81,7 +81,8 @@ namespace Avocado.Models.Components {
                     }
                 }
 
-                foreach (var target in _targets) {
+                var targetsBuffer = _targets.ToArray();
+                foreach (var target in targetsBuffer) {
                     if (_moveComponent.Entity != target &&
                         !(WeaponComponent is null)) {
                         if (CanShoot(target)) {

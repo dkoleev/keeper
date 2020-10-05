@@ -331,6 +331,11 @@
                 <e p="Inventory.cs" t="Include" />
                 <e p="MoveComponent.cs" t="Include" />
                 <e p="RewardComponent.cs" t="Include" />
+                <e p="Rewards" t="Include">
+                  <e p="InventoryReward.cs" t="Include" />
+                  <e p="IReward.cs" t="Include" />
+                  <e p="SimpleReward.cs" t="Include" />
+                </e>
                 <e p="WeaponComponent.cs" t="Include" />
               </e>
               <e p="Controllers" t="Include">

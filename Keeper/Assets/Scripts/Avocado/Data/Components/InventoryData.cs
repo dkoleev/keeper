@@ -11,7 +11,6 @@ namespace Avocado.Data.Components {
         public readonly int Size;
         public readonly IReadOnlyDictionary<string, int> Content;
 
-        public InventoryData(JObject data) : base(data) {
-        }
+        public InventoryData(JObject data) : base(data) { }
     }
 }

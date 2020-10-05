@@ -62,18 +62,13 @@
 					"Type" : "Inventory",
 					"Size" : 10,
 					"Content" : {
-						"Revolver" : 1,
-						"Revolver" : 2,
-						"Revolver2" : 1,
+						"Revolver" : 4
 					}
 				},
 				"Reward" : {
 					"Type" : "Reward",
-					"RewardType" : "Simple",
-					"Trigger" : "Dead",
-					"Content" : {
-						"Revolver" : 1
-					}
+					"RewardType" : "Inventory",
+					"Trigger" : "Dead"
 				}
 			}
 		},
@@ -98,15 +93,16 @@
 					"Type" : "Inventory",
 					"Size" : 10,
 					"Content" : {
-						"Revolver" : 1,
-						"Revolver" : 2,
-						"Revolver2" : 1,
+						"Revolver" : 8
 					}
 				},
 				"Reward" : {
 					"Type" : "Reward",
-					"RewardType" : "Inventory",
-					"Trigger" : "Dead"
+					"RewardType" : "Simple",
+					"Trigger" : "Dead",
+					"Content" : {
+						"Revolver" : 2
+					}
 				}
 			}
 		}
