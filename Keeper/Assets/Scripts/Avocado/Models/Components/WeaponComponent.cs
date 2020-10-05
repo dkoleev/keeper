@@ -1,13 +1,12 @@
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
 using Avocado.Data.Components;
-using Avocado.Game.Data;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 
 namespace Avocado.Models.Components {
     [UsedImplicitly]
-    [ComponentType(ComponentType.Weapon)]
+    [ObjectType(ComponentTypes.Weapon)]
     public class WeaponComponent : ComponentBase<WeaponComponentData> {
         public bool IsAttack { get; set; }
         public int Damage => Data.Damage;
@@ -21,7 +20,7 @@ namespace Avocado.Models.Components {
 
         private int _currentAmmo;
 
-        public WeaponComponent(Entity entity, WeaponComponentData data) : base(entity, data) {
+        public WeaponComponent(string type, Entity entity, WeaponComponentData data) : base(type, entity, data) {
             _currentAmmo = Data.Clip;
         }
     }

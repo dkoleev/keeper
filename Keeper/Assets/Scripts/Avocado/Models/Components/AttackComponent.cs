@@ -1,8 +1,7 @@
 using System.Collections.Generic;
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
 using Avocado.Data.Components;
-using Avocado.Game.Data;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using Sigtrap.Relays;
@@ -10,7 +9,7 @@ using UnityEngine;
 
 namespace Avocado.Models.Components {
     [UsedImplicitly]
-    [ComponentType(ComponentType.Attack)]
+    [ObjectType(ComponentTypes.Attack)]
     public class AttackComponent : ComponentBase<AttackComponentData> {
         public Vector3 CurrentPosition { get; private set; }
         public Entity CurrentWeapon => _currentWeapon;
@@ -28,7 +27,7 @@ namespace Avocado.Models.Components {
         private MoveComponent _moveComponent;
         private (Entity entity, HealthComponent health) _currentTarget;
 
-        public AttackComponent(Entity entity, AttackComponentData data) : base(entity, data) {    
+        public AttackComponent(string type, Entity entity, AttackComponentData data) : base(type, entity, data) {    
             
         }
 

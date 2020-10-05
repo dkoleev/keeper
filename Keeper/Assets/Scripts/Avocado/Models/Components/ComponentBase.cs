@@ -6,11 +6,13 @@ namespace Avocado.Models.Components {
     [Serializable]
     public abstract class ComponentBase<TComponentData> : IComponent
         where TComponentData : IComponentData {
+        public string Type { get; }
         public Entity Entity { get; }
         
         protected TComponentData Data { get; }
 
-        protected ComponentBase(Entity entity, TComponentData data) {
+        protected ComponentBase(string type, Entity entity, TComponentData data) {
+            Type = type;
             Entity = entity;
             Data = data;
         }

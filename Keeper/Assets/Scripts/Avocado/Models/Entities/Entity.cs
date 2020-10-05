@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Avocado.Core.Factories.Components;
+using Avocado.Core.Factories;
 using Avocado.Data;
 using Avocado.Game.Data;
 using Avocado.Models.Components;
@@ -19,11 +19,11 @@ namespace Avocado.Models.Entities {
         public GameData GameData { get; private set; }
         public EntityData EntityData { get; private set; }
 
-        private readonly ComponentsFactory<IComponent> _componentsFactory;
+        private readonly Factory<IComponent> _componentsFactory;
 
         public Entity() {
             Position = Vector3.zero;
-            _componentsFactory = new ComponentsFactory<IComponent>();
+            _componentsFactory = new Factory<IComponent>();
         }
 
         public virtual void Initialize(string entityId, in EntityData entityData, World world, Entity parent = null) {
@@ -78,8 +78,8 @@ namespace Avocado.Models.Entities {
             AddComponents(data);
         }
 
-        private void AddComponent(ComponentType componentType, IComponentData data) {
-            var component = _componentsFactory.Create(componentType, this, data);
+        private void AddComponent(string componentType, IComponentData data) {
+            var component = _componentsFactory.Create(componentType, componentType, this, data);
             _components.Add(component);
         }
 

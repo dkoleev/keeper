@@ -1,11 +1,11 @@
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    [ComponentType(ComponentType.Attack)]
+    [ObjectType(ComponentTypes.Attack)]
     public class AttackComponentData : BaseComponentData {
         public readonly string Weapon;
         public readonly int StartAmmo;

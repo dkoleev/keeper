@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
     public  abstract class BaseComponentData : IComponentData {
-        protected BaseComponentData(JObject data) {
+     protected BaseComponentData(JObject data) {
             LoadData(data);
         }
 

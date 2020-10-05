@@ -1,6 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using Avocado.Core.Factories;
 
 namespace Avocado.Core.Extensions {
     public static class TypeExtensions {

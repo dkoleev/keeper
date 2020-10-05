@@ -1,21 +1,20 @@
 using System;
 using System.Collections.Generic;
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
 using Avocado.Data.Components;
 using Avocado.Data.Components.Reward;
-using Avocado.Game.Data;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using Sigtrap.Relays;
 
 namespace Avocado.Models.Components.Reward {
     [UsedImplicitly]
-    [ComponentType(ComponentType.Reward)]
+    [ObjectType(ComponentTypes.Reward)]
     public class RewardComponent : ComponentBase<RewardData> {
         public Relay<IReadOnlyDictionary<string, int>> OnAward = new Relay<IReadOnlyDictionary<string, int>>();
         
-        public RewardComponent(Entity entity, RewardData data) : base(entity, data) {
+        public RewardComponent(string type, Entity entity, RewardData data) : base(type, entity, data) {
             switch (Data.Trigger) {
                 case "Dead":
                     if (Entity.GetComponentByType<HealthComponent>() is HealthComponent healthComponent) {

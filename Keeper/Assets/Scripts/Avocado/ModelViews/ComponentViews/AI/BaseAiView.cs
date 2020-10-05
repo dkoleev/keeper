@@ -1,7 +1,6 @@
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
 using Avocado.Framework.Patterns.StateMachine;
-using Avocado.Game.Data;
 using Avocado.Models.Components.AI;
 using Avocado.Models.Components.AI.States;
 using Avocado.ModelViews.ComponentViews.AI.States;
@@ -11,7 +10,7 @@ using UnityEngine.AI;
 
 namespace Avocado.ModelViews.ComponentViews.AI {
     [UsedImplicitly]
-    [ComponentType(ComponentType.AI)]
+    [ObjectType(ComponentTypes.AI)]
     public class BaseAiView : BaseComponentView<BaseAi> {
         private Animator _animator;
         private NavMeshAgent _agent;

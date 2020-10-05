@@ -1,9 +1,8 @@
 using System;
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
 using Avocado.Data.Components;
 using Avocado.Framework.Patterns.StateMachine;
-using Avocado.Game.Data;
 using Avocado.Models.Components.AI.States;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
@@ -14,7 +13,7 @@ using Random = UnityEngine.Random;
 
 namespace Avocado.Models.Components.AI {
     [UsedImplicitly]
-    [ComponentType(ComponentType.AI)]
+    [ObjectType(ComponentTypes.AI)]
     public class BaseAi : ComponentBase<AiComponentData> {
         public Relay<IState, IState> OnStateChanged = new Relay<IState, IState>();
         public bool IsAlive => _healthComponent.IsAlive;
@@ -30,7 +29,7 @@ namespace Avocado.Models.Components.AI {
         private IState _moveState;
         private IState _dieState;
 
-        public BaseAi(Entity entity, AiComponentData data) : base(entity, data) {
+        public BaseAi(string type, Entity entity, AiComponentData data) : base(type, entity, data) {
             _stateMachine = new StateMachine();
 
             _stateMachine.OnStateChanged += (prevState, newState) => {

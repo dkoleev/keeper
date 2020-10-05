@@ -255,12 +255,9 @@
               </e>
               <e p="Factories" t="Include">
                 <e p="Components" t="Include">
-                  <e p="ComponentBaseFactory.cs" t="Include" />
-                  <e p="ComponentsDataFactory.cs" t="Include" />
-                  <e p="ComponentTypeAttribute.cs" t="Include" />
+                  <e p="ComponentTypes.cs" t="Include" />
                 </e>
                 <e p="Factory.cs" t="Include" />
-                <e p="FactoryInitializer.cs" t="Include" />
                 <e p="ObjectTypeAttribute.cs" t="Include" />
               </e>
               <e p="IInitializable.cs" t="Include" />
@@ -327,7 +324,6 @@
                 </e>
                 <e p="AttackComponent.cs" t="Include" />
                 <e p="ComponentBase.cs" t="Include" />
-                <e p="ComponentsFactory.cs" t="Include" />
                 <e p="ControlsComponent.cs" t="Include" />
                 <e p="HealthComponent.cs" t="Include" />
                 <e p="IComponent.cs" t="Include" />
@@ -366,7 +362,6 @@
                 </e>
                 <e p="AttackComponentView.cs" t="Include" />
                 <e p="BaseComponentView.cs" t="Include" />
-                <e p="ComponentsViewFactory.cs" t="Include" />
                 <e p="ControlsComponentView.cs" t="Include" />
                 <e p="HealthComponentView.cs" t="Include" />
                 <e p="IComponentView.cs" t="Include" />

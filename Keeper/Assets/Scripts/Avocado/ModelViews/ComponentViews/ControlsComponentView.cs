@@ -1,13 +1,12 @@
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
-using Avocado.Game.Data;
 using Avocado.Models.Components;
 using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Avocado.ModelViews.ComponentViews {
     [UsedImplicitly]
-    [ComponentType(ComponentType.PlayerControls)]
+    [ObjectType(ComponentTypes.PlayerControls)]
     public class ControlsComponentView : BaseComponentView<ControlsComponent> {
         private readonly int _idleAnimationKey = Animator.StringToHash("Idle");
         private readonly int _walkAnimationKey = Animator.StringToHash("Walk");

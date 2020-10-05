@@ -1,8 +1,7 @@
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
 using Avocado.Data.Components;
 using Avocado.Game.Controllers;
-using Avocado.Game.Data;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using Sigtrap.Relays;
@@ -11,7 +10,7 @@ using UnityEngine.InputSystem;
 
 namespace Avocado.Models.Components {
     [UsedImplicitly]
-    [ComponentType(ComponentType.PlayerControls)]
+    [ObjectType(ComponentTypes.PlayerControls)]
     public class ControlsComponent : ComponentBase<PlayerControlsComponentData>
     {
         public float RotationSpeed => _moveComponent.SpeedRotate;
@@ -27,7 +26,7 @@ namespace Avocado.Models.Components {
         private MoveComponent _moveComponent;
         private AttackComponent _attackComponent;
         
-        public ControlsComponent(Entity entity, PlayerControlsComponentData data) : base(entity, data) {
+        public ControlsComponent(string type, Entity entity, PlayerControlsComponentData data) : base(type, entity, data) {
             _moveAxis = Vector2.zero;
             _controls = new Controls();
             _controls.Player.Move.performed += MoveOnPerformed;

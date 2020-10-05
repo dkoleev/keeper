@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components {
     [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
-    [ComponentType(ComponentType.Reward)]
+    [ObjectType(ComponentTypes.Reward)]
     public class RewardData : BaseComponentData {
         public readonly string Trigger;
         public readonly string RewardType;

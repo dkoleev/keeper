@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Avocado.Core;
+using Avocado.Core.Factories;
 using Avocado.Models.Entities;
 using Avocado.ModelViews.ComponentViews;
 using UnityEngine;
@@ -13,7 +14,7 @@ namespace Avocado.ModelViews {
         public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
 
-        private ComponentsViewFactory<IComponentView> _componentsViewFactory;
+        private Factory<IComponentView> _componentsViewFactory;
 
         public virtual void Initialize(Entity entity, WorldView worldView) {
             Entity = entity;
@@ -23,10 +24,10 @@ namespace Avocado.ModelViews {
             RotateTransform = Animator == null ? mainTransform : Animator.transform;
             MoveTransform = mainTransform;
             Components = new List<IComponentView>();
-            _componentsViewFactory = new ComponentsViewFactory<IComponentView>();
+            _componentsViewFactory = new Factory<IComponentView>();
 
             foreach (var component in Entity.Components) {
-                Components.Add(_componentsViewFactory.Create(component, this));
+                Components.Add(_componentsViewFactory.Create(component.Type, component, this));
             }
 
             foreach (var component in Components) {

@@ -1,6 +1,5 @@
+using Avocado.Core.Factories;
 using Avocado.Core.Factories.Components;
-using Avocado.Data;
-using Avocado.Game.Data;
 using Avocado.Models.Components;
 using Avocado.ModelViews.Behaviour;
 using JetBrains.Annotations;
@@ -8,7 +7,7 @@ using UnityEngine;
 
 namespace Avocado.ModelViews.ComponentViews {
     [UsedImplicitly]
-    [ComponentType(ComponentType.Attack)]
+    [ObjectType(ComponentTypes.Attack)]
     public class AttackComponentView : BaseComponentView<AttackComponent> {
         private readonly int _attackAnimationKey = Animator.StringToHash("Attack");
         public AttackComponentView(AttackComponent componentModel, EntityView entityView) : base(componentModel, entityView) {
