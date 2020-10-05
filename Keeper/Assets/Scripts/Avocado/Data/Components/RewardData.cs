@@ -1,5 +1,6 @@
+using Avocado.Core.Factories;
+using Avocado.Core.Factories.Components;
 using Avocado.Data.Components.Reward;
-using Avocado.Game.Data;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,18 +15,8 @@ namespace Avocado.Data.Components {
         public readonly IReward Reward;
 
         public RewardData(JObject data) : base(data) {
-            //TODO: make factory
-            switch (RewardType) {
-                case "Simple":
-                    Reward = new SimpleReward(data);
-                    break;
-                case "Inventory":
-                    Reward = new InventoryReward();
-                    break;
-                case "Composite":
-                    Reward = new CompositeReward();
-                    break;
-            }
+            var rewardFactory = new Factory<IReward>();
+            Reward = rewardFactory.Create(RewardType, data);
         }
     }
 }

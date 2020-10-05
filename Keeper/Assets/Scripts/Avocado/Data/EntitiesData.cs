@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Avocado.Data;
 
 namespace Avocado.Game.Data {
     [Serializable]

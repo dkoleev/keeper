@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace Avocado.Data {
+namespace Avocado.Core.Factories.Components {
     public class ComponentsDataFactory<T> where T : class {
         private readonly ComponentBaseFactory<T> _baseFactory;
 

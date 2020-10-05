@@ -253,6 +253,16 @@
               <e p="Extensions" t="Include">
                 <e p="TypeExtensions.cs" t="Include" />
               </e>
+              <e p="Factories" t="Include">
+                <e p="Components" t="Include">
+                  <e p="ComponentBaseFactory.cs" t="Include" />
+                  <e p="ComponentsDataFactory.cs" t="Include" />
+                  <e p="ComponentTypeAttribute.cs" t="Include" />
+                </e>
+                <e p="Factory.cs" t="Include" />
+                <e p="FactoryInitializer.cs" t="Include" />
+                <e p="ObjectTypeAttribute.cs" t="Include" />
+              </e>
               <e p="IInitializable.cs" t="Include" />
               <e p="Loader" t="Include">
                 <e p="ILoader.cs" t="Include" />
@@ -264,7 +274,6 @@
             </e>
             <e p="Data" t="Include">
               <e p="Avocado.Keeper.Data.asmdef" t="Include" />
-              <e p="ComponentBaseFactory.cs" t="Include" />
               <e p="Components" t="Include">
                 <e p="AiComponentData.cs" t="Include" />
                 <e p="AttackComponentData.cs" t="Include" />
@@ -282,8 +291,6 @@
                 <e p="RewardData.cs" t="Include" />
                 <e p="WeaponComponentData.cs" t="Include" />
               </e>
-              <e p="ComponentsDataFactory.cs" t="Include" />
-              <e p="ComponentTypeAttribute.cs" t="Include" />
               <e p="Converters" t="Include">
                 <e p="ComponentsConverter.cs" t="Include" />
               </e>

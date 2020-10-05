@@ -1,9 +1,10 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using Avocado.Core;
+using Avocado.Core.Factories;
 using Newtonsoft.Json.Linq;
 
 namespace Avocado.Data.Components.Reward {
-    [UsedImplicitly(ImplicitUseTargetFlags.WithMembers)]
+    [ObjectType("Simple")]
     public class SimpleReward : IReward {
         public readonly IReadOnlyDictionary<string, int> Content;
         public SimpleReward(JObject data) {

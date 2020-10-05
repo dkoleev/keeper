@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Avocado.Data;
+using Avocado.Core.Factories.Components;
 
-namespace Avocado.Game.Data
+namespace Avocado.Data
 {
     [Serializable]
     public readonly struct EntityData

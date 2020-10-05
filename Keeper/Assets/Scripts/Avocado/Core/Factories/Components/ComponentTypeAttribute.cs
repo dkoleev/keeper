@@ -1,7 +1,6 @@
 using System;
-using Avocado.Data;
 
-namespace Avocado.Game.Data {
+namespace Avocado.Core.Factories.Components {
     public class ComponentTypeAttribute : Attribute {
         public ComponentType Type { get; private set; }
 

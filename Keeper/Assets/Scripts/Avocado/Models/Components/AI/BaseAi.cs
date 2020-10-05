@@ -1,4 +1,5 @@
 using System;
+using Avocado.Core.Factories.Components;
 using Avocado.Data;
 using Avocado.Data.Components;
 using Avocado.Framework.Patterns.StateMachine;

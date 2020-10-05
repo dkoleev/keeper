@@ -1,3 +1,4 @@
+using Avocado.Core.Factories.Components;
 using Avocado.Data;
 using Avocado.Game.Data;
 using Avocado.Models.Components;

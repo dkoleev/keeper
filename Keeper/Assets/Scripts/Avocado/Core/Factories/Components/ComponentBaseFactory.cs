@@ -2,9 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Avocado.Game.Data;
 
-namespace Avocado.Data {
+namespace Avocado.Core.Factories.Components {
+    public enum ComponentType {
+        Move,
+        Health,
+        PlayerControls,
+        Weapon,
+        Attack,
+        AI,
+        Inventory,
+        Reward
+    }
+    
     public class ComponentBaseFactory<T> where T : class {
         public Dictionary<ComponentType, Type> Types { get; }
 
