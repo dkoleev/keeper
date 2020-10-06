@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Avocado.Core.Factories;
+using Avocado.Framework.Patterns.Factory;
 using Avocado.Core.Factories.ObjectTypes;
 using JetBrains.Annotations;
 

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Avocado.Core.Factories;
 using Avocado.Core.Factories.ObjectTypes;
+using Avocado.Framework.Patterns.Factory;
 using JetBrains.Annotations;
 
 namespace Avocado.Models.Components.Rewards {

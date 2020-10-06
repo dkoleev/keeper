@@ -1,4 +1,4 @@
-using Avocado.Core.Factories;
+using Avocado.Framework.Patterns.Factory;
 using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Models.Components.AI;

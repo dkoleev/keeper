@@ -1,6 +1,8 @@
 {
     "name": "Avocado.Keeper.Core",
-    "references": [],
+    "references": [
+        "GUID:1a4ce56a965a93442869544b09351753"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

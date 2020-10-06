@@ -1,7 +1,6 @@
-using System;
-using Avocado.Core.Factories;
 using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components;
+using Avocado.Framework.Patterns.Factory;
 using Avocado.Models.Components.Rewards;
 using Avocado.Models.Entities;
 using Avocado.Models.Triggers;

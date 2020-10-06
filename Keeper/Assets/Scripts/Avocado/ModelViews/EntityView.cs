@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Avocado.Core;
-using Avocado.Core.Factories;
+using Avocado.Framework.Patterns.Factory;
 using Avocado.Models.Entities;
 using Avocado.ModelViews.ComponentViews;
 using UnityEngine;

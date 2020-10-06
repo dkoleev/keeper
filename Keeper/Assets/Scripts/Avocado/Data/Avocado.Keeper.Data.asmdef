@@ -1,7 +1,8 @@
 {
     "name": "Avocado.Keeper.Data",
     "references": [
-        "GUID:d5b8e34db245354478ac5eeafeaeb103"
+        "GUID:d5b8e34db245354478ac5eeafeaeb103",
+        "GUID:1a4ce56a965a93442869544b09351753"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

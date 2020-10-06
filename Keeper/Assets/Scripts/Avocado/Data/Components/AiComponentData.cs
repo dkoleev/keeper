@@ -1,5 +1,5 @@
-using Avocado.Core.Factories;
 using Avocado.Core.Factories.ObjectTypes;
+using Avocado.Framework.Patterns.Factory;
 using JetBrains.Annotations;
 using Newtonsoft.Json.Linq;
 
