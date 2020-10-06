@@ -10,14 +10,18 @@ namespace Avocado {
     [DisallowMultipleComponent]
     public class GameRunner : MonoBehaviourWrapper, IInitializable {
         public bool Initialized { get; private set; }
+        private Transform _playerSpawnPosition;
+        private Transform _worldSize;
 
-        protected override void Start()
-        {
+        protected override void Start() {
             base.Start();
             Initialize();
         }
-        
+
         public void Initialize() {
+            _playerSpawnPosition = GameObject.FindWithTag("PlayerSpawnPosition").transform;
+            _worldSize = GameObject.FindWithTag("WorldBounds").transform;
+            
             Load(out var world);
             
             var goLoop = new GameObject("GameLoop");
@@ -64,7 +68,7 @@ namespace Avocado {
 
         private void LoadModels(GameData data, out World world) {
             world = new World(data);
-            world.Create();
+            world.Create(_worldSize.localScale, _playerSpawnPosition.position);
         }
 
         private void LoadModelViews(World world) {

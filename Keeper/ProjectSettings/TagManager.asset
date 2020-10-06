@@ -10,6 +10,8 @@ TagManager:
   - FX
   - Enemy
   - World
+  - PlayerSpawnPosition
+  - WorldBounds
   layers:
   - Default
   - TransparentFX

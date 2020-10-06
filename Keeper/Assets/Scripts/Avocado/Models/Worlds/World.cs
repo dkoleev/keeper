@@ -8,7 +8,9 @@ using UnityEngine;
 namespace Avocado.Models.Worlds {
     public class World {
         public Relay<Entity> OnEntityCreate = new Relay<Entity>();
+        public Player Player { get; private set; }
         public GameData GameData { get; }
+        public Vector3 Size { get; private set; }
         public List<Entity> Entities => _entities;
         public List<Entity> ChildEntities => _childEntities;
         
@@ -21,8 +23,9 @@ namespace Avocado.Models.Worlds {
             _generator = new WorldGeneratorLogDecorator(new WorldGenerator());
         }
 
-        public void Create() {
-            CreateEntity<Player>("Player");
+        public void Create(Vector3 size, Vector3 playerSpawnPosition) {
+            Player = (Player)CreateEntity<Player>("Player", position:playerSpawnPosition);
+            Size = size;
             _generator.Generate(this);
         }
 

@@ -32,16 +32,40 @@ namespace Avocado.Models.Worlds {
         }
 
         private void SpawnEnemy() {
-            var position = new Vector3(Random.Range(-30, 30), 0, Random.Range(-30, 30));
-           var entity = _world.CreateEntity<Entity>(ZombieId, position:position);
+            var entity = _world.CreateEntity<Entity>(ZombieId, position: GetRandomPosition());
 
-           if (entity.GetComponentByType<HealthComponent>() != null) {
-               var healthComponent = (HealthComponent)entity.GetComponentByType<HealthComponent>();
-               _enemies.Add(healthComponent);
-               healthComponent.OnDead.AddOnce(health => {
-                   _enemies.Remove(health);
-               });
-           }
+            if (entity.GetComponentByType<HealthComponent>() != null) {
+                var healthComponent = (HealthComponent) entity.GetComponentByType<HealthComponent>();
+                _enemies.Add(healthComponent);
+                healthComponent.OnDead.AddOnce(health => {
+                    _enemies.Remove(health);
+                });
+            }
+        }
+
+        private Vector3 GetRandomPosition() {
+            var sizeX = _world.Size.x / 2 - 5;
+            var sizeZ = _world.Size.z / 2 - 5;
+            var position = GetPosition();
+            if (!CheckPlayerDistance()) {
+                for (int i = 0; i < 10; i++) {
+                    position = GetPosition();
+                    if (CheckPlayerDistance()) {
+                        break;
+                    }
+                }
+
+            }
+
+            return position;
+
+            Vector3 GetPosition() {
+                return  new Vector3(Random.Range(-sizeX, sizeX), 0, Random.Range(-sizeZ, sizeZ));
+            }
+
+            bool CheckPlayerDistance() {
+                return Vector3.Distance(_world.Player.Position, position) < 2;
+            }
         }
     }
 }
