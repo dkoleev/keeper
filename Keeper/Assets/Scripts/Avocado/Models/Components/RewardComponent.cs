@@ -4,6 +4,7 @@ using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components;
 using Avocado.Models.Components.Rewards;
 using Avocado.Models.Entities;
+using Avocado.Models.Triggers;
 using JetBrains.Annotations;
 using Sigtrap.Relays;
 
@@ -14,22 +15,16 @@ namespace Avocado.Models.Components {
         public Relay<IReward> OnAward = new Relay<IReward>();
         private IReward _reward;
         private Factory<IReward> _rewardFactory;
+        private Factory<TriggerBase> _triggerFactory;
+        private TriggerBase _trigger;
         
         public RewardComponent(string type, Entity entity, RewardData data) : base(type, entity, data) {
             _rewardFactory = new Factory<IReward>();
+            _triggerFactory = new Factory<TriggerBase>();
             _reward = _rewardFactory.Create(Data.RewardType, this);
-            
-            switch (Data.Trigger) {
-                case "Dead":
-                    if (Entity.GetComponentByType<HealthComponent>() is HealthComponent healthComponent) {
-                        healthComponent.OnDead.AddOnce(component => {
-                            Award();
-                        });
-                    } else {
-                        throw new ArgumentException("Entity has a reward with Dead trigger but has not Health Component");
-                    }
-                    break;
-            }
+            _trigger = _triggerFactory.Create(Data.Trigger, Entity);
+
+            _trigger.OnTrigger.AddListener(Award);
         }
 
         private void Award() {
