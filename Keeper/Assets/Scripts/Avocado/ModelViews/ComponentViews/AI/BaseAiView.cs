@@ -4,6 +4,8 @@ using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Models.Components.AI;
 using Avocado.Models.Components.AI.States;
 using Avocado.ModelViews.ComponentViews.AI.States;
+using Avocado.UnityToolbox.Timer;
+using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
@@ -48,6 +50,13 @@ namespace Avocado.ModelViews.ComponentViews.AI {
             
             if (newState is Die) {
                 EntityView.Animator.SetTrigger(_deadAnimationKey);
+                var timer = new TimeManager();
+                timer.Call(2.0f, () => {
+                    EntityView.MoveTransform.DOScale(Vector3.zero, 1);
+                    timer.Call(1.0f, () => {
+                        EntityView.MoveTransform.gameObject.SetActive(false);
+                    });
+                });
             }
         }
     }
