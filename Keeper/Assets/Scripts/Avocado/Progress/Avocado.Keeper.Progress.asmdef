@@ -1,0 +1,15 @@
+{
+    "name": "Avocado.Keeper.Progress",
+    "references": [
+        "GUID:d5b8e34db245354478ac5eeafeaeb103"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
