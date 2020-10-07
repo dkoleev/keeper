@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using Avocado.Game.Data;
+using Avocado.Core.SaveEngine;
+using Avocado.Data;
 using Avocado.Models.Components;
 using Avocado.Models.Entities;
+using Avocado.Progress;
 using Sigtrap.Relays;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ namespace Avocado.Models.Worlds {
         public Relay<Entity> OnEntityCreate = new Relay<Entity>();
         public Player Player { get; private set; }
         public GameData GameData { get; }
+        public GameProgress GameProgress { get; }
         public Vector3 Size { get; private set; }
         public List<Entity> Entities => _entities;
         public List<Entity> ChildEntities => _childEntities;
@@ -18,8 +21,9 @@ namespace Avocado.Models.Worlds {
         private readonly List<Entity> _childEntities = new List<Entity>();
         private IWorldGenerator _generator;
         
-        public World(in GameData gameData) {
+        public World(GameData gameData, GameProgress gameProgress) {
             GameData = gameData;
+            GameProgress = gameProgress;
             _generator = new WorldGeneratorLogDecorator(new WorldGenerator());
         }
 

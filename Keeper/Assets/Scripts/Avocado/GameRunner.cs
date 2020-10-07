@@ -1,9 +1,11 @@
 ﻿using Avocado.Core;
 using Avocado.Core.Loader.Variants;
+using Avocado.Core.SaveEngine;
+using Avocado.Data;
 using Avocado.Game.Core;
-using Avocado.Game.Data;
 using Avocado.Models.Worlds;
 using Avocado.ModelViews;
+using Avocado.Progress;
 using UnityEngine;
 
 namespace Avocado {
@@ -12,6 +14,7 @@ namespace Avocado {
         public bool Initialized { get; private set; }
         private Transform _playerSpawnPosition;
         private Transform _worldSize;
+        private SaveEngine<GameProgress> _saveEngine;
 
         protected override void Start() {
             base.Start();
@@ -21,7 +24,7 @@ namespace Avocado {
         public void Initialize() {
             _playerSpawnPosition = GameObject.FindWithTag("PlayerSpawnPosition").transform;
             _worldSize = GameObject.FindWithTag("WorldBounds").transform;
-            
+
             Load(out var world);
             
             var goLoop = new GameObject("GameLoop");
@@ -32,9 +35,9 @@ namespace Avocado {
         }
         
         private void Load(out World world) {
-            LoadGameState();
+            var gameProgress = LoadGameState();
             var gameData = LoadConfiguration();
-            LoadWorld(gameData, out world);
+            LoadWorld(gameData, gameProgress, out world);
             LoadWorldView(world);
         }
 
@@ -54,20 +57,21 @@ namespace Avocado {
             return  config.Load(loader);
         }
 
-        private void LoadGameState() {
-            
+        private GameProgress LoadGameState() {
+            _saveEngine = new SaveEngine<GameProgress>(new GameProgress());
+            return _saveEngine.LoadProgress() as GameProgress;
         }
 
-        private void LoadWorld(GameData data, out World world) {
-           LoadModels(data, out world);
+        private void LoadWorld(GameData data, GameProgress gameProgress, out World world) {
+           LoadModels(data, gameProgress, out world);
         }
 
         private void LoadWorldView(World world) {
             LoadModelViews(world);
         }
 
-        private void LoadModels(GameData data, out World world) {
-            world = new World(data);
+        private void LoadModels(GameData data, GameProgress gameProgress, out World world) {
+            world = new World(data, gameProgress);
             world.Create(_worldSize.localScale, _playerSpawnPosition.position);
         }
 
@@ -76,13 +80,8 @@ namespace Avocado {
             worldView.Create();
         }
 
-        private void Test() {
-            /*EventSystem<PlayerDeadEvent>.Subscribe(data => {
-                Debug.Log("fire event " + data.LiveTime);
-            });
-
-            var playerSystem = GetSystem<PlayerSystem>();
-            playerSystem.Dead();*/
+        private void OnApplicationQuit() {
+            _saveEngine?.SaveProgress();
         }
     }
 }

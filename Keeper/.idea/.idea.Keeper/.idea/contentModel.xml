@@ -268,6 +268,10 @@
                 </e>
               </e>
               <e p="MonoBehaviourWrapper.cs" t="Include" />
+              <e p="SaveEngine" t="Include">
+                <e p="IProgress.cs" t="Include" />
+                <e p="SaveEngine.cs" t="Include" />
+              </e>
             </e>
             <e p="Data" t="Include">
               <e p="Avocado.Keeper.Data.asmdef" t="Include" />
@@ -380,6 +384,10 @@
               <e p="EntityView.cs" t="Include" />
               <e p="PlayerEntityView.cs" t="Include" />
               <e p="WorldView.cs" t="Include" />
+            </e>
+            <e p="Progress" t="Include">
+              <e p="Avocado.Keeper.Progress.asmdef" t="Include" />
+              <e p="GameProgress.cs" t="Include" />
             </e>
             <e p="Systems" t="Include">
               <e p="AnimationSystem.cs" t="Include" />
@@ -2078,6 +2086,7 @@
       <e p="Avocado.Keeper.Editor.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Models.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.ModelViews.csproj" t="IncludeRecursive" />
+      <e p="Avocado.Keeper.Progress.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.UI.csproj" t="IncludeRecursive" />
       <e p="InputSystem.Samples.Visualizers.csproj" t="IncludeRecursive" />
       <e p="Keeper.sln" t="IncludeFlat" />

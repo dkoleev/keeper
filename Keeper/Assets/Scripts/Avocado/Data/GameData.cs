@@ -1,9 +1,9 @@
 using System;
 
-namespace Avocado.Game.Data
+namespace Avocado.Data
 {
     [Serializable]
-    public readonly struct GameData
+    public class GameData
     {
         public readonly EntitiesData Entities;
 

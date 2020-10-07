@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Avocado.Data {
     [Serializable]
-    public readonly struct EntityData {
+    public class EntityData {
         public readonly string Parent;
         public readonly string Prefab;
         public readonly Dictionary<string, IComponentData> Components;

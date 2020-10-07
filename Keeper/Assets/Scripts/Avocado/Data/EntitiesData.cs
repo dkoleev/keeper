@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Avocado.Data;
 
-namespace Avocado.Game.Data {
+namespace Avocado.Data {
     [Serializable]
-    public readonly struct EntitiesData
+    public class EntitiesData
     {
         public readonly Dictionary<string, EntityData> Entities;
 
