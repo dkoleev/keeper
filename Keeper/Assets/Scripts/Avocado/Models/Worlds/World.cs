@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Avocado.Models.Worlds {
     public class World {
         public Relay<Entity> OnEntityCreate = new Relay<Entity>();
-        public Player Player { get; private set; }
+        public Entity Player { get; private set; }
         public GameData GameData { get; }
         public GameProgress GameProgress { get; }
         public Vector3 Size { get; private set; }
@@ -28,7 +28,7 @@ namespace Avocado.Models.Worlds {
         }
 
         public void Create(Vector3 size, Vector3 playerSpawnPosition) {
-            Player = (Player)CreateEntity<Player>("Player", position:playerSpawnPosition);
+            Player = CreateEntity("Player", position:playerSpawnPosition);
             Size = size;
             _generator.Generate(this);
         }

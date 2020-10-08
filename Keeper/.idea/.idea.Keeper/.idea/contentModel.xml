@@ -360,7 +360,6 @@
               </e>
               <e p="Entities" t="Include">
                 <e p="Entity.cs" t="Include" />
-                <e p="Player.cs" t="Include" />
               </e>
               <e p="Triggers" t="Include">
                 <e p="DeadTrigger.cs" t="Include" />
@@ -396,12 +395,13 @@
                 <e p="WeaponComponentView.cs" t="Include" />
               </e>
               <e p="EntityView.cs" t="Include" />
-              <e p="PlayerEntityView.cs" t="Include" />
               <e p="WorldView.cs" t="Include" />
             </e>
             <e p="Progress" t="Include">
               <e p="Avocado.Keeper.Progress.asmdef" t="Include" />
               <e p="GameProgress.cs" t="Include" />
+              <e p="InventoryProgress.cs" t="Include" />
+              <e p="PlayerProgress.cs" t="Include" />
             </e>
             <e p="Systems" t="Include">
               <e p="AnimationSystem.cs" t="Include" />
