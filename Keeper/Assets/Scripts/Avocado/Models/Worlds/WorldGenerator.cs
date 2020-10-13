@@ -64,7 +64,7 @@ namespace Avocado.Models.Worlds {
             }
 
             bool CheckPlayerDistance() {
-                return Vector3.Distance(_world.Player.Position, position) < 2;
+                return Vector3.Distance(_world.Hero.Position, position) < 2;
             }
         }
     }

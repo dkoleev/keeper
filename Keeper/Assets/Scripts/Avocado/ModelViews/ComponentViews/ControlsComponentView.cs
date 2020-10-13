@@ -10,7 +10,9 @@ namespace Avocado.ModelViews.ComponentViews {
     [ObjectType(ComponentTypes.PlayerControls)]
     public class ControlsComponentView : BaseComponentView<ControlsComponent> {
         private readonly int _idleAnimationKey = Animator.StringToHash("Idle");
-        private readonly int _walkAnimationKey = Animator.StringToHash("Walk");
+        private readonly int _walkAnimationKey = Animator.StringToHash("Walk_Static");
+        private readonly int _runAnimationKey = Animator.StringToHash("Run_Static");
+        private readonly int _speedMoveKey = Animator.StringToHash("Speed_f");
         
         private CinemachineBrain _brain;
         
@@ -18,7 +20,8 @@ namespace Avocado.ModelViews.ComponentViews {
             InitializeCinemachine();
             
             Model.OnMove.AddListener(isMove => {
-                EntityView.Animator.SetTrigger(isMove ? _walkAnimationKey : _idleAnimationKey);
+              //  EntityView.Animator.SetTrigger(isMove ? _walkAnimationKey : _idleAnimationKey);
+                EntityView.Animator.SetFloat(_speedMoveKey, isMove ? 1 : 0);
             });
         }
 

@@ -14,9 +14,11 @@ namespace Avocado.Models.Components {
         public Vector3 CurrentPosition { get; private set; }
         public Entity CurrentWeapon => _currentWeapon;
         public bool IsAttack => WeaponComponent.IsAttack;
+        public bool IsMoving => _moveComponent.IsMoving;
         public Entity CurrentTarget => _currentTarget.entity;
         
         public Relay OnShoot = new Relay();
+        public Relay OnMove= new Relay();
         
         private List<Entity> _targets = new List<Entity>();
 
@@ -40,7 +42,7 @@ namespace Avocado.Models.Components {
             }
 
             _moveComponent = (MoveComponent)Entity.GetComponentByType<MoveComponent>();
-            
+
             _targets = Entity.World.GetEntitiesWithComponent<HealthComponent>();
             Entity.World.OnEntityCreate.AddListener(entity => {
                 var health = entity.GetComponentByType<HealthComponent>();
