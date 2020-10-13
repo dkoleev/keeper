@@ -3,7 +3,6 @@ using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Framework.Patterns.StateMachine;
 using Avocado.Models.Components.AI;
 using Avocado.Models.Components.AI.States;
-using Avocado.ModelViews.ComponentViews.AI.States;
 using Avocado.UnityToolbox.Timer;
 using DG.Tweening;
 using JetBrains.Annotations;
@@ -36,7 +35,7 @@ namespace Avocado.ModelViews.ComponentViews.AI {
             EntityView.Animator.ResetTrigger(IdleState);
             EntityView.Animator.ResetTrigger(_deadAnimationKey);
             
-            if (newState is IdleState) {
+            if (newState is Idle) {
                 EntityView.Animator.SetTrigger(IdleState);
             }
 
