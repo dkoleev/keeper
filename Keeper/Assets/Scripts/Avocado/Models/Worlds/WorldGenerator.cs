@@ -7,7 +7,10 @@ using UnityEngine;
 namespace Avocado.Models.Worlds {
     public class WorldGenerator : IWorldGenerator {
         private World _world;
-        private const string ZombieId = "Zombie";
+        private List<string> _zombieIds = new List<string> {
+            "AngryZombie",
+            "FatZombie"
+        };
         private List<HealthComponent> _enemies = new List<HealthComponent>();
         private TimeManager _timeManager = new TimeManager();
 
@@ -32,7 +35,8 @@ namespace Avocado.Models.Worlds {
         }
 
         private void SpawnEnemy() {
-            var entity = _world.CreateEntity<Entity>(ZombieId, position: GetRandomPosition());
+            var enemyId = _zombieIds[Random.Range(0, _zombieIds.Count)];
+            var entity = _world.CreateEntity<Entity>(enemyId, position: GetRandomPosition());
 
             if (entity.GetComponentByType<HealthComponent>() != null) {
                 var healthComponent = (HealthComponent) entity.GetComponentByType<HealthComponent>();

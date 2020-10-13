@@ -21,18 +21,34 @@ MonoBehaviour:
     m_Address: Revolver
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 2f33f5be13784654b929377749507db6
-    m_Address: Zombie
+    m_MainAsset: {fileID: 1111015175407080, guid: 13bb602864959d44396cfe3bc99e978c,
+      type: 3}
+    m_TargetAsset: {fileID: 1111015175407080, guid: 13bb602864959d44396cfe3bc99e978c,
+      type: 3}
+  - m_GUID: 3c6c1da4846150c4e8e9ce9df3f7f7b2
+    m_Address: Zombie_1
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 90ba9c491600b6d48b4e08b34a6d5ea0
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 40dbd262312073a4c97e3513bee0b7ec
     m_Address: Player
     m_ReadOnly: 0
     m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b072771b918725045a8ab524941b0cc4
+    m_Address: Zombie_0
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: cc8ecd161bac65c47839e9a0cd63f815
     m_Address: Weapons
     m_ReadOnly: 0
     m_SerializedLabels: []
+    m_MainAsset: {fileID: 102900000, guid: cc8ecd161bac65c47839e9a0cd63f815, type: 3}
+    m_TargetAsset: {fileID: 102900000, guid: cc8ecd161bac65c47839e9a0cd63f815, type: 3}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 54b3282cd7e64384aab6557f2363a6af, type: 2}
   m_SchemaSet:

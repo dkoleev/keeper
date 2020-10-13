@@ -10,15 +10,12 @@ namespace Avocado.Models.Entities {
         public string Id { get; private set; }
         public Entity Parent { get; private set; }
         public List<IComponent> Components => _components;
-
-        private readonly List<IComponent> _components = new List<IComponent>(3);
         public Vector3 Position { get; set; }
-
         public World World { get; private set; }
-        public GameData GameData { get; private set; }
         public EntityData EntityData { get; private set; }
 
         private readonly Factory<IComponent> _componentsFactory;
+        private readonly List<IComponent> _components = new List<IComponent>(3);
 
         public Entity() {
             Position = Vector3.zero;
@@ -32,7 +29,7 @@ namespace Avocado.Models.Entities {
             Parent = parent;
             
             if (!string.IsNullOrEmpty(EntityData.Parent)) {
-                AddComponents(EntityData, GameData.Entities.Entities[EntityData.Parent]);
+                AddComponents(EntityData, World.GameData.Entities.Entities[EntityData.Parent]);
             } else {
                 AddComponents(EntityData);
             }

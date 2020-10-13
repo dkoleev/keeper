@@ -41,9 +41,9 @@
 				}
 			}
 		},
-		"Zombie" : {
+		"ZombieBase" : {
 			"Parent" : null,
-			"Prefab" : "Zombie",
+			"Prefab" : "Zombie_0",
 			"Components" : {
 				"AI" : {
 					"Type" : "AI",
@@ -72,30 +72,24 @@
 				}
 			}
 		},
-		"FatZombie" : {
-			"Parent" : null,
-			"Prefab" : "Zombie",
+		"AngryZombie" : {
+			"Parent" : "ZombieBase",
+			"Prefab" : "Zombie_0",
 			"Components" : {
-				"AI" : {
-					"Type" : "AI",
-					"AiType" : "Base"
-				},
-				"Health" : {
-					"Type" : "Health",
-					"MaxHealth" : 50
-				},
-				"Move" : {
-					"Type" : "Move",
-					"SpeedMove" : 3,
-					"SpeedRotate" : 6
-				},
-				"Inventory" : {
-					"Type" : "Inventory",
-					"Size" : 10,
+				"Reward" : {
+					"Type" : "Reward",
+					"RewardType" : "Simple",
+					"Trigger" : "Dead",
 					"Content" : {
-						"Revolver" : 8
+						"Revolver" : 2
 					}
-				},
+				}
+			}
+		},
+		"FatZombie" : {
+			"Parent" : "ZombieBase",
+			"Prefab" : "Zombie_1",
+			"Components" : {
 				"Reward" : {
 					"Type" : "Reward",
 					"RewardType" : "Simple",
