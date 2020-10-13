@@ -32,13 +32,9 @@ namespace Avocado.ModelViews.ComponentViews.AI {
         }
 
         private void ModelStateChanged(IState prevState, IState newState) {
-            if (prevState is IdleState) {
-                EntityView.Animator.ResetTrigger(IdleState);
-            }
-            
-            if (prevState is MoveToPoint) {
-                EntityView.Animator.ResetTrigger(Walk);
-            }
+            EntityView.Animator.ResetTrigger(Walk);
+            EntityView.Animator.ResetTrigger(IdleState);
+            EntityView.Animator.ResetTrigger(_deadAnimationKey);
             
             if (newState is IdleState) {
                 EntityView.Animator.SetTrigger(IdleState);
