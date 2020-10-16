@@ -8,5 +8,6 @@ namespace Avocado.Core.Factories.ObjectTypes {
         public const string PlayerControls = "PlayerControls";
         public const string Weapon = "Weapon";
         public const string Reward = "Reward";
+        public const string Trap = "Trap";
     }
 }

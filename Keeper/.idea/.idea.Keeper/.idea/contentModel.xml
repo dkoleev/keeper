@@ -271,6 +271,7 @@
                 <e p="ObjectTypes" t="Include">
                   <e p="ComponentTypes.cs" t="Include" />
                   <e p="RewardTypes.cs" t="Include" />
+                  <e p="TrapTypes.cs" t="Include" />
                   <e p="TriggerTypes.cs" t="Include" />
                 </e>
               </e>
@@ -304,6 +305,11 @@
                   <e p="SimpleReward.cs" t="Include" />
                 </e>
                 <e p="RewardData.cs" t="Include" />
+                <e p="TrapComponentData.cs" t="Include" />
+                <e p="TrapVariants" t="Include">
+                  <e p="BuzzSawData.cs" t="Include" />
+                  <e p="ITrapData.cs" t="Include" />
+                </e>
                 <e p="WeaponComponentData.cs" t="Include" />
               </e>
               <e p="Converters" t="Include">
@@ -319,6 +325,9 @@
             </e>
             <e p="Editor" t="Include">
               <e p="Avocado.Keeper.Editor.asmdef" t="Include" />
+              <e p="ClassesGenerator" t="Include">
+                <e p="Generator.cs" t="Include" />
+              </e>
               <e p="Test.cs" t="Include" />
             </e>
             <e p="Events" t="Include">
@@ -383,9 +392,6 @@
               <e p="ComponentViews" t="Include">
                 <e p="AI" t="Include">
                   <e p="BaseAiView.cs" t="Include" />
-                  <e p="States" t="Include">
-                    <e p="IdleState.cs" t="Include" />
-                  </e>
                 </e>
                 <e p="AttackComponentView.cs" t="Include" />
                 <e p="BaseComponentView.cs" t="Include" />

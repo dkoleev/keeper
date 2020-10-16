@@ -37,6 +37,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 7a93a56a33e48624480bf69c6ea1e542
+    m_Address: Environment/Traps/BuzzSaw_Medium
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   - m_GUID: b072771b918725045a8ab524941b0cc4
     m_Address: Zombie_0
     m_ReadOnly: 0

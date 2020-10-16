@@ -1,0 +1,17 @@
+{
+	"Entities" : {
+		"BuzzSaw": {
+			"Parent": null,
+			"Prefab": "Environment/Traps/BuzzSaw_Medium",
+			"MaxStack" : 1,
+			"Components": {
+				"Trap": {
+					"Type": "Trap",
+					"TrapType" : "BuzzSaw",
+					"Damage": 10,
+					"Size": 10
+				}
+			}
+		}
+	}
+}
