@@ -1,3 +1,20 @@
-﻿{
-	"name": "Avocado.Keeper.UI"
+{
+    "name": "Avocado.Keeper.UI",
+    "references": [
+        "GUID:8e75a2b71b565f142a541922ddf455f6",
+        "GUID:2fd522664163ba94cadacbee0d8847d9",
+        "GUID:d5b8e34db245354478ac5eeafeaeb103",
+        "GUID:1d2b2f80479ed524c9c094ffb41ee887",
+        "GUID:09533620090b426499cb1349ad46cd27",
+        "GUID:a828ecafe63fe85498e6fc142a1b909a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -14,6 +14,8 @@ namespace Avocado.ModelViews {
         public Transform MoveTransform { get; private set; }
         public Animator Animator { get; private set; }
 
+        public bool Initialized { get; private set; }
+
         private Factory<IComponentView> _componentsViewFactory;
 
         public virtual void Initialize(Entity entity, WorldView worldView) {
@@ -33,6 +35,8 @@ namespace Avocado.ModelViews {
             foreach (var component in Components) {
                 component.Initialize();
             }
+
+            Initialized = true;
         }
 
         protected override void Update() {

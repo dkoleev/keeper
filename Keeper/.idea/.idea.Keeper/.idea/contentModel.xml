@@ -421,6 +421,10 @@
               <e p="Tools" t="Include">
                 <e p="BackgroundBacther.cs" t="Include" />
               </e>
+              <e p="World" t="Include">
+                <e p="WorldBar.cs" t="Include" />
+                <e p="WorldUiElement.cs" t="Include" />
+              </e>
             </e>
           </e>
         </e>
@@ -1115,6 +1119,9 @@
             <e p="_Materials" t="Include">
               <e p="UnlitVertexColour_Alpha.shader" t="Include" />
             </e>
+            <e p="ReadMe.txt" t="Include" />
+          </e>
+          <e p="SimpleFantasy" t="Include">
             <e p="ReadMe.txt" t="Include" />
           </e>
         </e>

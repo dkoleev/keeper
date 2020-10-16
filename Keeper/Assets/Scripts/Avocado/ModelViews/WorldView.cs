@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Avocado.Models.Entities;
 using Avocado.Models.Worlds;
 using UnityEngine;
@@ -28,8 +29,7 @@ namespace Avocado.ModelViews {
         public void Create(Entity entity) {
             CreateEntityView<EntityView>(entity);
         }
-        
-        
+
         public void CreateEntityView<T>(Entity entity, Transform parent = null, Action<EntityView> onCreate = null)
             where T : EntityView {
             Addressables.InstantiateAsync(entity.EntityData.Prefab, entity.Position, Quaternion.identity, parent).Completed += OnLoad;
