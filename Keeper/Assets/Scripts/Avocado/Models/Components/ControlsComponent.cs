@@ -1,7 +1,7 @@
+using Avocado.Core.Controls;
 using Avocado.Framework.Patterns.Factory;
 using Avocado.Core.Factories.ObjectTypes;
 using Avocado.Data.Components;
-using Avocado.Game.Controllers;
 using Avocado.Models.Entities;
 using JetBrains.Annotations;
 using Sigtrap.Relays;
@@ -18,7 +18,6 @@ namespace Avocado.Models.Components {
         
         public Relay<bool> OnMove = new Relay<bool>();
         
-        private readonly Controls _controls;
         private Vector2 _moveAxis;
         private float _RotationAxisY;
         private bool _mooving;
@@ -28,10 +27,9 @@ namespace Avocado.Models.Components {
         
         public ControlsComponent(string type, Entity entity, PlayerControlsComponentData data) : base(type, entity, data) {
             _moveAxis = Vector2.zero;
-            _controls = new Controls();
-            _controls.Player.Move.performed += MoveOnPerformed;
-            _controls.Player.Move.canceled += MoveOnCanceled; 
-            _controls.Player.Enable();
+            ControlsManager.Instance.MainControl.Player.Move.performed += MoveOnPerformed;
+            ControlsManager.Instance.MainControl.Player.Move.canceled += MoveOnCanceled; 
+            ControlsManager.Instance.MainControl.Player.Enable();
         }
 
         public override void Initialize() {

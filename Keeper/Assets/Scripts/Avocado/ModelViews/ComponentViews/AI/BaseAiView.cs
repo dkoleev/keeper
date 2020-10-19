@@ -21,7 +21,7 @@ namespace Avocado.ModelViews.ComponentViews.AI {
         private readonly int _deadAnimationKey = Animator.StringToHash("Die");
 
         public BaseAiView(BaseAi componentModel, EntityView entityView) : base(componentModel, entityView) {
-            _agent = EntityView.GetComponent<NavMeshAgent>();
+            _agent = EntityView.GetComponentInChildren<NavMeshAgent>();
             Model.SetNavMeEshAgent(_agent);
             if (!Model.IsAlive) {
                 EntityView.Animator.SetTrigger(_deadAnimationKey);

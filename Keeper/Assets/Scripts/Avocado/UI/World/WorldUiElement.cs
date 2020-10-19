@@ -14,7 +14,7 @@ namespace Avocado.UI.World {
             TryInitializeEntityView();
         }
 
-        private void Update() {
+        protected virtual void Update() {
             TryInitializeEntityView();
         }
 

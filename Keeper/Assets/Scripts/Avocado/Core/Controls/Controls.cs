@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace Avocado.Game.Controllers
+namespace Avocado.Core.Controls
 {
     public class @Controls : IInputActionCollection, IDisposable
     {
@@ -594,6 +594,52 @@ namespace Avocado.Game.Controllers
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Debug"",
+            ""id"": ""ccf0e8e9-7c02-41b3-a156-0dead5235fc1"",
+            ""actions"": [
+                {
+                    ""name"": ""ToggleDebug"",
+                    ""type"": ""Button"",
+                    ""id"": ""34e751c1-1759-4c2c-a438-bcb496c87f32"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""230566db-e284-49c7-9eb6-73e8921f27cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5ef8843b-01a0-4686-8214-7cb79d4c2577"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleDebug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""540d06ea-fff0-482d-b340-4de465bcd33d"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -666,6 +712,10 @@ namespace Avocado.Game.Controllers
             m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
             m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
             m_UI_TrackedDeviceSelect = m_UI.FindAction("TrackedDeviceSelect", throwIfNotFound: true);
+            // Debug
+            m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+            m_Debug_ToggleDebug = m_Debug.FindAction("ToggleDebug", throwIfNotFound: true);
+            m_Debug_Return = m_Debug.FindAction("Return", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -873,6 +923,47 @@ namespace Avocado.Game.Controllers
             }
         }
         public UIActions @UI => new UIActions(this);
+
+        // Debug
+        private readonly InputActionMap m_Debug;
+        private IDebugActions m_DebugActionsCallbackInterface;
+        private readonly InputAction m_Debug_ToggleDebug;
+        private readonly InputAction m_Debug_Return;
+        public struct DebugActions
+        {
+            private @Controls m_Wrapper;
+            public DebugActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @ToggleDebug => m_Wrapper.m_Debug_ToggleDebug;
+            public InputAction @Return => m_Wrapper.m_Debug_Return;
+            public InputActionMap Get() { return m_Wrapper.m_Debug; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+            public void SetCallbacks(IDebugActions instance)
+            {
+                if (m_Wrapper.m_DebugActionsCallbackInterface != null)
+                {
+                    @ToggleDebug.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnToggleDebug;
+                    @ToggleDebug.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnToggleDebug;
+                    @ToggleDebug.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnToggleDebug;
+                    @Return.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnReturn;
+                    @Return.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnReturn;
+                    @Return.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnReturn;
+                }
+                m_Wrapper.m_DebugActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @ToggleDebug.started += instance.OnToggleDebug;
+                    @ToggleDebug.performed += instance.OnToggleDebug;
+                    @ToggleDebug.canceled += instance.OnToggleDebug;
+                    @Return.started += instance.OnReturn;
+                    @Return.performed += instance.OnReturn;
+                    @Return.canceled += instance.OnReturn;
+                }
+            }
+        }
+        public DebugActions @Debug => new DebugActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -928,6 +1019,11 @@ namespace Avocado.Game.Controllers
             void OnTrackedDevicePosition(InputAction.CallbackContext context);
             void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
             void OnTrackedDeviceSelect(InputAction.CallbackContext context);
+        }
+        public interface IDebugActions
+        {
+            void OnToggleDebug(InputAction.CallbackContext context);
+            void OnReturn(InputAction.CallbackContext context);
         }
     }
 }

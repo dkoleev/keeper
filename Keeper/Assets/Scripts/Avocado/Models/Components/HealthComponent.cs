@@ -28,7 +28,7 @@ namespace Avocado.Models.Components {
 
         public void Damage(int value) {
             CurrentHealth = Mathf.Max(0, CurrentHealth - value);
-            OnHealthChange.Dispatch(CurrentHealth - value, CurrentHealth, Data.MaxHealth);
+            OnHealthChange.Dispatch(CurrentHealth + value, CurrentHealth, Data.MaxHealth);
 
             if (CurrentHealth == 0) {
                 OnDead.Dispatch(this);

@@ -1,8 +1,9 @@
 {
-    "name": "Avocado.Keeper.Core",
+    "name": "Avocado.Keeper.Debug",
     "references": [
-        "GUID:1a4ce56a965a93442869544b09351753",
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:d5b8e34db245354478ac5eeafeaeb103",
+        "GUID:1a4ce56a965a93442869544b09351753"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
