@@ -599,6 +599,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "PrevCommands",
+                    "type": "Button",
+                    "id": "52b8a7ce-6f18-46e6-9671-30804238a05f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -608,7 +616,7 @@
                     "path": "<Keyboard>/backquote",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "ToggleDebug",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -619,8 +627,19 @@
                     "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8b79545c-6f3e-42f6-8f2f-b5e8cb7200ce",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PrevCommands",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -11,6 +11,8 @@ namespace Avocado.Debug {
         public static DebugCommandBase AddGold;
         
         private List<DebugCommandBase> _commands;
+        private List<string> _commandsBuffer = new List<string>();
+        private int _currentIndexBufferCommand;
 
         private bool _showConsole;
         private bool _showHelp;
@@ -19,6 +21,7 @@ namespace Avocado.Debug {
         private void Awake() {
             ControlsManager.Instance.MainControl.Debug.ToggleDebug.performed += OnToggleDebug;
             ControlsManager.Instance.MainControl.Debug.Return.performed += OnReturn;
+            ControlsManager.Instance.MainControl.Debug.PrevCommands.performed += OnPrevCommand;
             ControlsManager.Instance.MainControl.Debug.Enable();
             
             HelpCommand = new DebugCommand("help", "show a list of commands", "help", () => {
@@ -40,7 +43,7 @@ namespace Avocado.Debug {
             };
         }
 
-        public void OnToggleDebug(InputAction.CallbackContext context) {
+        private void OnToggleDebug(InputAction.CallbackContext context) {
             _showConsole = !_showConsole;
             if (_showConsole) {
                 ControlsManager.Instance.MainControl.Player.Disable();
@@ -49,10 +52,22 @@ namespace Avocado.Debug {
             }
         }
 
-        public void OnReturn(InputAction.CallbackContext context) {
+        private void OnReturn(InputAction.CallbackContext context) {
             if (_showConsole) {
                 HandleInput();
                 _input = "";
+            }
+        }
+        
+        private void OnPrevCommand(InputAction.CallbackContext context) {
+            if (_showConsole) {
+                if (_commandsBuffer.Count > 0) {
+                    _input = _commandsBuffer[_currentIndexBufferCommand];
+                    _currentIndexBufferCommand++;
+                    if (_currentIndexBufferCommand >= _commandsBuffer.Count) {
+                        _currentIndexBufferCommand = 0;
+                    }
+                }
             }
         }
 
@@ -96,15 +111,25 @@ namespace Avocado.Debug {
         }
 
         private void HandleInput() {
+            _currentIndexBufferCommand = 0;
+            var success = false;
             var properties = _input.Split(' ');
             foreach (var command in _commands) {
                 if (_input.Contains(command.CommandId)) {
                     if (command is DebugCommand debugCommand) {
                         debugCommand.Invoke();
+                        success = true;
                     }else if (command is DebugCommand<int> debugCommandParInt) {
-                        debugCommandParInt.Invoke(int.Parse(properties[1]));
+                        if (int.TryParse(properties[1], out int param1)) {
+                            debugCommandParInt.Invoke(param1);
+                            success = true;
+                        }
                     }
                 }
+            }
+
+            if (success && !_commandsBuffer.Contains(_input)) {
+                _commandsBuffer.Add(_input);
             }
         }
     }

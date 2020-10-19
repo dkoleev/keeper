@@ -614,6 +614,14 @@ namespace Avocado.Core.Controls
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PrevCommands"",
+                    ""type"": ""Button"",
+                    ""id"": ""52b8a7ce-6f18-46e6-9671-30804238a05f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -623,7 +631,7 @@ namespace Avocado.Core.Controls
                     ""path"": ""<Keyboard>/backquote"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""ToggleDebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -634,8 +642,19 @@ namespace Avocado.Core.Controls
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b79545c-6f3e-42f6-8f2f-b5e8cb7200ce"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PrevCommands"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -716,6 +735,7 @@ namespace Avocado.Core.Controls
             m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
             m_Debug_ToggleDebug = m_Debug.FindAction("ToggleDebug", throwIfNotFound: true);
             m_Debug_Return = m_Debug.FindAction("Return", throwIfNotFound: true);
+            m_Debug_PrevCommands = m_Debug.FindAction("PrevCommands", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -929,12 +949,14 @@ namespace Avocado.Core.Controls
         private IDebugActions m_DebugActionsCallbackInterface;
         private readonly InputAction m_Debug_ToggleDebug;
         private readonly InputAction m_Debug_Return;
+        private readonly InputAction m_Debug_PrevCommands;
         public struct DebugActions
         {
             private @Controls m_Wrapper;
             public DebugActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @ToggleDebug => m_Wrapper.m_Debug_ToggleDebug;
             public InputAction @Return => m_Wrapper.m_Debug_Return;
+            public InputAction @PrevCommands => m_Wrapper.m_Debug_PrevCommands;
             public InputActionMap Get() { return m_Wrapper.m_Debug; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -950,6 +972,9 @@ namespace Avocado.Core.Controls
                     @Return.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnReturn;
                     @Return.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnReturn;
                     @Return.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnReturn;
+                    @PrevCommands.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommands;
+                    @PrevCommands.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommands;
+                    @PrevCommands.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommands;
                 }
                 m_Wrapper.m_DebugActionsCallbackInterface = instance;
                 if (instance != null)
@@ -960,6 +985,9 @@ namespace Avocado.Core.Controls
                     @Return.started += instance.OnReturn;
                     @Return.performed += instance.OnReturn;
                     @Return.canceled += instance.OnReturn;
+                    @PrevCommands.started += instance.OnPrevCommands;
+                    @PrevCommands.performed += instance.OnPrevCommands;
+                    @PrevCommands.canceled += instance.OnPrevCommands;
                 }
             }
         }
@@ -1024,6 +1052,7 @@ namespace Avocado.Core.Controls
         {
             void OnToggleDebug(InputAction.CallbackContext context);
             void OnReturn(InputAction.CallbackContext context);
+            void OnPrevCommands(InputAction.CallbackContext context);
         }
     }
 }
