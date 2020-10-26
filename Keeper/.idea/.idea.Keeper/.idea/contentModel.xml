@@ -5,7 +5,6 @@
     <e p="C:\Users\Dimko\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_Keeper.-679276012.00" t="ExcludeRecursive" />
     <e p="D:\Projects\Keeper\Keeper\Keeper" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
-      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Avocado" t="Include">
@@ -111,6 +110,24 @@
           </e>
         </e>
         <e p="Plugins" t="Include">
+          <e p="Avocado" t="Include">
+            <e p="DeveloperCheatConsole" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Avocado.DevConsole.asmdef" t="Include" />
+                <e p="Core" t="Include">
+                  <e p="Commands" t="Include">
+                    <e p="DevCommand.cs" t="Include" />
+                  </e>
+                  <e p="DeveloperConsole.cs" t="Include" />
+                </e>
+                <e p="Visual" t="Include">
+                  <e p="DevConsoleGUI.cs" t="Include" />
+                  <e p="DevConsoleGuiNewInputSystem.cs" t="Include" />
+                  <e p="DeveloperConsoleGuiDefaultInput.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
           <e p="Demigiant" t="Include">
             <e p="DOTween" t="Include">
               <e p="Modules" t="Include">
@@ -123,21 +140,6 @@
                 <e p="DOTweenModuleUnityVersion.cs" t="Include" />
                 <e p="DOTweenModuleUtils.cs" t="Include" />
               </e>
-              <e p="ReadMe.txt" t="Include" />
-            </e>
-          </e>
-          <e p="GConsole" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="Commands" t="Include">
-                <e p="Demonstration" t="Include">
-                  <e p="GConsoleSuggestionDemonstration.cs" t="Include" />
-                  <e p="GConsoleUnityLoggingDemonstration.cs" t="Include" />
-                </e>
-                <e p="GConsoleQuit.cs" t="Include" />
-                <e p="GConsoleVolume.cs" t="Include" />
-              </e>
-              <e p="GConsole.cs" t="Include" />
-              <e p="GConsoleCommand.cs" t="Include" />
             </e>
           </e>
           <e p="Relay" t="Include">
@@ -345,11 +347,7 @@
             </e>
             <e p="Debug" t="Include">
               <e p="Avocado.Keeper.Debug.asmdef" t="Include" />
-              <e p="Commands" t="Include">
-                <e p="DebugCommand.cs" t="Include" />
-                <e p="DebugCommandBase.cs" t="Include" />
-              </e>
-              <e p="DebugConsole.cs" t="Include" />
+              <e p="DevConsoleInput.cs" t="Include" />
             </e>
             <e p="Editor" t="Include">
               <e p="Avocado.Keeper.Editor.asmdef" t="Include" />
@@ -2135,6 +2133,7 @@
         </e>
       </e>
       <e p="Avocado.ArchitecureVisualizer.Editor.csproj" t="IncludeRecursive" />
+      <e p="Avocado.DevConsole.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Core.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.csproj" t="IncludeRecursive" />
       <e p="Avocado.Keeper.Data.csproj" t="IncludeRecursive" />

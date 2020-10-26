@@ -607,6 +607,22 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "PrevCommandsBack",
+                    "type": "Button",
+                    "id": "802dabc0-311c-4f6d-9093-7b38282d6016",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ExitDebug",
+                    "type": "Button",
+                    "id": "727e53f2-02e4-49c1-ac59-75b5837e31a0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -640,6 +656,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "PrevCommands",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b728df9d-a53b-460a-b8bd-6d77bd4bfb74",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevCommandsBack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15d0ead9-a502-4bdc-a58c-3b4c3a63cf43",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitDebug",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

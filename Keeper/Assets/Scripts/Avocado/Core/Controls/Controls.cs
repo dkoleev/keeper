@@ -622,6 +622,22 @@ namespace Avocado.Core.Controls
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PrevCommandsBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""802dabc0-311c-4f6d-9093-7b38282d6016"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ExitDebug"",
+                    ""type"": ""Button"",
+                    ""id"": ""727e53f2-02e4-49c1-ac59-75b5837e31a0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -655,6 +671,28 @@ namespace Avocado.Core.Controls
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""PrevCommands"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b728df9d-a53b-460a-b8bd-6d77bd4bfb74"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevCommandsBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15d0ead9-a502-4bdc-a58c-3b4c3a63cf43"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitDebug"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -736,6 +774,8 @@ namespace Avocado.Core.Controls
             m_Debug_ToggleDebug = m_Debug.FindAction("ToggleDebug", throwIfNotFound: true);
             m_Debug_Return = m_Debug.FindAction("Return", throwIfNotFound: true);
             m_Debug_PrevCommands = m_Debug.FindAction("PrevCommands", throwIfNotFound: true);
+            m_Debug_PrevCommandsBack = m_Debug.FindAction("PrevCommandsBack", throwIfNotFound: true);
+            m_Debug_ExitDebug = m_Debug.FindAction("ExitDebug", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -950,6 +990,8 @@ namespace Avocado.Core.Controls
         private readonly InputAction m_Debug_ToggleDebug;
         private readonly InputAction m_Debug_Return;
         private readonly InputAction m_Debug_PrevCommands;
+        private readonly InputAction m_Debug_PrevCommandsBack;
+        private readonly InputAction m_Debug_ExitDebug;
         public struct DebugActions
         {
             private @Controls m_Wrapper;
@@ -957,6 +999,8 @@ namespace Avocado.Core.Controls
             public InputAction @ToggleDebug => m_Wrapper.m_Debug_ToggleDebug;
             public InputAction @Return => m_Wrapper.m_Debug_Return;
             public InputAction @PrevCommands => m_Wrapper.m_Debug_PrevCommands;
+            public InputAction @PrevCommandsBack => m_Wrapper.m_Debug_PrevCommandsBack;
+            public InputAction @ExitDebug => m_Wrapper.m_Debug_ExitDebug;
             public InputActionMap Get() { return m_Wrapper.m_Debug; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -975,6 +1019,12 @@ namespace Avocado.Core.Controls
                     @PrevCommands.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommands;
                     @PrevCommands.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommands;
                     @PrevCommands.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommands;
+                    @PrevCommandsBack.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommandsBack;
+                    @PrevCommandsBack.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommandsBack;
+                    @PrevCommandsBack.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnPrevCommandsBack;
+                    @ExitDebug.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnExitDebug;
+                    @ExitDebug.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnExitDebug;
+                    @ExitDebug.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnExitDebug;
                 }
                 m_Wrapper.m_DebugActionsCallbackInterface = instance;
                 if (instance != null)
@@ -988,6 +1038,12 @@ namespace Avocado.Core.Controls
                     @PrevCommands.started += instance.OnPrevCommands;
                     @PrevCommands.performed += instance.OnPrevCommands;
                     @PrevCommands.canceled += instance.OnPrevCommands;
+                    @PrevCommandsBack.started += instance.OnPrevCommandsBack;
+                    @PrevCommandsBack.performed += instance.OnPrevCommandsBack;
+                    @PrevCommandsBack.canceled += instance.OnPrevCommandsBack;
+                    @ExitDebug.started += instance.OnExitDebug;
+                    @ExitDebug.performed += instance.OnExitDebug;
+                    @ExitDebug.canceled += instance.OnExitDebug;
                 }
             }
         }
@@ -1053,6 +1109,8 @@ namespace Avocado.Core.Controls
             void OnToggleDebug(InputAction.CallbackContext context);
             void OnReturn(InputAction.CallbackContext context);
             void OnPrevCommands(InputAction.CallbackContext context);
+            void OnPrevCommandsBack(InputAction.CallbackContext context);
+            void OnExitDebug(InputAction.CallbackContext context);
         }
     }
 }

@@ -1,10 +1,7 @@
 {
-    "name": "Avocado.Keeper.Debug",
+    "name": "Avocado.DevConsole",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:d5b8e34db245354478ac5eeafeaeb103",
-        "GUID:1a4ce56a965a93442869544b09351753",
-        "GUID:a3f6dbbaa431d0d4b86520c09460e812"
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
