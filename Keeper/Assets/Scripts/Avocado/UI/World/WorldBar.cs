@@ -32,5 +32,10 @@ namespace Avocado.UI.World {
             _progress.fillAmount = Mathf.Clamp01(value);
             _bufferProgress.DOFillAmount(value, 1.0f);
         }
+
+        protected override void Update() {
+            base.Update();
+            transform.eulerAngles = Vector3.zero;
+        }
     }
 }
