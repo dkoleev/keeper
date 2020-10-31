@@ -11,9 +11,11 @@ namespace Avocado {
             var resultEntities = new Dictionary<string, EntityData>();
             var main = loader.LoadObject<EntitiesData>(DataPath + "Humanoids.json");
             var weapons = loader.LoadObject<EntitiesData>(DataPath + "Weapons.json");
+            var traps = loader.LoadObject<EntitiesData>(DataPath + "Traps.json");
             
             AddToResult(resultEntities, main.Entities);
             AddToResult(resultEntities, weapons.Entities);
+            AddToResult(resultEntities, traps.Entities);
             
             var result = new EntitiesData(resultEntities);
             _data = new GameData(result);

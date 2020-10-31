@@ -2,7 +2,7 @@
 	"Entities" : {
 		"BuzzSaw": {
 			"Parent": null,
-			"Prefab": "Environment/Traps/BuzzSaw_Medium",
+			"Prefab": "BuzzSaw_Medium",
 			"MaxStack" : 1,
 			"Components": {
 				"Trap": {

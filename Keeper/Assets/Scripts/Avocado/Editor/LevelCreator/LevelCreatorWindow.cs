@@ -4,8 +4,6 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 namespace Avocado.Editor.LevelCreator {
@@ -23,10 +21,10 @@ namespace Avocado.Editor.LevelCreator {
 
         private bool _initialized;
         
-        [MenuItem("Tools/Level Creator")]
+        [MenuItem("Tools/Level Editor")]
         public static void ShowWindow() {
             var window = (LevelCreatorWindow) GetWindow(typeof(LevelCreatorWindow));
-            window.titleContent = new GUIContent("Level Creator");
+            window.titleContent = new GUIContent("Level Editor");
             window.Show();
         }
         
